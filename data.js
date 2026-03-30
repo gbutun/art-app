@@ -22,10 +22,10 @@ const translations = {
     artistsTitle: "Meet the artists",
     artistsText:
       "Add a human story to the collection with biographies, artistic focus, and short notes that help visitors connect with each painter behind the work.",
-    aboutEyebrow: "Design Notes",
-    aboutTitle: "Why this style works",
+    aboutEyebrow: "Commission a Painting",
+    aboutTitle: "You like what you see?",
     aboutText:
-      "The palette is warm and restrained, the typography feels editorial, and the layout stays respectful to traditional and realistic art. A few modern touches like soft layering, clean spacing, and subtle motion keep the site from feeling old-fashioned.",
+      "Have a reproduction with the finest touch.\nHave a photograph turned into a real painting by our artists.\nHave your precious moments and family pictures immortalized.\n\nPlease reach us under abc.xyz.com.",
     closeButton: "Close",
     detailEyebrow: "Painting Details",
     factsYear: "Year",
@@ -62,10 +62,10 @@ const translations = {
     artistsTitle: "Sanatçılarla tanışın",
     artistsText:
       "Biyografiler, sanatsal odaklar ve kısa notlarla koleksiyona insani bir hikaye katın; ziyaretçiler her tablonun arkasındaki ressamla bağ kurabilsin.",
-    aboutEyebrow: "Tasarım Notları",
-    aboutTitle: "Bu stil neden iyi çalışır",
+    aboutEyebrow: "Tablo Siparişi",
+    aboutTitle: "Gördüklerinizi beğendiniz mi?",
     aboutText:
-      "Renk paleti sıcak ve ölçülüdür, tipografi editöryal bir his verir ve yerleşim geleneksel ve gerçekçi sanata saygılı kalır. Yumuşak katmanlar, temiz boşluk kullanımı ve ince hareketler gibi modern dokunuşlar siteyi eski moda hissettirmez.",
+      "En zarif dokunuşla bir reprodüksiyon yaptırın.\nFotoğraflarınızı sanatçılarımız tarafından gerçek bir tabloya dönüştürün.\nDeğerli anılarınızı ve aile fotoğraflarınızı ölümsüzleştirin.\n\nBizimle abc.xyz.com üzerinden iletişime geçin.",
     closeButton: "Kapat",
     detailEyebrow: "Eser Detayları",
     factsYear: "Yıl",
