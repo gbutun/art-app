@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Heritage Gallery</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div>
+          <p class="eyebrow">Private Collection</p>
+          <h1>Modern Heritage Gallery</h1>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#gallery">Gallery</a>
+          <a href="#about">About</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Traditional Realism, Curated with a Modern Eye</p>
+            <h2>A digital exhibition space for paintings that deserve room to breathe.</h2>
+            <p class="hero-text">
+              Present your friends' artwork with the calm elegance of a gallery wall.
+              Each piece is scaled carefully on the main page, with the painting title
+              and artist name visible at a glance.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#gallery">Explore the Collection</a>
+              <button class="button button-secondary" type="button" data-open-first>
+                Open Featured Work
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-panel" aria-hidden="true">
+            <div class="hero-frame hero-frame-large">
+              <div class="hero-art hero-art-warm"></div>
+            </div>
+            <div class="hero-frame hero-frame-small">
+              <div class="hero-art hero-art-muted"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Collection Preview</p>
+              <h2>Featured paintings</h2>
+            </div>
+            <p class="section-text">
+              The cards below keep every work well scaled and easy to read, whether the
+              original piece is portrait or landscape.
+            </p>
+          </div>
+
+          <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+        </section>
+
+        <section class="about-section" id="about">
+          <div class="about-card">
+            <p class="eyebrow">Design Notes</p>
+            <h2>Why this style works</h2>
+            <p>
+              The palette is warm and restrained, the typography feels editorial, and
+              the layout stays respectful to traditional and realistic art. A few modern
+              touches like soft layering, clean spacing, and subtle motion keep the site
+              from feeling old-fashioned.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="detail-modal" id="detailModal">
+      <form method="dialog" class="modal-close-row">
+        <button class="icon-button" aria-label="Close painting details">Close</button>
+      </form>
+      <div class="detail-layout" id="detailContent"></div>
+    </dialog>
+
+    <template id="paintingCardTemplate">
+      <article class="painting-card">
+        <button class="painting-card-link" type="button">
+          <div class="painting-media">
+            <img alt="" loading="lazy" />
+          </div>
+          <div class="painting-meta">
+            <h3></h3>
+            <p class="artist-name"></p>
+          </div>
+        </button>
+      </article>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
