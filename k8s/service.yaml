@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: art-app
+spec:
+  selector:
+    app: art-app
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

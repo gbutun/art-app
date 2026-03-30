@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: art-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: art-app
+  template:
+    metadata:
+      labels:
+        app: art-app
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.27-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: site-content
+              mountPath: /usr/share/nginx/html/index.html
+              subPath: index.html
+            - name: site-content
+              mountPath: /usr/share/nginx/html/artist.html
+              subPath: artist.html
+            - name: site-content
+              mountPath: /usr/share/nginx/html/artists.html
+              subPath: artists.html
+            - name: site-content
+              mountPath: /usr/share/nginx/html/script.js
+              subPath: script.js
+            - name: site-content
+              mountPath: /usr/share/nginx/html/artist-page.js
+              subPath: artist-page.js
+            - name: site-content
+              mountPath: /usr/share/nginx/html/artists-page.js
+              subPath: artists-page.js
+            - name: site-content
+              mountPath: /usr/share/nginx/html/data.js
+              subPath: data.js
+            - name: site-content
+              mountPath: /usr/share/nginx/html/styles.css
+              subPath: styles.css
+      volumes:
+        - name: site-content
+          configMap:
+            name: art-app-site

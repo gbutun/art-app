@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: art-app
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+configMapGenerator:
+  - name: art-app-site
+    files:
+      - site/index.html
+      - site/artist.html
+      - site/artists.html
+      - site/script.js
+      - site/artist-page.js
+      - site/artists-page.js
+      - site/data.js
+      - site/styles.css
+generatorOptions:
+  disableNameSuffixHash: true
