@@ -10,29 +10,39 @@
     <div class="page-shell">
       <header class="site-header">
         <div>
-          <p class="eyebrow">Private Collection</p>
-          <h1>Modern Heritage Gallery</h1>
+          <p class="eyebrow" data-i18n="headerEyebrow">Private Collection</p>
+          <h1 data-i18n="siteTitle">Modern Heritage Gallery</h1>
         </div>
-        <nav class="site-nav" aria-label="Primary">
-          <a href="#gallery">Gallery</a>
-          <a href="#about">About</a>
-        </nav>
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#gallery" data-i18n="navGallery">Gallery</a>
+            <a href="#about" data-i18n="navAbout">About</a>
+          </nav>
+          <div class="language-switcher" role="group" aria-label="Language selector">
+            <button class="language-button is-active" type="button" data-language="en">
+              English
+            </button>
+            <button class="language-button" type="button" data-language="tr">
+              Türkçe
+            </button>
+          </div>
+        </div>
       </header>
 
       <main>
         <section class="hero">
           <div class="hero-copy">
-            <p class="eyebrow">Traditional Realism, Curated with a Modern Eye</p>
-            <h2>A digital exhibition space for paintings that deserve room to breathe.</h2>
-            <p class="hero-text">
+            <p class="eyebrow" data-i18n="heroEyebrow">Traditional Realism, Curated with a Modern Eye</p>
+            <h2 data-i18n="heroTitle">A digital exhibition space for paintings that deserve room to breathe.</h2>
+            <p class="hero-text" data-i18n="heroText">
               Present your friends' artwork with the calm elegance of a gallery wall.
               Each piece is scaled carefully on the main page, with the painting title
               and artist name visible at a glance.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#gallery">Explore the Collection</a>
+              <a class="button button-primary" href="#gallery" data-i18n="heroPrimaryAction">Explore the Collection</a>
               <button class="button button-secondary" type="button" data-open-first>
-                Open Featured Work
+                <span data-i18n="heroSecondaryAction">Open Featured Work</span>
               </button>
             </div>
           </div>
@@ -50,10 +60,10 @@
         <section class="gallery-section" id="gallery">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Collection Preview</p>
-              <h2>Featured paintings</h2>
+              <p class="eyebrow" data-i18n="galleryEyebrow">Collection Preview</p>
+              <h2 data-i18n="galleryTitle">Featured paintings</h2>
             </div>
-            <p class="section-text">
+            <p class="section-text" data-i18n="galleryText">
               The cards below keep every work well scaled and easy to read, whether the
               original piece is portrait or landscape.
             </p>
@@ -64,9 +74,9 @@
 
         <section class="about-section" id="about">
           <div class="about-card">
-            <p class="eyebrow">Design Notes</p>
-            <h2>Why this style works</h2>
-            <p>
+            <p class="eyebrow" data-i18n="aboutEyebrow">Design Notes</p>
+            <h2 data-i18n="aboutTitle">Why this style works</h2>
+            <p data-i18n="aboutText">
               The palette is warm and restrained, the typography feels editorial, and
               the layout stays respectful to traditional and realistic art. A few modern
               touches like soft layering, clean spacing, and subtle motion keep the site
@@ -79,7 +89,7 @@
 
     <dialog class="detail-modal" id="detailModal">
       <form method="dialog" class="modal-close-row">
-        <button class="icon-button" aria-label="Close painting details">Close</button>
+        <button class="icon-button" aria-label="Close painting details" data-i18n="closeButton">Close</button>
       </form>
       <div class="detail-layout" id="detailContent"></div>
     </dialog>

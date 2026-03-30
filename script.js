@@ -1,13 +1,79 @@
+const translations = {
+  en: {
+    pageTitle: "Modern Heritage Gallery",
+    headerEyebrow: "Private Collection",
+    siteTitle: "Modern Heritage Gallery",
+    navGallery: "Gallery",
+    navAbout: "About",
+    heroEyebrow: "Traditional Realism, Curated with a Modern Eye",
+    heroTitle: "A digital exhibition space for paintings that deserve room to breathe.",
+    heroText:
+      "Present your friends' artwork with the calm elegance of a gallery wall. Each piece is scaled carefully on the main page, with the painting title and artist name visible at a glance.",
+    heroPrimaryAction: "Explore the Collection",
+    heroSecondaryAction: "Open Featured Work",
+    galleryEyebrow: "Collection Preview",
+    galleryTitle: "Featured paintings",
+    galleryText:
+      "The cards below keep every work well scaled and easy to read, whether the original piece is portrait or landscape.",
+    aboutEyebrow: "Design Notes",
+    aboutTitle: "Why this style works",
+    aboutText:
+      "The palette is warm and restrained, the typography feels editorial, and the layout stays respectful to traditional and realistic art. A few modern touches like soft layering, clean spacing, and subtle motion keep the site from feeling old-fashioned.",
+    closeButton: "Close",
+    detailEyebrow: "Painting Details",
+    factsYear: "Year",
+    factsMedium: "Medium",
+    factsDimensions: "Dimensions",
+  },
+  tr: {
+    pageTitle: "Modern Miras Galerisi",
+    headerEyebrow: "Özel Koleksiyon",
+    siteTitle: "Modern Miras Galerisi",
+    navGallery: "Galeri",
+    navAbout: "Hakkında",
+    heroEyebrow: "Geleneksel Gerçekçilik, Modern Bir Yaklaşımla Sunuldu",
+    heroTitle: "Nefes alacak alanı olan tablolar için dijital bir sergi mekanı.",
+    heroText:
+      "Arkadaşlarınızın eserlerini sakin ve zarif bir galeri duvarı hissiyle sunun. Her eser ana sayfada dikkatle ölçeklendirilir; tablo adı ve sanatçı ismi ilk bakışta görünür.",
+    heroPrimaryAction: "Koleksiyonu Keşfet",
+    heroSecondaryAction: "Öne Çıkan Eseri Aç",
+    galleryEyebrow: "Koleksiyon Ön İzleme",
+    galleryTitle: "Öne çıkan tablolar",
+    galleryText:
+      "Aşağıdaki kartlar, eserin dikey ya da yatay olmasına bakmadan her tabloyu dengeli ve kolay okunur biçimde gösterir.",
+    aboutEyebrow: "Tasarım Notları",
+    aboutTitle: "Bu stil neden iyi çalışır",
+    aboutText:
+      "Renk paleti sıcak ve ölçülüdür, tipografi editöryal bir his verir ve yerleşim geleneksel ve gerçekçi sanata saygılı kalır. Yumuşak katmanlar, temiz boşluk kullanımı ve ince hareketler gibi modern dokunuşlar siteyi eski moda hissettirmez.",
+    closeButton: "Kapat",
+    detailEyebrow: "Eser Detayları",
+    factsYear: "Yıl",
+    factsMedium: "Teknik",
+    factsDimensions: "Ölçüler",
+  },
+};
+
 const paintings = [
   {
     id: "quiet-harbor",
-    title: "Quiet Harbor Morning",
-    artist: "Amal Rahman",
+    title: {
+      en: "Quiet Harbor Morning",
+      tr: "Sessiz Liman Sabahı",
+    },
+    artist: {
+      en: "Amal Rahman",
+      tr: "Amal Rahman",
+    },
     year: "2025",
-    medium: "Oil on canvas",
+    medium: {
+      en: "Oil on canvas",
+      tr: "Tuval üzerine yağlı boya",
+    },
     dimensions: "80 x 60 cm",
-    description:
-      "A realist coastal study built around morning light, softened reflections, and the stillness of fishing boats before the day begins.",
+    description: {
+      en: "A realist coastal study built around morning light, softened reflections, and the stillness of fishing boats before the day begins.",
+      tr: "Sabah ışığını, yumuşatılmış yansımaları ve gün başlamadan önce balıkçı teknelerinin durgunluğunu merkeze alan gerçekçi bir kıyı çalışması.",
+    },
     image:
       "data:image/svg+xml;utf8," +
       encodeURIComponent(`
@@ -35,13 +101,24 @@ const paintings = [
   },
   {
     id: "study-in-umber",
-    title: "Study in Umber",
-    artist: "Layla Nassar",
+    title: {
+      en: "Study in Umber",
+      tr: "Umber Etüdü",
+    },
+    artist: {
+      en: "Layla Nassar",
+      tr: "Layla Nassar",
+    },
     year: "2024",
-    medium: "Acrylic on board",
+    medium: {
+      en: "Acrylic on board",
+      tr: "Panel üzerine akrilik",
+    },
     dimensions: "60 x 75 cm",
-    description:
-      "A portrait-driven interior scene with careful tonal transitions and a restrained earthy palette, designed to feel intimate and contemplative.",
+    description: {
+      en: "A portrait-driven interior scene with careful tonal transitions and a restrained earthy palette, designed to feel intimate and contemplative.",
+      tr: "Dikkatli tonal geçişler ve ölçülü toprak tonlarıyla kurulan, samimi ve düşünceli bir atmosfer taşıyan portre odaklı bir iç mekan sahnesi.",
+    },
     image:
       "data:image/svg+xml;utf8," +
       encodeURIComponent(`
@@ -61,13 +138,24 @@ const paintings = [
   },
   {
     id: "fields-after-rain",
-    title: "Fields After Rain",
-    artist: "Yousef Kareem",
+    title: {
+      en: "Fields After Rain",
+      tr: "Yağmur Sonrası Tarlalar",
+    },
+    artist: {
+      en: "Yousef Kareem",
+      tr: "Yousef Kareem",
+    },
     year: "2026",
-    medium: "Oil on linen",
+    medium: {
+      en: "Oil on linen",
+      tr: "Keten üzerine yağlı boya",
+    },
     dimensions: "100 x 70 cm",
-    description:
-      "A landscape composition centered on atmosphere rather than spectacle, with low clouds, wet ground, and measured realism in the distance.",
+    description: {
+      en: "A landscape composition centered on atmosphere rather than spectacle, with low clouds, wet ground, and measured realism in the distance.",
+      tr: "Gösterişten çok atmosfere odaklanan; alçak bulutlar, ıslak toprak ve uzakta ölçülü bir gerçekçilik taşıyan peyzaj kompozisyonu.",
+    },
     image:
       "data:image/svg+xml;utf8," +
       encodeURIComponent(`
@@ -85,13 +173,24 @@ const paintings = [
   },
   {
     id: "library-light",
-    title: "Library Light",
-    artist: "Mariam Haddad",
+    title: {
+      en: "Library Light",
+      tr: "Kütüphane Işığı",
+    },
+    artist: {
+      en: "Mariam Haddad",
+      tr: "Mariam Haddad",
+    },
     year: "2025",
-    medium: "Mixed media",
+    medium: {
+      en: "Mixed media",
+      tr: "Karışık teknik",
+    },
     dimensions: "90 x 65 cm",
-    description:
-      "A still interior built around filtered light, polished wood, and the quiet dignity of arranged objects within a lived-in room.",
+    description: {
+      en: "A still interior built around filtered light, polished wood, and the quiet dignity of arranged objects within a lived-in room.",
+      tr: "Süzülen ışık, cilalı ahşap ve yaşanmış bir odadaki nesnelerin sakin asaleti etrafında kurulan durgun bir iç mekan resmi.",
+    },
     image:
       "data:image/svg+xml;utf8," +
       encodeURIComponent(`
@@ -120,8 +219,13 @@ const template = document.getElementById("paintingCardTemplate");
 const detailModal = document.getElementById("detailModal");
 const detailContent = document.getElementById("detailContent");
 const featuredButton = document.querySelector("[data-open-first]");
+const languageButtons = document.querySelectorAll("[data-language]");
+let currentLanguage = "en";
+let activePaintingId = null;
 
 function renderGallery() {
+  galleryGrid.innerHTML = "";
+
   paintings.forEach((painting, index) => {
     const card = template.content.firstElementChild.cloneNode(true);
     const button = card.querySelector(".painting-card-link");
@@ -130,9 +234,9 @@ function renderGallery() {
     const artist = card.querySelector(".artist-name");
 
     image.src = painting.image;
-    image.alt = `${painting.title} by ${painting.artist}`;
-    title.textContent = painting.title;
-    artist.textContent = painting.artist;
+    image.alt = `${painting.title[currentLanguage]} by ${painting.artist[currentLanguage]}`;
+    title.textContent = painting.title[currentLanguage];
+    artist.textContent = painting.artist[currentLanguage];
     card.style.animationDelay = `${index * 70}ms`;
 
     button.addEventListener("click", () => openPainting(painting.id));
@@ -142,24 +246,27 @@ function renderGallery() {
 
 function openPainting(id) {
   const painting = paintings.find((entry) => entry.id === id);
+  const ui = translations[currentLanguage];
 
   if (!painting) {
     return;
   }
 
+  activePaintingId = id;
+
   detailContent.innerHTML = `
     <div class="detail-image-wrap">
-      <img src="${painting.image}" alt="${painting.title} by ${painting.artist}" />
+      <img src="${painting.image}" alt="${painting.title[currentLanguage]} by ${painting.artist[currentLanguage]}" />
     </div>
     <div class="detail-copy">
-      <p class="eyebrow">Painting Details</p>
-      <h2>${painting.title}</h2>
-      <p class="artist-name">${painting.artist}</p>
-      <p>${painting.description}</p>
+      <p class="eyebrow">${ui.detailEyebrow}</p>
+      <h2>${painting.title[currentLanguage]}</h2>
+      <p class="artist-name">${painting.artist[currentLanguage]}</p>
+      <p>${painting.description[currentLanguage]}</p>
       <ul class="detail-facts">
-        <li><strong>Year:</strong> ${painting.year}</li>
-        <li><strong>Medium:</strong> ${painting.medium}</li>
-        <li><strong>Dimensions:</strong> ${painting.dimensions}</li>
+        <li><strong>${ui.factsYear}:</strong> ${painting.year}</li>
+        <li><strong>${ui.factsMedium}:</strong> ${painting.medium[currentLanguage]}</li>
+        <li><strong>${ui.factsDimensions}:</strong> ${painting.dimensions}</li>
       </ul>
     </div>
   `;
@@ -167,6 +274,39 @@ function openPainting(id) {
   detailModal.showModal();
 }
 
-featuredButton.addEventListener("click", () => openPainting(paintings[0].id));
+function applyTranslations(language) {
+  currentLanguage = language;
+  const ui = translations[language];
 
-renderGallery();
+  document.documentElement.lang = language;
+  document.title = ui.pageTitle;
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+
+    if (ui[key]) {
+      element.textContent = ui[key];
+    }
+  });
+
+  languageButtons.forEach((button) => {
+    const isActive = button.dataset.language === language;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  renderGallery();
+
+  if (detailModal.open) {
+    if (activePaintingId) {
+      openPainting(activePaintingId);
+    }
+  }
+}
+
+featuredButton.addEventListener("click", () => openPainting(paintings[0].id));
+languageButtons.forEach((button) => {
+  button.addEventListener("click", () => applyTranslations(button.dataset.language));
+});
+
+applyTranslations(currentLanguage);
