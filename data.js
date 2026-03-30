@@ -84,14 +84,14 @@ const translations = {
 const paintings = [
   {
     id: "quiet-harbor",
-    artistId: "amal-rahman",
+    artistId: "mehmet-ozdemir",
     title: {
       en: "Quiet Harbor Morning",
       tr: "Sessiz Liman Sabahı",
     },
     artist: {
-      en: "Amal Rahman",
-      tr: "Amal Rahman",
+      en: "Mehmet Ozdemir",
+      tr: "Mehmet Ozdemir",
     },
     year: "2025",
     medium: {
@@ -250,16 +250,16 @@ const artists = [
   {
     id: "amal-rahman",
     name: {
-      en: "Amal Rahman",
-      tr: "Amal Rahman",
+      en: "Mehmet Ozdemir",
+      tr: "Mehmet Ozdemir",
     },
     role: {
       en: "Realist Painter",
       tr: "Gerçekçi Ressam",
     },
     biography: {
-      en: "Amal Rahman focuses on coastal scenes, quiet labor, and the changing color of early light. Her work combines careful observation with a calm, almost meditative atmosphere.",
-      tr: "Amal Rahman, kıyı sahnelerine, gündelik emeğin sakin anlarına ve sabah ışığının değişen tonlarına odaklanır. Eserleri dikkatli gözlemi dingin ve neredeyse meditatif bir atmosferle birleştirir.",
+      en: "Mehmet Ozdemir focuses on coastal scenes, quiet labor, and the changing color of early light. Her work combines careful observation with a calm, almost meditative atmosphere.",
+      tr: "Mehmet Ozdemir, kıyı sahnelerine, gündelik emeğin sakin anlarına ve sabah ışığının değişen tonlarına odaklanır. Eserleri dikkatli gözlemi dingin ve neredeyse meditatif bir atmosferle birleştirir.",
     },
     focus: {
       en: "Coastal realism, natural light, reflective water",
