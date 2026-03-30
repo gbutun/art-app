@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artist Profile</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div>
+          <p class="eyebrow" data-i18n="headerEyebrow">Private Collection</p>
+          <h1 data-i18n="siteTitle">Modern Heritage Gallery</h1>
+        </div>
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary">
+            <a href="./index.html#gallery" data-back-home data-i18n="navBackHome">Back to Gallery</a>
+            <a href="./artists.html" data-nav-artists data-i18n="navArtists">Artists</a>
+          </nav>
+          <div class="language-switcher" role="group" aria-label="Language selector">
+            <button class="language-button is-active" type="button" data-language="en">
+              English
+            </button>
+            <button class="language-button" type="button" data-language="tr">
+              Türkçe
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="artist-hero" id="artistProfile"></section>
+
+        <section class="artist-works-section">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="artistWorksEyebrow">Selected Works</p>
+              <h2 data-i18n="artistWorksTitle">Paintings by this artist</h2>
+            </div>
+          </div>
+          <div class="gallery-grid" id="artistWorksGrid"></div>
+          <p class="section-text artist-empty" id="artistWorksEmpty" data-i18n="artistWorksEmpty">
+            No paintings are linked to this artist yet.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <template id="artistWorkCardTemplate">
+      <article class="painting-card">
+        <div class="painting-card-link painting-card-static">
+          <div class="painting-media">
+            <img alt="" loading="lazy" />
+          </div>
+          <div class="painting-meta">
+            <h3></h3>
+            <p class="artist-name"></p>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./data.js"></script>
+    <script src="./artist-page.js"></script>
+  </body>
+</html>

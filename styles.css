@@ -259,6 +259,7 @@ body::before {
 }
 
 .gallery-section,
+.artists-section,
 .about-section {
   padding-top: 40px;
 }
@@ -284,6 +285,12 @@ body::before {
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
 }
 
@@ -342,6 +349,18 @@ body::before {
   font-size: 0.95rem;
 }
 
+.artist-link,
+.artist-inline-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: rgba(123, 104, 81, 0.34);
+  text-underline-offset: 3px;
+}
+
+.artist-inline-link {
+  font-weight: 600;
+}
+
 .about-card {
   padding: 28px;
   border-radius: 28px;
@@ -353,6 +372,149 @@ body::before {
 .about-card p {
   max-width: 68ch;
   line-height: 1.8;
+}
+
+.artist-card {
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.95), rgba(246, 236, 222, 0.88));
+  box-shadow: var(--shadow);
+  animation: riseIn 500ms ease both;
+}
+
+.artist-card-link {
+  display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 18px;
+  padding: 18px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.artist-portrait {
+  aspect-ratio: 4 / 5;
+  border-radius: 18px;
+  border: 1px solid rgba(104, 78, 51, 0.1);
+  background:
+    radial-gradient(circle at 50% 28%, rgba(240, 225, 196, 0.95), transparent 20%),
+    radial-gradient(circle at 50% 42%, rgba(183, 141, 102, 0.9), transparent 23%),
+    linear-gradient(180deg, rgba(71, 54, 40, 0.2), rgba(71, 54, 40, 0.04)),
+    linear-gradient(160deg, #dac6a8 0%, #a98361 52%, #6a5240 100%);
+}
+
+.artist-copy h3 {
+  margin: 2px 0 10px;
+  font-size: 2rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+.artist-role,
+.artist-bio,
+.artist-facts li {
+  color: var(--muted);
+}
+
+.artist-role {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.artist-bio {
+  margin: 0 0 16px;
+  line-height: 1.75;
+}
+
+.artist-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.artist-facts li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(93, 69, 43, 0.12);
+}
+
+.painting-card-static {
+  cursor: default;
+}
+
+.painting-card-static:hover {
+  transform: none;
+}
+
+.artist-hero,
+.artists-directory,
+.artist-works-section {
+  padding-top: 40px;
+}
+
+.artist-profile-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.96), rgba(246, 236, 222, 0.88));
+  box-shadow: var(--shadow);
+}
+
+.artist-profile-portrait {
+  min-height: 360px;
+  border-radius: 22px;
+  border: 1px solid rgba(104, 78, 51, 0.1);
+  background:
+    radial-gradient(circle at 50% 28%, rgba(240, 225, 196, 0.95), transparent 20%),
+    radial-gradient(circle at 50% 42%, rgba(183, 141, 102, 0.9), transparent 23%),
+    linear-gradient(180deg, rgba(71, 54, 40, 0.2), rgba(71, 54, 40, 0.04)),
+    linear-gradient(160deg, #dac6a8 0%, #a98361 52%, #6a5240 100%);
+}
+
+.artist-profile-copy h2,
+.artist-profile-block h3 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+.artist-profile-copy h2 {
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  line-height: 0.96;
+}
+
+.artist-profile-role,
+.artist-profile-block p {
+  color: var(--muted);
+}
+
+.artist-profile-role {
+  margin: 10px 0 22px;
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.artist-profile-block + .artist-profile-block {
+  margin-top: 18px;
+}
+
+.artist-profile-block h3 {
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.artist-profile-block p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.artist-empty[hidden] {
+  display: none;
 }
 
 .detail-modal {
@@ -447,7 +609,8 @@ body::before {
 @media (max-width: 940px) {
   .hero,
   .detail-layout,
-  .section-heading {
+  .section-heading,
+  .artist-profile-card {
     grid-template-columns: 1fr;
   }
 
@@ -506,6 +669,18 @@ body::before {
 
   .painting-media img {
     height: 180px;
+  }
+
+  .artist-portrait {
+    width: 120px;
+  }
+
+  .artist-card-link {
+    grid-template-columns: 1fr;
+  }
+
+  .artist-profile-portrait {
+    min-height: 260px;
   }
 
   .detail-modal {
