@@ -18,16 +18,16 @@ locals {
   static_web_app_name = var.static_web_app_name_override != "" ? var.static_web_app_name_override : "${local.resource_prefix}-${var.product_name_short}-swa-01-${var.product_unique}"
 }
 
-resource "azurerm_resource_group" "this" {
+resource "azurerm_resource_group" "art_app" {
   name     = local.resource_group_name
   location = var.location
   tags     = local.merged_tags
 }
 
-resource "azurerm_static_web_app" "this" {
+resource "azurerm_static_web_app" "art_app" {
   name                = local.static_web_app_name
-  resource_group_name = azurerm_resource_group.this.name
-  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.art_app.name
+  location            = azurerm_resource_group.art_app.location
   sku_tier            = var.static_web_app_sku_tier
   sku_size            = var.static_web_app_sku_size
   tags                = local.merged_tags

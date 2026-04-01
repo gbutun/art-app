@@ -6,13 +6,13 @@ variable "subscription_id" {
 variable "location" {
   type        = string
   description = "Azure region for app resources."
-  default     = "canadacentral"
+  default     = "westeurope"
 }
 
 variable "location_short" {
   type        = string
   description = "Short region code used in naming."
-  default     = "cac"
+  default     = "weu"
 }
 
 variable "environment_long" {
@@ -62,13 +62,13 @@ variable "static_web_app_name_override" {
 variable "static_web_app_sku_tier" {
   type        = string
   description = "Static Web App SKU tier."
-  default     = "Standard"
+  default     = "Free"
 }
 
 variable "static_web_app_sku_size" {
   type        = string
   description = "Static Web App SKU size."
-  default     = "Standard"
+  default     = "Free"
 }
 
 variable "repository_url" {

@@ -1,0 +1,66 @@
+Acquiring state lock. This may take a few moments...
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_resource_group.art_app will be created
+  + resource "azurerm_resource_group" "art_app" {
+      + id       = (known after apply)
+      + location = "westeurope"
+      + name     = "n-weu-rg-01-a01"
+      + tags     = {
+          + "company"     = "Modern Miras Galerisi"
+          + "cost_center" = "shared"
+          + "environment" = "nonprod"
+          + "managed_by"  = "terraform"
+          + "owner"       = "platform"
+          + "product"     = "Art App (nonprod)"
+          + "region"      = "westeurope"
+          + "repo"        = "https://github.com/gbutun/art-app"
+        }
+    }
+
+  # azurerm_static_web_app.art_app will be created
+  + resource "azurerm_static_web_app" "art_app" {
+      + api_key                            = (sensitive value)
+      + configuration_file_changes_enabled = true
+      + default_host_name                  = (known after apply)
+      + id                                 = (known after apply)
+      + location                           = "westeurope"
+      + name                               = "n-weu-art-swa-01-a01"
+      + preview_environments_enabled       = true
+      + public_network_access_enabled      = true
+      + resource_group_name                = "n-weu-rg-01-a01"
+      + sku_size                           = "Free"
+      + sku_tier                           = "Free"
+      + tags                               = {
+          + "company"     = "Modern Miras Galerisi"
+          + "cost_center" = "shared"
+          + "environment" = "nonprod"
+          + "managed_by"  = "terraform"
+          + "owner"       = "platform"
+          + "product"     = "Art App (nonprod)"
+          + "region"      = "westeurope"
+          + "repo"        = "https://github.com/gbutun/art-app"
+        }
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + resource_group_name              = "n-weu-rg-01-a01"
+  + static_web_app_api_key           = (sensitive value)
+  + static_web_app_default_host_name = (known after apply)
+  + static_web_app_name              = "n-weu-art-swa-01-a01"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to:
+/home/ronin/projects/art-app/infra/terraform/nonprod/plans/nonprod-art-a01-20260401T113046Z.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "/home/ronin/projects/art-app/infra/terraform/nonprod/plans/nonprod-art-a01-20260401T113046Z.tfplan"
+Releasing state lock. This may take a few moments...
