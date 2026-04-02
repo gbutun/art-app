@@ -90,8 +90,8 @@ const paintings = [
       tr: "Sessiz Liman Sabahı",
     },
     artist: {
-      en: "Mehmet Ozdemir",
-      tr: "Mehmet Ozdemir",
+      en: "Mehmet Özdemir",
+      tr: "Mehmet Özdemir",
     },
     year: "2025",
     medium: {
@@ -136,8 +136,8 @@ const paintings = [
       tr: "Umber Etüdü",
     },
     artist: {
-      en: "Layla Nassar",
-      tr: "Layla Nassar",
+      en: "Mahmut Şahin",
+      tr: "Mahmut Şahin",
     },
     year: "2024",
     medium: {
@@ -250,16 +250,16 @@ const artists = [
   {
     id: "amal-rahman",
     name: {
-      en: "Mehmet Ozdemir",
-      tr: "Mehmet Ozdemir",
+      en: "Mehmet Özdemir",
+      tr: "Mehmet Özdemir",
     },
     role: {
       en: "Realist Painter",
       tr: "Gerçekçi Ressam",
     },
     biography: {
-      en: "Mehmet Ozdemir focuses on coastal scenes, quiet labor, and the changing color of early light. Her work combines careful observation with a calm, almost meditative atmosphere.",
-      tr: "Mehmet Ozdemir, kıyı sahnelerine, gündelik emeğin sakin anlarına ve sabah ışığının değişen tonlarına odaklanır. Eserleri dikkatli gözlemi dingin ve neredeyse meditatif bir atmosferle birleştirir.",
+      en: "Mehmet Özdemir focuses on coastal scenes, quiet labor, and the changing color of early light. Her work combines careful observation with a calm, almost meditative atmosphere.",
+      tr: "Mehmet Özdemir, kıyı sahnelerine, gündelik emeğin sakin anlarına ve sabah ışığının değişen tonlarına odaklanır. Eserleri dikkatli gözlemi dingin ve neredeyse meditatif bir atmosferle birleştirir.",
     },
     focus: {
       en: "Coastal realism, natural light, reflective water",
@@ -273,16 +273,16 @@ const artists = [
   {
     id: "layla-nassar",
     name: {
-      en: "Layla Nassar",
-      tr: "Layla Nassar",
+      en: "Mahmut Şahin",
+      tr: "Mahmut Şahin",
     },
     role: {
       en: "Portrait and Interior Artist",
       tr: "Portre ve İç Mekan Sanatçısı",
     },
     biography: {
-      en: "Layla Nassar creates intimate scenes shaped by human presence, interior stillness, and rich tonal structure. Her paintings often explore memory, character, and the emotional life of domestic spaces.",
-      tr: "Layla Nassar, insan varlığı, iç mekan sessizliği ve zengin tonal yapı etrafında şekillenen samimi sahneler üretir. Resimleri çoğu zaman hafızayı, karakteri ve ev içi mekanların duygusal yaşamını araştırır.",
+      en: "Mahmut Şahin creates intimate scenes shaped by human presence, interior stillness, and rich tonal structure. Her paintings often explore memory, character, and the emotional life of domestic spaces.",
+      tr: "Mahmut Şahin, insan varlığı, iç mekan sessizliği ve zengin tonal yapı etrafında şekillenen samimi sahneler üretir. Resimleri çoğu zaman hafızayı, karakteri ve ev içi mekanların duygusal yaşamını araştırır.",
     },
     focus: {
       en: "Portraiture, tonal realism, domestic interiors",
