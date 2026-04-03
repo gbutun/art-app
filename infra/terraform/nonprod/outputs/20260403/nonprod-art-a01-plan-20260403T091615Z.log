@@ -1,0 +1,12 @@
+Acquiring state lock. This may take a few moments...
+Releasing state lock. This may take a few moments...
+
+Error: Inconsistent dependency lock file
+
+The following dependency selections recorded in the lock file are
+inconsistent with the current configuration:
+  - provider registry.terraform.io/azure/azapi: required by this configuration but no version is selected
+
+To update the locked dependency selections to match a changed configuration,
+run:
+  terraform init -upgrade

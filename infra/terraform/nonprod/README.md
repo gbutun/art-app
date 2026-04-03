@@ -39,3 +39,4 @@ terraform apply
 - The `key` in `backend.hcl` is already app-specific so this state stays separate from the older shared Terraform root.
 - The Static Web App resource is created without GitHub linkage. You can connect CI/CD after the resource exists.
 - For the GitHub Actions deployment procedure for the nonprod site, see `GITHUB_ACTIONS_DEPLOYMENT.md`.
+- For the custom-domain procedure for `mmartga.com`, see `CUSTOM_DOMAIN.md`.

@@ -1,0 +1,16 @@
+Acquiring state lock. This may take a few moments...
+azurerm_static_web_app.art_app: Modifying... [id=/subscriptions/4366f64f-0965-4607-a045-2f8df2c17ebe/resourceGroups/n-weu-rg-01-a01/providers/Microsoft.Web/staticSites/n-weu-art-swa-01-a01]
+azurerm_static_web_app.art_app: Still modifying... [id=/subscriptions/4366f64f-0965-4607-a045-...t.Web/staticSites/n-weu-art-swa-01-a01, 00m10s elapsed]
+azurerm_static_web_app.art_app: Still modifying... [id=/subscriptions/4366f64f-0965-4607-a045-...t.Web/staticSites/n-weu-art-swa-01-a01, 00m20s elapsed]
+azurerm_static_web_app.art_app: Modifications complete after 21s [id=/subscriptions/4366f64f-0965-4607-a045-2f8df2c17ebe/resourceGroups/n-weu-rg-01-a01/providers/Microsoft.Web/staticSites/n-weu-art-swa-01-a01]
+Releasing state lock. This may take a few moments...
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+
+Outputs:
+
+custom_domain_binding_enabled = false
+resource_group_name = "n-weu-rg-01-a01"
+static_web_app_api_key = <sensitive>
+static_web_app_default_host_name = "red-glacier-0d0fc8003.2.azurestaticapps.net"
+static_web_app_name = "n-weu-art-swa-01-a01"

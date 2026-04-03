@@ -1,0 +1,19 @@
+Acquiring state lock. This may take a few moments...
+azurerm_static_web_app.art_app: Modifying... [id=/subscriptions/4366f64f-0965-4607-a045-2f8df2c17ebe/resourceGroups/n-weu-rg-01-a01/providers/Microsoft.Web/staticSites/n-weu-art-swa-01-a01]
+azurerm_static_web_app.art_app: Still modifying... [id=/subscriptions/4366f64f-0965-4607-a045-...t.Web/staticSites/n-weu-art-swa-01-a01, 00m10s elapsed]
+azurerm_static_web_app.art_app: Still modifying... [id=/subscriptions/4366f64f-0965-4607-a045-...t.Web/staticSites/n-weu-art-swa-01-a01, 00m20s elapsed]
+azurerm_static_web_app.art_app: Modifications complete after 21s [id=/subscriptions/4366f64f-0965-4607-a045-2f8df2c17ebe/resourceGroups/n-weu-rg-01-a01/providers/Microsoft.Web/staticSites/n-weu-art-swa-01-a01]
+azapi_resource.art_app_custom_domain[0]: Creating...
+
+Error: Resource already exists
+
+  with azapi_resource.art_app_custom_domain[0],
+  on static-web-app.tf line 36, in resource "azapi_resource" "art_app_custom_domain":
+  36: resource "azapi_resource" "art_app_custom_domain" {
+
+A resource with the ID
+"/subscriptions/4366f64f-0965-4607-a045-2f8df2c17ebe/resourceGroups/n-weu-rg-01-a01/providers/Microsoft.Web/staticSites/n-weu-art-swa-01-a01/customDomains/mmartga.com"
+already exists - to be managed via Terraform this resource needs to be
+imported into the State. Please see the resource documentation for
+"azapi_resource" for more information.
+Releasing state lock. This may take a few moments...
