@@ -10,6 +10,7 @@ function renderArtistsDirectory() {
   artists.forEach((artistEntry, index) => {
     const card = artistTemplate.content.firstElementChild.cloneNode(true);
     const link = card.querySelector(".artist-card-link");
+    const portrait = card.querySelector(".artist-portrait");
     const role = card.querySelector(".artist-role");
     const name = card.querySelector("h3");
     const bio = card.querySelector(".artist-bio");
@@ -17,6 +18,10 @@ function renderArtistsDirectory() {
     const origin = card.querySelector(".artist-origin");
 
     link.href = getArtistUrl(artistEntry.id, currentLanguage);
+    if (artistEntry.portrait) {
+      portrait.innerHTML = `<img class="artist-portrait-image" src="${artistEntry.portrait}" alt="${artistEntry.name[currentLanguage]}" loading="lazy" />`;
+      portrait.removeAttribute("aria-hidden");
+    }
     role.textContent = artistEntry.role[currentLanguage];
     name.textContent = artistEntry.name[currentLanguage];
     bio.textContent = artistEntry.biography[currentLanguage];

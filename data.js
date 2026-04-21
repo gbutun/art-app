@@ -24,7 +24,7 @@ const translations = {
     aboutEyebrow: "Commission a Painting",
     aboutTitle: "You like what you see?",
     aboutText:
-      "Have a reproduction with the finest touch.\nHave a photograph turned into a real painting by our artists.\nHave your precious moments and family pictures immortalized.\n\nPlease reach us under gbutun@ankacoresystems.com.",
+      "Have a reproduction with the finest touch.\nHave a photograph turned into a real painting by our artists.\nHave your precious moments and family pictures immortalized.\n\nPlease reach us under info@ankacoresystems.com.",
     closeButton: "Close",
     detailEyebrow: "Painting Details",
     factsYear: "Year",
@@ -63,7 +63,7 @@ const translations = {
     aboutEyebrow: "Tablo Siparişi",
     aboutTitle: "Gördüklerinizi beğendiniz mi?",
     aboutText:
-      "En zarif dokunuşla bir reprodüksiyon yaptırın.\nFotoğraflarınızı sanatçılarımız tarafından gerçek bir tabloya dönüştürün.\nDeğerli anılarınızı ve aile fotoğraflarınızı ölümsüzleştirin.\n\nBizimle gbutun@ankacoresystems.com üzerinden iletişime geçin.",
+      "En zarif dokunuşla bir reprodüksiyon yaptırın.\nFotoğraflarınızı sanatçılarımız tarafından gerçek bir tabloya dönüştürün.\nDeğerli anılarınızı ve aile fotoğraflarınızı ölümsüzleştirin.\n\nBizimle info@ankacoresystems.com üzerinden iletişime geçin.",
     closeButton: "Kapat",
     detailEyebrow: "Eser Detayları",
     factsYear: "Yıl",

@@ -6,6 +6,7 @@ ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 K8S_DIR="$ROOT_DIR/k8s"
 SITE_DIR="$K8S_DIR/site"
 KUBECTL_BIN="${KUBECTL_BIN:-microk8s kubectl}"
+NODE_BIN="${NODE_BIN:-node}"
 
 FILES=(
   "index.html"
@@ -24,8 +25,9 @@ usage() {
   cat <<'EOF'
 Usage: ./sync-k8s-site.sh [--sync-only] [--no-restart]
 
-Copies the root site files and artifacts into k8s/site, applies the k8s manifests,
-and restarts the art-app deployment.
+Regenerates gallery-data.js from artifacts/, copies the root site files and
+artifacts into k8s/site, applies the k8s manifests, and restarts the art-app
+deployment.
 
 Options:
   --sync-only   Copy files into k8s/site but do not apply manifests
@@ -33,6 +35,7 @@ Options:
   --help        Show this help text
 
 Environment:
+  NODE_BIN     Override the node command. Default: "node"
   KUBECTL_BIN   Override the kubectl command. Default: "microk8s kubectl"
 EOF
 }
@@ -62,6 +65,9 @@ while (($# > 0)); do
 done
 
 mkdir -p "$SITE_DIR"
+
+echo "Generating gallery-data.js from artifacts/"
+"$NODE_BIN" "$ROOT_DIR/scripts/generate-gallery-data.mjs"
 
 for file in "${FILES[@]}"; do
   if [[ ! -f "$ROOT_DIR/$file" ]]; then

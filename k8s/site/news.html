@@ -38,9 +38,6 @@
               <p class="eyebrow" data-i18n="newsEyebrow">Studio Journal</p>
               <h2 data-i18n="newsTitle">News & events</h2>
             </div>
-            <p class="section-text" data-i18n="newsText">
-              Keep visitors up to date with current exhibitions, studio milestones, and upcoming gatherings around the collection.
-            </p>
           </div>
 
           <div class="news-grid" id="newsGrid" aria-live="polite"></div>
@@ -50,6 +47,9 @@
 
     <template id="newsCardTemplate">
       <article class="news-card">
+        <div class="news-card-media" hidden>
+          <img class="news-card-image" alt="" loading="lazy" />
+        </div>
         <div class="news-card-meta">
           <p class="news-card-type"></p>
           <p class="news-card-date"></p>

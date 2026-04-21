@@ -9,10 +9,18 @@ function renderNewsEvents() {
 
   newsItems.forEach((item, index) => {
     const card = newsTemplate.content.firstElementChild.cloneNode(true);
+    const media = card.querySelector(".news-card-media");
+    const image = card.querySelector(".news-card-image");
     const type = card.querySelector(".news-card-type");
     const date = card.querySelector(".news-card-date");
     const title = card.querySelector(".news-card-title");
     const body = card.querySelector(".news-card-body");
+
+    if (item.image) {
+      media.hidden = false;
+      image.src = item.image;
+      image.alt = item.alt?.[currentLanguage] || item.title[currentLanguage];
+    }
 
     type.textContent = item.type[currentLanguage];
     date.textContent = item.date[currentLanguage];

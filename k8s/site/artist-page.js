@@ -45,9 +45,15 @@ function renderArtistProfile() {
 
   document.title = `${artist.name[currentLanguage]} | ${ui.artistPageTitleSuffix}`;
 
+  const portraitMarkup = artist.portrait
+    ? `<img class="artist-profile-portrait-image" src="${artist.portrait}" alt="${artist.name[currentLanguage]}" loading="lazy" />`
+    : "";
+
   artistProfile.innerHTML = `
     <div class="artist-profile-card">
-      <div class="artist-profile-portrait" aria-hidden="true"></div>
+      <div class="artist-profile-portrait"${artist.portrait ? "" : ' aria-hidden="true"'}>
+        ${portraitMarkup}
+      </div>
       <div class="artist-profile-copy">
         <p class="eyebrow">${ui.artistPageEyebrow}</p>
         <h2>${artist.name[currentLanguage]}</h2>

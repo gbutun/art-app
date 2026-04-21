@@ -352,6 +352,8 @@ body::before {
 }
 
 .news-card {
+  display: grid;
+  gap: 18px;
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 26px;
@@ -360,6 +362,21 @@ body::before {
     var(--surface);
   box-shadow: var(--shadow);
   animation: riseIn 500ms ease both;
+}
+
+.news-card-media {
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(112, 84, 49, 0.14);
+  background: rgba(255, 250, 242, 0.74);
+  aspect-ratio: 4 / 3;
+}
+
+.news-card-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .news-card-meta {
@@ -500,6 +517,7 @@ body::before {
 }
 
 .artist-portrait {
+  overflow: hidden;
   aspect-ratio: 4 / 5;
   border-radius: 18px;
   border: 1px solid rgba(104, 78, 51, 0.1);
@@ -508,6 +526,13 @@ body::before {
     radial-gradient(circle at 50% 42%, rgba(183, 141, 102, 0.9), transparent 23%),
     linear-gradient(180deg, rgba(71, 54, 40, 0.2), rgba(71, 54, 40, 0.04)),
     linear-gradient(160deg, #dac6a8 0%, #a98361 52%, #6a5240 100%);
+}
+
+.artist-portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .artist-copy h3 {
@@ -534,6 +559,7 @@ body::before {
 .artist-bio {
   margin: 0 0 16px;
   line-height: 1.75;
+  white-space: pre-line;
 }
 
 .artist-facts {
@@ -575,6 +601,9 @@ body::before {
 }
 
 .artist-profile-portrait {
+  overflow: hidden;
+  display: grid;
+  place-items: center;
   min-height: 360px;
   border-radius: 22px;
   border: 1px solid rgba(104, 78, 51, 0.1);
@@ -583,6 +612,13 @@ body::before {
     radial-gradient(circle at 50% 42%, rgba(183, 141, 102, 0.9), transparent 23%),
     linear-gradient(180deg, rgba(71, 54, 40, 0.2), rgba(71, 54, 40, 0.04)),
     linear-gradient(160deg, #dac6a8 0%, #a98361 52%, #6a5240 100%);
+}
+
+.artist-profile-portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .artist-profile-copy h2,
@@ -619,6 +655,7 @@ body::before {
 .artist-profile-block p {
   margin: 0;
   line-height: 1.8;
+  white-space: pre-line;
 }
 
 .artist-empty[hidden] {
