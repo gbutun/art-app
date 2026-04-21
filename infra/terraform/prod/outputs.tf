@@ -13,6 +13,16 @@ output "static_web_app_default_host_name" {
   value       = azurerm_static_web_app.art_app.default_host_name
 }
 
+output "custom_domain_name" {
+  description = "Requested custom domain name for the Static Web App."
+  value       = var.custom_domain_name != "" ? var.custom_domain_name : null
+}
+
+output "custom_domain_binding_enabled" {
+  description = "Whether Terraform is currently allowed to create the Static Web App custom domain binding."
+  value       = var.enable_custom_domain_binding
+}
+
 output "static_web_app_api_key" {
   description = "Deployment token for CI/CD publishing."
   value       = azurerm_static_web_app.art_app.api_key

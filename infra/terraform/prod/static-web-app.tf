@@ -32,3 +32,17 @@ resource "azurerm_static_web_app" "art_app" {
   sku_size            = var.static_web_app_sku_size
   tags                = local.merged_tags
 }
+
+resource "azapi_resource" "art_app_custom_domain" {
+  count = var.custom_domain_name != "" && var.enable_custom_domain_binding ? 1 : 0
+
+  type      = "Microsoft.Web/staticSites/customDomains@2025-03-01"
+  name      = var.custom_domain_name
+  parent_id = azurerm_static_web_app.art_app.id
+
+  body = {
+    properties = {
+      validationMethod = var.custom_domain_validation_method
+    }
+  }
+}

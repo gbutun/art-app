@@ -77,6 +77,24 @@ variable "repository_url" {
   default     = ""
 }
 
+variable "custom_domain_name" {
+  type        = string
+  description = "Optional custom domain to bind to the Static Web App, for example mmartga.com."
+  default     = ""
+}
+
+variable "enable_custom_domain_binding" {
+  type        = bool
+  description = "When true, Terraform creates the Static Web App custom domain binding after DNS validation records are ready."
+  default     = false
+}
+
+variable "custom_domain_validation_method" {
+  type        = string
+  description = "Validation method used by Azure when binding the Static Web App custom domain."
+  default     = "cname-delegation"
+}
+
 variable "tags" {
   type        = map(string)
   description = "Additional tags to merge into all resources."
