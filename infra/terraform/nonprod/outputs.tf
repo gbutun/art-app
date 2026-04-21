@@ -28,3 +28,18 @@ output "static_web_app_api_key" {
   value       = azurerm_static_web_app.art_app.api_key
   sensitive   = true
 }
+
+output "asset_storage_account_name" {
+  description = "Storage account that serves nonprod art-app assets."
+  value       = azurerm_storage_account.art_app_assets.name
+}
+
+output "asset_container_name" {
+  description = "Blob container that stores nonprod art-app assets."
+  value       = azurerm_storage_container.art_app_assets.name
+}
+
+output "asset_base_url" {
+  description = "Base URL to use as NONPROD_ASSET_BASE_URL for nonprod website assets."
+  value       = local.asset_base_url
+}

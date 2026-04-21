@@ -1,0 +1,6 @@
+Initializing the backend...
+
+Error: Failed to get existing workspaces: listing blobs: executing request: unexpected status 403 (403 This request is not authorized to perform this operation.) with AuthorizationFailure: This request is not authorized to perform this operation.
+RequestId:747f9b8f-901e-0020-28a1-d191e5000000
+Time:2026-04-21T15:15:32.2816035Z
+

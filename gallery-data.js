@@ -83,6 +83,14 @@ const translations = {
   }
 };
 
+const siteConfig = {
+  "assetBaseUrl": "",
+  "heroImages": {
+    "featured": "./artifacts/artists/Mehmet%20Ozdemir/resim26.png",
+    "accent": "./artifacts/artists/Mahmut%20Sahin/resim17.png"
+  }
+};
+
 const artists = [
   {
     "id": "mahmut-sahin",

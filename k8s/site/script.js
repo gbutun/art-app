@@ -4,8 +4,20 @@ const detailModal = document.getElementById("detailModal");
 const detailContent = document.getElementById("detailContent");
 const featuredButton = document.querySelector("[data-open-first]");
 const languageButtons = document.querySelectorAll("[data-language]");
+const featuredHeroArt = document.querySelector(".hero-art-featured");
+const accentHeroArt = document.querySelector(".hero-art-accent");
 let currentLanguage = "en";
 let activePaintingId = null;
+
+function applyHeroImages() {
+  if (featuredHeroArt && siteConfig?.heroImages?.featured) {
+    featuredHeroArt.style.backgroundImage = `linear-gradient(180deg, rgba(38, 34, 30, 0.18), rgba(38, 34, 30, 0.08)), url('${siteConfig.heroImages.featured}')`;
+  }
+
+  if (accentHeroArt && siteConfig?.heroImages?.accent) {
+    accentHeroArt.style.backgroundImage = `linear-gradient(180deg, rgba(44, 38, 31, 0.2), rgba(44, 38, 31, 0.06)), url('${siteConfig.heroImages.accent}')`;
+  }
+}
 
 function renderGallery() {
   galleryGrid.innerHTML = "";
@@ -142,4 +154,5 @@ languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyTranslations(button.dataset.language));
 });
 
+applyHeroImages();
 applyTranslations(currentLanguage);

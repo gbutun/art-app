@@ -17,9 +17,12 @@ The GitHub Actions workflow for this deployment is:
 This repository uses an Azure Static Web Apps deployment token.
 
 - Terraform creates the Static Web App resource.
+- Terraform also creates a blob storage account and public container for website assets.
 - Terraform exposes the deployment token as `static_web_app_api_key`.
+- Terraform exposes the blob asset base URL as `asset_base_url`.
 - GitHub stores that token as a repository secret.
-- The workflow uploads the site files from the repository root to the Azure Static Web App.
+- GitHub stores the asset base URL as a repository variable.
+- The workflow uploads only the site shell to Azure Static Web Apps and points image/content assets at blob storage.
 
 The workflow does not log in to Azure with tenant, subscription, or service principal credentials. The deployment token is already tied to one specific Static Web App resource.
 
@@ -32,8 +35,9 @@ The workflow does not log in to Azure with tenant, subscription, or service prin
 
 ## Files Used by the Deployment
 
-- Website content is deployed from the repository root.
-- The workflow currently publishes top-level site files such as `index.html`, `styles.css`, `script.js`, `artists.html`, `artist.html`, and the related JavaScript data files.
+- Website content is generated from the repository root into a `dist/` folder during CI.
+- The workflow publishes the site shell files such as `index.html`, `styles.css`, `script.js`, `artists.html`, `artist.html`, and the generated `gallery-data.js`.
+- The `artifacts/` tree is expected to live in Azure Blob Storage for nonprod once `NONPROD_ASSET_BASE_URL` is set.
 - The `k8s` folder is not part of this GitHub Actions deployment flow.
 
 ## Step 1: Confirm GitHub CLI Access
@@ -89,7 +93,54 @@ In the repository:
 - Name: `AZURE_STATIC_WEB_APPS_API_TOKEN_NONPROD`
 - Secret: paste the token value from Terraform
 
-## Step 4: Review the Workflow
+## Step 4: Retrieve the Nonprod Asset Base URL from Terraform
+
+Run:
+
+```bash
+terraform -chdir=infra/terraform/nonprod output -raw asset_base_url
+```
+
+This returns the blob base URL that the website should use for paintings, artist portraits, and event images.
+
+## Step 5: Upload `artifacts/` to Blob Storage
+
+Run from the repo root:
+
+```bash
+./scripts/upload-nonprod-artifacts.sh
+```
+
+The script defaults to Terraform outputs from `infra/terraform/nonprod`. If needed, you can override the storage account explicitly:
+
+```bash
+./scripts/upload-nonprod-artifacts.sh --account-name <storage-account-name>
+```
+
+## Step 6: Add the Asset Base URL to GitHub Actions Variables
+
+### Option A: GitHub CLI
+
+Run:
+
+```bash
+terraform -chdir=infra/terraform/nonprod output -raw asset_base_url | gh variable set NONPROD_ASSET_BASE_URL
+```
+
+### Option B: GitHub Web UI
+
+In the repository:
+
+1. Open `Settings`.
+2. Open `Secrets and variables`.
+3. Select `Actions`.
+4. Open the `Variables` tab.
+5. Create this variable:
+
+- Name: `NONPROD_ASSET_BASE_URL`
+- Value: paste the Terraform `asset_base_url`
+
+## Step 7: Review the Workflow
 
 The workflow file is:
 
@@ -99,12 +150,13 @@ Key settings:
 
 - Branch trigger: `master`
 - Manual trigger: `workflow_dispatch`
-- App location: `/`
+- App artifact location: `dist`
 - Build step: skipped with `skip_app_build: true`
+- Assets come from blob storage when `NONPROD_ASSET_BASE_URL` is set
 
-This is correct for the current repository because the site is plain static HTML, CSS, and JavaScript stored in the repo root.
+This is correct for the current repository because the site is plain static HTML, CSS, and JavaScript generated into a deployable static bundle.
 
-## Step 5: Commit and Push the Workflow
+## Step 8: Commit and Push the Workflow
 
 If the workflow file has not been committed yet, run:
 
@@ -116,14 +168,14 @@ git push origin master
 
 Once pushed, GitHub Actions should automatically run for matching changes on `master`.
 
-## Step 6: Run the Workflow
+## Step 9: Run the Workflow
 
 The workflow can start in either of these ways:
 
 - Automatically when matching files are pushed to `master`
 - Manually from the GitHub `Actions` tab by running `Deploy Nonprod Static Web App`
 
-## Step 7: Verify the Deployment
+## Step 10: Verify the Deployment
 
 Check the GitHub Actions run:
 
@@ -143,6 +195,22 @@ If the workflow fails with an authentication or deployment token error:
 
 - Confirm the repository secret `AZURE_STATIC_WEB_APPS_API_TOKEN_NONPROD` exists
 - Recreate it from Terraform output
+
+### Asset URLs still point to local files
+
+If the deployed site still references `./artifacts/...` paths:
+
+- Confirm the repository variable `NONPROD_ASSET_BASE_URL` exists
+- Confirm the workflow run includes the `Prepare Static Site` step with that variable set
+- Confirm `gallery-data.js` in the build was generated after the variable was added
+
+### Blob upload missing content
+
+If images do not load but the site shell deploys:
+
+- Re-run `./scripts/upload-nonprod-artifacts.sh`
+- Confirm Terraform was applied and `asset_storage_account_name` / `asset_container_name` outputs exist
+- Check the blob URLs under the `asset_base_url`
 
 ### Wrong branch
 
@@ -170,6 +238,8 @@ If `terraform output -raw static_web_app_api_key` fails:
 ```bash
 gh auth status
 terraform -chdir=infra/terraform/nonprod output -raw static_web_app_api_key | gh secret set AZURE_STATIC_WEB_APPS_API_TOKEN_NONPROD
+terraform -chdir=infra/terraform/nonprod output -raw asset_base_url | gh variable set NONPROD_ASSET_BASE_URL
+./scripts/upload-nonprod-artifacts.sh
 git add .github/workflows/deploy-nonprod-static-web-app.yml
 git commit -m "Add nonprod static web app deployment workflow"
 git push origin master

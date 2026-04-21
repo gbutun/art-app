@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      ASSET_BASE_URL: ${{ vars.NONPROD_ASSET_BASE_URL }}
 
     steps:
       - name: Checkout
@@ -38,7 +40,9 @@ jobs:
           node scripts/generate-gallery-data.mjs
           mkdir -p dist
           cp index.html artist.html artists.html news.html styles.css script.js artist-page.js artists-page.js news-page.js gallery-data.js dist/
-          cp -R artifacts dist/artifacts
+          if [ -z "${ASSET_BASE_URL}" ]; then
+            cp -R artifacts dist/artifacts
+          fi
           du -sb dist
 
       - name: Deploy to Azure Static Web Apps

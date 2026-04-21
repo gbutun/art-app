@@ -6,6 +6,8 @@ const artifactsDir = path.join(rootDir, "artifacts");
 const outputPath = path.join(rootDir, "gallery-data.js");
 const artistsFolderName = "artists";
 const eventsFolderName = "events";
+const rawAssetBaseUrl = process.env.ASSET_BASE_URL?.trim() ?? "";
+const assetBaseUrl = rawAssetBaseUrl.replace(/\/+$/, "");
 
 const translations = {
   en: {
@@ -163,15 +165,25 @@ const turkishMonthNames = [
 ];
 
 function artifactPath(artistFolder, fileName) {
-  return `./artifacts/${artistsFolderName}/${encodeURIComponent(artistFolder)}/${encodeURIComponent(fileName)}`;
+  return joinAssetPath(artistsFolderName, artistFolder, fileName);
 }
 
 function artistAssetPath(fileName) {
-  return `./artifacts/${artistsFolderName}/${encodeURIComponent(fileName)}`;
+  return joinAssetPath(artistsFolderName, fileName);
 }
 
 function eventPath(fileName) {
-  return `./artifacts/${eventsFolderName}/${encodeURIComponent(fileName)}`;
+  return joinAssetPath(eventsFolderName, fileName);
+}
+
+function joinAssetPath(...segments) {
+  const encodedPath = segments.map((segment) => encodeURIComponent(segment)).join("/");
+
+  if (assetBaseUrl) {
+    return `${assetBaseUrl}/${encodedPath}`;
+  }
+
+  return `./artifacts/${encodedPath}`;
 }
 
 function slugify(value) {
@@ -389,8 +401,17 @@ async function loadNewsItems() {
 async function main() {
   const { artists, paintings } = await loadArtistsAndPaintings();
   const newsItems = await loadNewsItems();
+  const siteConfig = {
+    assetBaseUrl,
+    heroImages: {
+      featured: artifactPath("Mehmet Ozdemir", "resim26.png"),
+      accent: artifactPath("Mahmut Sahin", "resim17.png"),
+    },
+  };
 
   const source = `const translations = ${JSON.stringify(translations, null, 2)};
+
+const siteConfig = ${JSON.stringify(siteConfig, null, 2)};
 
 const artists = ${JSON.stringify(artists, null, 2)};
 
@@ -412,7 +433,9 @@ function getArtistUrl(artistId, language) {
 `;
 
   await fs.writeFile(outputPath, source, "utf8");
-  process.stdout.write(`Generated ${path.relative(rootDir, outputPath)} from artifacts/${artistsFolderName} and artifacts/${eventsFolderName}\\n`);
+  process.stdout.write(
+    `Generated ${path.relative(rootDir, outputPath)} from artifacts/${artistsFolderName} and artifacts/${eventsFolderName}${assetBaseUrl ? ` using ASSET_BASE_URL=${assetBaseUrl}` : ""}\\n`
+  );
 }
 
 main().catch((error) => {

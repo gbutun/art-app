@@ -36,6 +36,8 @@ Options:
 
 Environment:
   NODE_BIN     Override the node command. Default: "node"
+  ASSET_BASE_URL  Optional base URL for serving artifacts from storage/CDN.
+                  Default: local ./artifacts paths
   KUBECTL_BIN   Override the kubectl command. Default: "microk8s kubectl"
 EOF
 }

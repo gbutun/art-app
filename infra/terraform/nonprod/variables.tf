@@ -100,3 +100,21 @@ variable "tags" {
   description = "Additional tags to merge into all resources."
   default     = {}
 }
+
+variable "asset_storage_account_replication_type" {
+  type        = string
+  description = "Replication type for the nonprod art-app asset storage account."
+  default     = "LRS"
+}
+
+variable "asset_container_name_override" {
+  type        = string
+  description = "Optional explicit blob container name for art-app assets."
+  default     = ""
+}
+
+variable "asset_cors_allowed_origins" {
+  type        = list(string)
+  description = "Allowed origins for browser access to art-app assets."
+  default     = ["*"]
+}
