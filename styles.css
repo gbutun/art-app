@@ -259,6 +259,7 @@ body::before {
 }
 
 .gallery-section,
+.news-section,
 .artists-section,
 .about-section {
   padding-top: 40px;
@@ -292,6 +293,62 @@ body::before {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.news-card {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 242, 0.98), rgba(246, 236, 222, 0.9)),
+    var(--surface);
+  box-shadow: var(--shadow);
+  animation: riseIn 500ms ease both;
+}
+
+.news-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.news-card-type,
+.news-card-date,
+.news-card-body {
+  color: var(--muted);
+}
+
+.news-card-type,
+.news-card-date {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.news-card-type {
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.news-card-title {
+  margin: 0 0 12px;
+  font-size: 1.8rem;
+  line-height: 1.05;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+.news-card-body {
+  margin: 0;
+  line-height: 1.8;
 }
 
 .painting-card {

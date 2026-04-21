@@ -5,6 +5,7 @@ const translations = {
     headerEyebrow: "Private Collection",
     siteTitle: "Modern Heritage Gallery",
     navGallery: "Gallery",
+    navNews: "News & Events",
     navArtists: "Artists",
     navAbout: "About",
     navBackHome: "Back to Gallery",
@@ -18,6 +19,10 @@ const translations = {
     galleryTitle: "Featured paintings",
     galleryText:
       "The cards below keep every work well scaled and easy to read, whether the original piece is portrait or landscape.",
+    newsEyebrow: "Studio Journal",
+    newsTitle: "News & events",
+    newsText:
+      "Keep visitors up to date with current exhibitions, studio milestones, and upcoming gatherings around the collection.",
     artistsEyebrow: "Artist Profiles",
     artistsTitle: "Meet the artists",
     artistsText:
@@ -25,7 +30,7 @@ const translations = {
     aboutEyebrow: "Commission a Painting",
     aboutTitle: "You like what you see?",
     aboutText:
-      "Have a reproduction with the finest touch.\nHave a photograph turned into a real painting by our artists.\nHave your precious moments and family pictures immortalized.\n\nPlease reach us under abc.xyz.com.",
+      "Have a reproduction with the finest touch.\nHave a photograph turned into a real painting by our artists.\nHave your precious moments and family pictures immortalized.\n\nPlease reach us under gbutun@ankacoresystems.com.",
     closeButton: "Close",
     detailEyebrow: "Painting Details",
     factsYear: "Year",
@@ -45,6 +50,7 @@ const translations = {
     headerEyebrow: "Özel Koleksiyon",
     siteTitle: "Modern Miras Galerisi",
     navGallery: "Galeri",
+    navNews: "Haberler ve Etkinlikler",
     navArtists: "Sanatçılar",
     navAbout: "Hakkında",
     navBackHome: "Galeriye Dön",
@@ -58,6 +64,10 @@ const translations = {
     galleryTitle: "Öne çıkan tablolar",
     galleryText:
       "Aşağıdaki kartlar, eserin dikey ya da yatay olmasına bakmadan her tabloyu dengeli ve kolay okunur biçimde gösterir.",
+    newsEyebrow: "Stüdyo Günlüğü",
+    newsTitle: "Haberler ve etkinlikler",
+    newsText:
+      "Ziyaretçileri güncel sergiler, atölye gelişmeleri ve koleksiyon çevresindeki yaklaşan buluşmalar hakkında bilgilendirin.",
     artistsEyebrow: "Sanatçı Profilleri",
     artistsTitle: "Sanatçılarla tanışın",
     artistsText:
@@ -65,7 +75,7 @@ const translations = {
     aboutEyebrow: "Tablo Siparişi",
     aboutTitle: "Gördüklerinizi beğendiniz mi?",
     aboutText:
-      "En zarif dokunuşla bir reprodüksiyon yaptırın.\nFotoğraflarınızı sanatçılarımız tarafından gerçek bir tabloya dönüştürün.\nDeğerli anılarınızı ve aile fotoğraflarınızı ölümsüzleştirin.\n\nBizimle abc.xyz.com üzerinden iletişime geçin.",
+      "En zarif dokunuşla bir reprodüksiyon yaptırın.\nFotoğraflarınızı sanatçılarımız tarafından gerçek bir tabloya dönüştürün.\nDeğerli anılarınızı ve aile fotoğraflarınızı ölümsüzleştirin.\n\nBizimle gbutun@ankacoresystems.com üzerinden iletişime geçin.",
     closeButton: "Kapat",
     detailEyebrow: "Eser Detayları",
     factsYear: "Yıl",
@@ -240,6 +250,63 @@ const paintings = artifactCollections.flatMap((collection) => {
     image: artifactPath(artist.folder, fileName),
   }));
 });
+
+const newsItems = [
+  {
+    type: {
+      en: "Upcoming Event",
+      tr: "Yaklaşan Etkinlik",
+    },
+    date: {
+      en: "May 18, 2026",
+      tr: "18 Mayıs 2026",
+    },
+    title: {
+      en: "Private salon evening at the studio",
+      tr: "Atölyede özel salon akşamı",
+    },
+    body: {
+      en: "Collectors and invited guests will gather for a small evening viewing focused on newly added works by Mehmet Özdemir and Mahmut Şahin.",
+      tr: "Koleksiyonerler ve davetli konuklar, Mehmet Özdemir ve Mahmut Şahin'in yeni eklenen eserlerine odaklanan küçük bir akşam gösteriminde bir araya gelecek.",
+    },
+  },
+  {
+    type: {
+      en: "Collection Update",
+      tr: "Koleksiyon Güncellemesi",
+    },
+    date: {
+      en: "April 21, 2026",
+      tr: "21 Nisan 2026",
+    },
+    title: {
+      en: "Artist archives added to the online gallery",
+      tr: "Sanatçı arşivleri çevrimiçi galeriye eklendi",
+    },
+    body: {
+      en: "The website now features image archives from the studio artifacts folders, making each artist page feel closer to the real working collection.",
+      tr: "Web sitesi artık stüdyo artifact klasörlerindeki görsel arşivleri içeriyor; böylece her sanatçı sayfası gerçek çalışma koleksiyonuna daha yakın hissediliyor.",
+    },
+  },
+  {
+    type: {
+      en: "Studio News",
+      tr: "Stüdyo Haberi",
+    },
+    date: {
+      en: "June 2026",
+      tr: "Haziran 2026",
+    },
+    title: {
+      en: "Summer commissions calendar opening soon",
+      tr: "Yaz dönemi sipariş takvimi yakında açılıyor",
+    },
+    body: {
+      en: "Portrait and reproduction commission requests for the summer season will open soon, with limited studio capacity reserved for family and heritage subjects.",
+      tr: "Yaz dönemi için portre ve reprodüksiyon sipariş talepleri yakında açılacak; sınırlı atölye kapasitesi aile ve miras konularına ayrılacak.",
+    },
+  },
+];
 
 function getArtistById(id) {
   return artists.find((artist) => artist.id === id);

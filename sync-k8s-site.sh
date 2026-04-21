@@ -11,10 +11,12 @@ FILES=(
   "index.html"
   "artist.html"
   "artists.html"
+  "news.html"
   "gallery-data.js"
   "script.js"
   "artist-page.js"
   "artists-page.js"
+  "news-page.js"
   "styles.css"
 )
 
