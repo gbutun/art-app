@@ -10,8 +10,7 @@ const translations = {
     navBackHome: "Back to Gallery",
     heroEyebrow: "Traditional Realism, Curated with a Modern Eye",
     heroTitle: "A digital exhibition space for paintings that deserve room to breathe.",
-    heroText:
-      "Present your friends' artwork with the calm elegance of a gallery wall. Each piece is scaled carefully on the main page, with the painting title and artist name visible at a glance.",
+    heroText: "",
     heroPrimaryAction: "Explore the Collection",
     heroSecondaryAction: "Open Featured Work",
     galleryEyebrow: "Collection Preview",
@@ -50,8 +49,7 @@ const translations = {
     navBackHome: "Galeriye Dön",
     heroEyebrow: "Geleneksel Gerçekçilik, Modern Bir Yaklaşımla Sunuldu",
     heroTitle: "Nefes alacak alanı olan tablolar için dijital bir sergi mekanı.",
-    heroText:
-      "Arkadaşlarınızın eserlerini sakin ve zarif bir galeri duvarı hissiyle sunun. Her eser ana sayfada dikkatle ölçeklendirilir; tablo adı ve sanatçı ismi ilk bakışta görünür.",
+    heroText: "",
     heroPrimaryAction: "Koleksiyonu Keşfet",
     heroSecondaryAction: "Öne Çıkan Eseri Aç",
     galleryEyebrow: "Koleksiyon Ön İzleme",

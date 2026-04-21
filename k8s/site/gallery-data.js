@@ -11,14 +11,13 @@ const translations = {
     navBackHome: "Back to Gallery",
     heroEyebrow: "Traditional Realism, Curated with a Modern Eye",
     heroTitle: "A digital exhibition space for paintings that deserve room to breathe.",
-    heroText:
-      "Present your friends' artwork with the calm elegance of a gallery wall. Each piece is scaled carefully on the main page, with the painting title and artist name visible at a glance.",
+    heroText: "",
     heroPrimaryAction: "Explore the Collection",
     heroSecondaryAction: "Open Featured Work",
     galleryEyebrow: "Collection Preview",
     galleryTitle: "Featured paintings",
-    galleryText:
-      "The cards below keep every work well scaled and easy to read, whether the original piece is portrait or landscape.",
+    galleryText: "",
+    galleryMore: "More",
     newsEyebrow: "Studio Journal",
     newsTitle: "News & events",
     newsText:
@@ -56,14 +55,13 @@ const translations = {
     navBackHome: "Galeriye Dön",
     heroEyebrow: "Geleneksel Gerçekçilik, Modern Bir Yaklaşımla Sunuldu",
     heroTitle: "Nefes alacak alanı olan tablolar için dijital bir sergi mekanı.",
-    heroText:
-      "Arkadaşlarınızın eserlerini sakin ve zarif bir galeri duvarı hissiyle sunun. Her eser ana sayfada dikkatle ölçeklendirilir; tablo adı ve sanatçı ismi ilk bakışta görünür.",
+    heroText: "",
     heroPrimaryAction: "Koleksiyonu Keşfet",
     heroSecondaryAction: "Öne Çıkan Eseri Aç",
     galleryEyebrow: "Koleksiyon Ön İzleme",
     galleryTitle: "Öne çıkan tablolar",
-    galleryText:
-      "Aşağıdaki kartlar, eserin dikey ya da yatay olmasına bakmadan her tabloyu dengeli ve kolay okunur biçimde gösterir.",
+    galleryText: "",
+    galleryMore: "Daha Fazla",
     newsEyebrow: "Stüdyo Günlüğü",
     newsTitle: "Haberler ve etkinlikler",
     newsText:
@@ -97,6 +95,17 @@ function artifactPath(artistFolder, fileName) {
 
 function padNumber(value) {
   return String(value).padStart(2, "0");
+}
+
+function titleFromFileName(fileName, language) {
+  const stem = fileName.replace(/\.[^.]+$/, "");
+  const match = stem.match(/^resim(\d+)$/i);
+
+  if (match) {
+    return language === "tr" ? `Resim ${match[1]}` : `Painting ${match[1]}`;
+  }
+
+  return stem;
 }
 
 const artists = [
@@ -161,38 +170,40 @@ const artifactCollections = [
       tr: "Özgün eser",
     },
     dimensions: "Details on request",
-    titleStem: {
-      en: "Coastal Study",
-      tr: "Kıyı Etüdü",
-    },
     description: {
       en: "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       tr: "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır.",
     },
     files: [
-      "WhatsApp Image 2026-04-08 at 14.24.55 (1).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.24.55.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.26.19 (1).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.26.19 (2).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.26.19 (3).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.26.19.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.26.20 (1).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.26.20.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.41 (1).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.41 (2).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.41 (3).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.41 (4).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.41 (5).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.41 (6).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.41.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.42 (1).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.42 (2).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.42 (3).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.42 (4).jpeg",
-      "WhatsApp Image 2026-04-08 at 14.28.42.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.29.48.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.30.13.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.02.jpeg",
+      "resim1.png",
+      "resim2.png",
+      "resim3.png",
+      "resim4.png",
+      "resim5.png",
+      "resim6.png",
+      "resim7.png",
+      "resim8.png",
+      "resim9.PNG",
+      "resim10.png",
+      "resim11.png",
+      "resim12.png",
+      "resim13.png",
+      "resim14.png",
+      "resim15.png",
+      "resim16.png",
+      "resim17.png",
+      "resim18.png",
+      "resim19.png",
+      "resim20.png",
+      "resim21.png",
+      "resim22.png",
+      "resim23.png",
+      "resim24.png",
+      "resim25.png",
+      "resim26.png",
+      "resim27.png",
+      "resim28.PNG",
+      "resim29.png",
     ],
   },
   {
@@ -203,31 +214,27 @@ const artifactCollections = [
       tr: "Özgün eser",
     },
     dimensions: "Details on request",
-    titleStem: {
-      en: "Interior Portrait Study",
-      tr: "İç Mekan Portre Etüdü",
-    },
     description: {
       en: "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       tr: "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır.",
     },
     files: [
-      "WhatsApp Image 2026-04-08 at 14.34.54.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.34.55.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.37.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.39.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.46.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.49.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.50.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.53.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.37.59.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.38.04.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.38.07.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.39.05.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.39.15.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.39.26.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.39.33.jpeg",
-      "WhatsApp Image 2026-04-08 at 14.39.34.jpeg",
+      "resim1.png",
+      "resim2.png",
+      "resim3.png",
+      "resim4.png",
+      "resim5.png",
+      "resim6.png",
+      "resim7.png",
+      "resim8.png",
+      "resim9.png",
+      "resim11.png",
+      "resim12.png",
+      "resim13.png",
+      "resim14.png",
+      "resim15.png",
+      "resim16.PNG",
+      "resim17.png",
     ],
   },
 ];
@@ -239,8 +246,8 @@ const paintings = artifactCollections.flatMap((collection) => {
     id: `${collection.artistId}-${padNumber(index + 1)}`,
     artistId: collection.artistId,
     title: {
-      en: `${collection.titleStem.en} ${padNumber(index + 1)}`,
-      tr: `${collection.titleStem.tr} ${padNumber(index + 1)}`,
+      en: titleFromFileName(fileName, "en"),
+      tr: titleFromFileName(fileName, "tr"),
     },
     artist: artist.name,
     year: collection.year,
