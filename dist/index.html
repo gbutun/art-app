@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Heritage Gallery</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div>
+          <p class="eyebrow" data-i18n="headerEyebrow">Private Collection</p>
+          <h1 data-i18n="siteTitle">Modern Heritage Gallery</h1>
+        </div>
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary">
+            <a href="#gallery" data-i18n="navGallery">Gallery</a>
+            <a href="./news.html" data-i18n="navNews">News & Events</a>
+            <a href="./artists.html" data-i18n="navArtists">Artists</a>
+            <a href="#about" data-i18n="navAbout">About</a>
+          </nav>
+          <div class="language-switcher" role="group" aria-label="Language selector">
+            <button class="language-button is-active" type="button" data-language="en">
+              English
+            </button>
+            <button class="language-button" type="button" data-language="tr">
+              Türkçe
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="heroEyebrow">Traditional Realism, Curated with a Modern Eye</p>
+            <h2 data-i18n="heroTitle">A digital exhibition space for paintings that deserve room to breathe.</h2>
+            <p class="hero-text" data-i18n="heroText"></p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#gallery" data-i18n="heroPrimaryAction">Explore the Collection</a>
+              <button class="button button-secondary" type="button" data-open-first>
+                <span data-i18n="heroSecondaryAction">Open Featured Work</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-panel" aria-hidden="true">
+            <div class="hero-frame hero-frame-large">
+              <div
+                class="hero-art hero-art-featured"
+                style="background-image: linear-gradient(180deg, rgba(38, 34, 30, 0.18), rgba(38, 34, 30, 0.08)), url('./artifacts/artists/Mehmet%20Ozdemir/resim26.png');"
+              ></div>
+            </div>
+            <div class="hero-frame hero-frame-small">
+              <div
+                class="hero-art hero-art-accent"
+                style="background-image: linear-gradient(180deg, rgba(44, 38, 31, 0.2), rgba(44, 38, 31, 0.06)), url('./artifacts/artists/Mahmut%20Sahin/resim17.png');"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="galleryEyebrow">Collection Preview</p>
+              <h2 data-i18n="galleryTitle">Featured paintings</h2>
+            </div>
+          </div>
+
+          <div class="artist-preview-list" id="galleryGrid" aria-live="polite"></div>
+        </section>
+        <section class="about-section" id="about">
+          <div class="about-card">
+            <p class="eyebrow" data-i18n="aboutEyebrow">Design Notes</p>
+            <h2 data-i18n="aboutTitle">Why this style works</h2>
+            <p data-i18n="aboutText">
+              The palette is warm and restrained, the typography feels editorial, and
+              the layout stays respectful to traditional and realistic art. A few modern
+              touches like soft layering, clean spacing, and subtle motion keep the site
+              from feeling old-fashioned.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="detail-modal" id="detailModal">
+      <form method="dialog" class="modal-close-row">
+        <button class="icon-button" aria-label="Close painting details" data-i18n="closeButton">Close</button>
+      </form>
+      <div class="detail-layout" id="detailContent"></div>
+    </dialog>
+
+    <template id="paintingCardTemplate">
+      <article class="painting-card">
+        <button class="painting-card-link" type="button">
+          <div class="painting-media">
+            <img alt="" loading="lazy" />
+          </div>
+          <div class="painting-meta">
+            <h3></h3>
+            <a class="artist-name artist-link" href="#"></a>
+          </div>
+        </button>
+      </article>
+    </template>
+
+    <script src="./gallery-data.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
