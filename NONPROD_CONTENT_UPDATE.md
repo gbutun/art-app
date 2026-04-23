@@ -30,12 +30,13 @@ follow the steps below.
 
 ## Procedure
 
-### 1. Regenerate site data
+### 1. Regenerate site data with the Azure asset base URL
 
 This updates `gallery-data.js` so the website knows about the new file.
 
 ```bash
-node scripts/generate-gallery-data.mjs
+ASSET_BASE_URL="$(terraform -chdir=infra/terraform/nonprod output -raw asset_base_url)" \
+  node scripts/generate-gallery-data.mjs
 ```
 
 ### 2. Upload artifacts to Azure Blob Storage
@@ -46,7 +47,8 @@ This uploads the actual image files to the nonprod storage account.
 ./scripts/upload-nonprod-artifacts.sh
 ```
 
-The script resolves its defaults from `infra/terraform/nonprod`, so normal usage does not require extra arguments.
+The script resolves its defaults from `infra/terraform/nonprod`, uploads the blobs, and also regenerates
+`gallery-data.js` with the same Azure asset base URL so the committed site data matches production.
 
 ### 3. Commit and push the repo changes
 
@@ -83,7 +85,8 @@ For normal nonprod content publishing, use:
 
 ```bash
 cd /home/ronin/projects/art-app
-node scripts/generate-gallery-data.mjs
+ASSET_BASE_URL="$(terraform -chdir=infra/terraform/nonprod output -raw asset_base_url)" \
+  node scripts/generate-gallery-data.mjs
 ./scripts/upload-nonprod-artifacts.sh
 git add artifacts gallery-data.js
 git commit -m "Add new painting"

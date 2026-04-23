@@ -151,6 +151,13 @@ if [[ -n "$ASSET_BASE_URL" ]]; then
   echo "  Asset base URL: $ASSET_BASE_URL"
 fi
 echo
+
+if [[ -n "$ASSET_BASE_URL" ]]; then
+  echo "Regenerating gallery-data.js with Azure asset URLs"
+  ASSET_BASE_URL="$ASSET_BASE_URL" node "$ROOT_DIR/scripts/generate-gallery-data.mjs"
+  echo
+fi
+
 echo "Uploading $SOURCE_DIR to https://${ACCOUNT_NAME}.blob.core.windows.net/${CONTAINER_NAME}"
 az storage blob upload-batch \
   --auth-mode login \
