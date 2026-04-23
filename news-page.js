@@ -4,6 +4,48 @@ const languageButtons = document.querySelectorAll("[data-language]");
 const params = new URLSearchParams(window.location.search);
 let currentLanguage = params.get("lang") || "en";
 
+function toLocalAssetUrl(assetUrl) {
+  if (!assetUrl || !assetUrl.startsWith("http")) {
+    return assetUrl;
+  }
+
+  try {
+    const parsedUrl = new URL(assetUrl);
+    const marker = "/artifacts/";
+    const markerIndex = parsedUrl.pathname.indexOf(marker);
+
+    if (markerIndex === -1) {
+      return assetUrl;
+    }
+
+    return `.${parsedUrl.pathname.slice(markerIndex)}${parsedUrl.search}`;
+  } catch {
+    return assetUrl;
+  }
+}
+
+function assignImageWithFallback(image, primaryUrl) {
+  const fallbackUrl = toLocalAssetUrl(primaryUrl);
+  image.src = primaryUrl;
+
+  if (!fallbackUrl || fallbackUrl === primaryUrl) {
+    return;
+  }
+
+  image.addEventListener(
+    "error",
+    () => {
+      if (image.dataset.fallbackApplied === "true") {
+        return;
+      }
+
+      image.dataset.fallbackApplied = "true";
+      image.src = fallbackUrl;
+    },
+    { once: true }
+  );
+}
+
 function renderNewsEvents() {
   newsGrid.innerHTML = "";
 
@@ -18,7 +60,7 @@ function renderNewsEvents() {
 
     if (item.image) {
       media.hidden = false;
-      image.src = item.image;
+      assignImageWithFallback(image, item.image);
       image.alt = item.alt?.[currentLanguage] || item.title[currentLanguage];
     }
 

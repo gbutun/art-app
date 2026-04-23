@@ -9,6 +9,48 @@ const params = new URLSearchParams(window.location.search);
 const artistId = params.get("id") || artists[0].id;
 let currentLanguage = params.get("lang") || "en";
 
+function toLocalAssetUrl(assetUrl) {
+  if (!assetUrl || !assetUrl.startsWith("http")) {
+    return assetUrl;
+  }
+
+  try {
+    const parsedUrl = new URL(assetUrl);
+    const marker = "/artifacts/";
+    const markerIndex = parsedUrl.pathname.indexOf(marker);
+
+    if (markerIndex === -1) {
+      return assetUrl;
+    }
+
+    return `.${parsedUrl.pathname.slice(markerIndex)}${parsedUrl.search}`;
+  } catch {
+    return assetUrl;
+  }
+}
+
+function assignImageWithFallback(image, primaryUrl) {
+  const fallbackUrl = toLocalAssetUrl(primaryUrl);
+  image.src = primaryUrl;
+
+  if (!fallbackUrl || fallbackUrl === primaryUrl) {
+    return;
+  }
+
+  image.addEventListener(
+    "error",
+    () => {
+      if (image.dataset.fallbackApplied === "true") {
+        return;
+      }
+
+      image.dataset.fallbackApplied = "true";
+      image.src = fallbackUrl;
+    },
+    { once: true }
+  );
+}
+
 function updateChrome() {
   const ui = translations[currentLanguage];
 
@@ -73,6 +115,11 @@ function renderArtistProfile() {
       </div>
     </div>
   `;
+
+  const portraitImage = artistProfile.querySelector(".artist-profile-portrait-image");
+  if (portraitImage && artist.portrait) {
+    assignImageWithFallback(portraitImage, artist.portrait);
+  }
 }
 
 function renderArtistWorks() {
@@ -86,7 +133,7 @@ function renderArtistWorks() {
     const title = card.querySelector("h3");
     const artistName = card.querySelector(".artist-name");
 
-    image.src = painting.image;
+    assignImageWithFallback(image, painting.image);
     image.alt = `${painting.title[currentLanguage]} by ${painting.artist[currentLanguage]}`;
     title.textContent = painting.title[currentLanguage];
     artistName.textContent = painting.artist[currentLanguage];
