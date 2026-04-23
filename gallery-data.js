@@ -86,8 +86,8 @@ const translations = {
 const siteConfig = {
   "assetBaseUrl": "https://nweuartsa01a01.blob.core.windows.net/artifacts",
   "heroImages": {
-    "featured": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim26.png",
-    "accent": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim17.png"
+    "featured": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim26.png?v=1776767507741",
+    "accent": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim17.png?v=1776767526984"
   }
 };
 
@@ -128,7 +128,7 @@ const artists = [
       "en": "Realist Painter",
       "tr": "Gerçekçi Ressam"
     },
-    "portrait": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/mehmetozdemir.jpg",
+    "portrait": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/mehmetozdemir.jpg?v=1776774739962",
     "biography": {
       "en": "He was born in 1954 in Reyhanli, Hatay. He began his art education in the Painting Department of the Ataturk Teacher Training Institute. He later studied in the Architecture Department of the Istanbul State Academy of Applied Fine Arts. After graduation, he worked for a period in interior architecture while focusing his artistic production on painting.\n\nThe artist has taken part in various exhibitions and workshops in Antakya. After the Hatay earthquake in 2023, he continued his work in Ankara, opened a solo exhibition at ARTSAN Art Gallery, and participated in group exhibitions.",
       "tr": "1954 yılında Hatay'ın Reyhanlı ilçesinde doğdu. Sanat eğitimine Atatürk Öğretmen Enstitüsü Resim Bölümü'nde başladı. Daha sonra İstanbul Tatbiki Güzel Sanatlar Yüksekokulu Mimarlık Bölümü'nde eğitim aldı. Mezuniyetinin ardından bir süre iç mimarlık alanında çalıştı ve üretimlerini resim sanatı üzerine yoğunlaştırdı.\n\nSanatçı, Antakya'da çeşitli sergi ve çalıştaylara katılmıştır. 2023 Hatay depremi sonrasında çalışmalarını Ankara'da sürdürmüş, ARTSAN Sanat Galerisi'nde kişisel sergi açmış ve karma sergilerde yer almıştır."
@@ -166,7 +166,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim1.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim1.png?v=1776767527083"
   },
   {
     "id": "mahmut-sahin-02",
@@ -189,7 +189,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim2.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim2.png?v=1776767527194"
   },
   {
     "id": "mahmut-sahin-03",
@@ -212,7 +212,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim3.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim3.png?v=1776767527296"
   },
   {
     "id": "mahmut-sahin-04",
@@ -235,7 +235,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim4.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim4.png?v=1776767527383"
   },
   {
     "id": "mahmut-sahin-05",
@@ -258,7 +258,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim5.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim5.png?v=1776767527485"
   },
   {
     "id": "mahmut-sahin-06",
@@ -281,7 +281,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim6.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim6.png?v=1776767527586"
   },
   {
     "id": "mahmut-sahin-07",
@@ -304,7 +304,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim7.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim7.png?v=1776767527695"
   },
   {
     "id": "mahmut-sahin-08",
@@ -327,7 +327,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim8.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim8.png?v=1776767527787"
   },
   {
     "id": "mahmut-sahin-09",
@@ -350,7 +350,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim9.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim9.png?v=1776767527889"
   },
   {
     "id": "mahmut-sahin-10",
@@ -373,7 +373,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim11.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim11.png?v=1776767527979"
   },
   {
     "id": "mahmut-sahin-11",
@@ -396,7 +396,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim12.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim12.png?v=1776767528106"
   },
   {
     "id": "mahmut-sahin-12",
@@ -419,7 +419,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim13.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim13.png?v=1776767528221"
   },
   {
     "id": "mahmut-sahin-13",
@@ -442,7 +442,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim14.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim14.png?v=1776767528317"
   },
   {
     "id": "mahmut-sahin-14",
@@ -465,7 +465,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim15.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim15.png?v=1776767528400"
   },
   {
     "id": "mahmut-sahin-15",
@@ -488,7 +488,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim16.PNG"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim16.PNG?v=1776767528466"
   },
   {
     "id": "mahmut-sahin-16",
@@ -511,7 +511,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim17.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mahmut%20Sahin/resim17.png?v=1776767526984"
   },
   {
     "id": "mehmet-ozdemir-01",
@@ -534,7 +534,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim1.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim1.png?v=1776767505797"
   },
   {
     "id": "mehmet-ozdemir-02",
@@ -557,7 +557,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim2.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim2.png?v=1776767505884"
   },
   {
     "id": "mehmet-ozdemir-03",
@@ -580,7 +580,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim3.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim3.png?v=1776767505977"
   },
   {
     "id": "mehmet-ozdemir-04",
@@ -603,7 +603,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim4.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim4.png?v=1776767506023"
   },
   {
     "id": "mehmet-ozdemir-05",
@@ -626,7 +626,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim5.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim5.png?v=1776767506118"
   },
   {
     "id": "mehmet-ozdemir-06",
@@ -649,7 +649,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim6.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim6.png?v=1776767506161"
   },
   {
     "id": "mehmet-ozdemir-07",
@@ -672,7 +672,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim7.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim7.png?v=1776767506218"
   },
   {
     "id": "mehmet-ozdemir-08",
@@ -695,7 +695,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim8.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim8.png?v=1776767506263"
   },
   {
     "id": "mehmet-ozdemir-09",
@@ -718,7 +718,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim9.PNG"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim9.PNG?v=1776767506366"
   },
   {
     "id": "mehmet-ozdemir-10",
@@ -741,7 +741,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim10.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim10.png?v=1776767506405"
   },
   {
     "id": "mehmet-ozdemir-11",
@@ -764,7 +764,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim11.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim11.png?v=1776767506515"
   },
   {
     "id": "mehmet-ozdemir-12",
@@ -787,7 +787,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim12.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim12.png?v=1776767506608"
   },
   {
     "id": "mehmet-ozdemir-13",
@@ -810,7 +810,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim13.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim13.png?v=1776767506650"
   },
   {
     "id": "mehmet-ozdemir-14",
@@ -833,7 +833,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim14.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim14.png?v=1776767506755"
   },
   {
     "id": "mehmet-ozdemir-15",
@@ -856,7 +856,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim15.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim15.png?v=1776767506846"
   },
   {
     "id": "mehmet-ozdemir-16",
@@ -879,7 +879,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim16.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim16.png?v=1776767506933"
   },
   {
     "id": "mehmet-ozdemir-17",
@@ -902,7 +902,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim17.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim17.png?v=1776767507069"
   },
   {
     "id": "mehmet-ozdemir-18",
@@ -925,7 +925,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim18.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim18.png?v=1776767507106"
   },
   {
     "id": "mehmet-ozdemir-19",
@@ -948,7 +948,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim19.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim19.png?v=1776767507230"
   },
   {
     "id": "mehmet-ozdemir-20",
@@ -971,7 +971,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim20.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim20.png?v=1776767507279"
   },
   {
     "id": "mehmet-ozdemir-21",
@@ -994,7 +994,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim21.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim21.png?v=1776767507359"
   },
   {
     "id": "mehmet-ozdemir-22",
@@ -1017,7 +1017,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim22.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim22.png?v=1776767507472"
   },
   {
     "id": "mehmet-ozdemir-23",
@@ -1040,7 +1040,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim23.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim23.png?v=1776767507564"
   },
   {
     "id": "mehmet-ozdemir-24",
@@ -1063,7 +1063,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim24.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim24.png?v=1776767507643"
   },
   {
     "id": "mehmet-ozdemir-25",
@@ -1086,7 +1086,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim25.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim25.png?v=1776767507687"
   },
   {
     "id": "mehmet-ozdemir-26",
@@ -1109,7 +1109,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim26.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim26.png?v=1776767507741"
   },
   {
     "id": "mehmet-ozdemir-27",
@@ -1132,7 +1132,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim27.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim27.png?v=1776767507789"
   },
   {
     "id": "mehmet-ozdemir-28",
@@ -1155,7 +1155,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim28.PNG"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim28.PNG?v=1776767505581"
   },
   {
     "id": "mehmet-ozdemir-29",
@@ -1178,7 +1178,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim29.png"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim29.png?v=1776767505697"
   },
   {
     "id": "mehmet-ozdemir-30",
@@ -1201,7 +1201,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim30.PNG"
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/artists/Mehmet%20Ozdemir/resim30.PNG?v=1776771434016"
   }
 ];
 
@@ -1223,7 +1223,7 @@ const newsItems = [
       "en": "Published from the studio events archive.",
       "tr": "Stüdyonun etkinlik arşivinden yayımlandı."
     },
-    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/events/news1.PNG",
+    "image": "https://nweuartsa01a01.blob.core.windows.net/artifacts/events/news1.PNG?v=1776771685057",
     "alt": {
       "en": "News 1 announcement image",
       "tr": "News 1 duyuru görseli"

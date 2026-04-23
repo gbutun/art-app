@@ -186,6 +186,28 @@ function joinAssetPath(...segments) {
   return `./artifacts/${encodedPath}`;
 }
 
+function withAssetVersion(assetUrl, versionTag) {
+  if (!versionTag) {
+    return assetUrl;
+  }
+
+  const separator = assetUrl.includes("?") ? "&" : "?";
+  return `${assetUrl}${separator}v=${encodeURIComponent(versionTag)}`;
+}
+
+function assetVersionTag(stats) {
+  if (!stats?.mtimeMs) {
+    return "";
+  }
+
+  return String(Math.trunc(stats.mtimeMs));
+}
+
+async function versionedAssetPath(filePath, ...segments) {
+  const stats = await fs.stat(filePath);
+  return withAssetVersion(joinAssetPath(...segments), assetVersionTag(stats));
+}
+
 function slugify(value) {
   return value
     .toLowerCase()
@@ -283,6 +305,8 @@ async function loadArtistsAndPaintings() {
 
   const artists = [];
   const paintings = [];
+  const paintingVersions = new Map();
+  const portraitVersions = new Map();
 
   for (const folderName of folders) {
     const metadata = artistMetadata[folderName] ?? {
@@ -301,6 +325,20 @@ async function loadArtistsAndPaintings() {
         tr: `${folderName} arşivinden.`,
       },
     };
+
+    if (metadata.portrait) {
+      const portraitFileName = path.basename(metadata.portrait);
+      const portraitPath = path.join(artistsDir, portraitFileName);
+
+      try {
+        const portraitStats = await fs.stat(portraitPath);
+        portraitVersions.set(metadata.id, assetVersionTag(portraitStats));
+      } catch (error) {
+        if (error.code !== "ENOENT") {
+          throw error;
+        }
+      }
+    }
 
     artists.push({
       id: metadata.id,
@@ -323,9 +361,13 @@ async function loadArtistsAndPaintings() {
         .filter((name) => imageExtensions.has(path.extname(name).toLowerCase()))
     );
 
-    files.forEach((fileName, index) => {
+    for (const [index, fileName] of files.entries()) {
+      const fileStats = await fs.stat(path.join(artistsDir, folderName, fileName));
+      const paintingId = `${metadata.id}-${String(index + 1).padStart(2, "0")}`;
+      paintingVersions.set(paintingId, assetVersionTag(fileStats));
+
       paintings.push({
-        id: `${metadata.id}-${String(index + 1).padStart(2, "0")}`,
+        id: paintingId,
         artistId: metadata.id,
         title: {
           en: titleFromFileName(fileName, "en"),
@@ -338,10 +380,20 @@ async function loadArtistsAndPaintings() {
         description: metadata.description,
         image: artifactPath(folderName, fileName),
       });
-    });
+    }
   }
 
-  return { artists, paintings };
+  const versionedArtists = artists.map((artist) => ({
+    ...artist,
+    portrait: artist.portrait ? withAssetVersion(artist.portrait, portraitVersions.get(artist.id)) : null,
+  }));
+
+  const versionedPaintings = paintings.map((painting) => ({
+    ...painting,
+    image: withAssetVersion(painting.image, paintingVersions.get(painting.id)),
+  }));
+
+  return { artists: versionedArtists, paintings: versionedPaintings };
 }
 
 async function loadNewsItems() {
@@ -387,7 +439,7 @@ async function loadNewsItems() {
         en: "Published from the studio events archive.",
         tr: "Stüdyonun etkinlik arşivinden yayımlandı.",
       }),
-      image: eventPath(fileName),
+      image: withAssetVersion(eventPath(fileName), assetVersionTag(stats)),
       alt: toLocalizedText(metadata?.alt, {
         en: `${titleFromStem(stem, "en")} announcement image`,
         tr: `${titleFromStem(stem, "tr")} duyuru görseli`,
@@ -404,8 +456,18 @@ async function main() {
   const siteConfig = {
     assetBaseUrl,
     heroImages: {
-      featured: artifactPath("Mehmet Ozdemir", "resim26.png"),
-      accent: artifactPath("Mahmut Sahin", "resim17.png"),
+      featured: await versionedAssetPath(
+        path.join(artifactsDir, artistsFolderName, "Mehmet Ozdemir", "resim26.png"),
+        artistsFolderName,
+        "Mehmet Ozdemir",
+        "resim26.png"
+      ),
+      accent: await versionedAssetPath(
+        path.join(artifactsDir, artistsFolderName, "Mahmut Sahin", "resim17.png"),
+        artistsFolderName,
+        "Mahmut Sahin",
+        "resim17.png"
+      ),
     },
   };
 
