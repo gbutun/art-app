@@ -22,3 +22,6 @@ backend.hcl
 
 # Legacy Azure reference bundle stays local-only
 art-app-azure/
+
+# Claude personal/local settings
+.claude/settings.local.json
