@@ -3,8 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News & Events</title>
+    <title>ArtRadar — Turkey Art Events</title>
     <link rel="stylesheet" href="./styles.css" />
+    <style>
+      .artRadar-frame {
+        width: 100%;
+        height: 80vh;
+        border: none;
+        border-radius: 16px;
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <div class="page-shell">
@@ -18,31 +27,15 @@
             <a href="./index.html#gallery" data-i18n="navGallery">Gallery</a>
             <a href="./news.html" data-i18n="navNews">News & Events</a>
             <a href="./artists.html" data-i18n="navArtists">Artists</a>
-            <a href="./index.html#about" data-i18n="navAbout">About</a>
           </nav>
           <div class="language-switcher" role="group" aria-label="Language selector">
-            <button class="language-button is-active" type="button" data-language="en">
-              English
-            </button>
-            <button class="language-button" type="button" data-language="tr">
-              Türkçe
-            </button>
+            <button class="language-button is-active" type="button" data-language="en">English</button>
+            <button class="language-button" type="button" data-language="tr">Türkçe</button>
           </div>
         </div>
       </header>
 
       <main>
-        <section class="news-section">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow" data-i18n="newsEyebrow">Studio Journal</p>
-              <h2 data-i18n="newsTitle">News & events</h2>
-            </div>
-          </div>
-
-          <div class="news-grid" id="newsGrid" aria-live="polite"></div>
-        </section>
-
         <section class="artRadar-section">
           <div class="section-heading">
             <div>
@@ -59,21 +52,29 @@
       </main>
     </div>
 
-    <template id="newsCardTemplate">
-      <article class="news-card">
-        <div class="news-card-media" hidden>
-          <img class="news-card-image" alt="" loading="lazy" />
-        </div>
-        <div class="news-card-meta">
-          <p class="news-card-type"></p>
-          <p class="news-card-date"></p>
-        </div>
-        <h3 class="news-card-title"></h3>
-        <p class="news-card-body"></p>
-      </article>
-    </template>
-
     <script src="./gallery-data.js"></script>
-    <script src="./news-page.js"></script>
+    <script>
+      const languageButtons = document.querySelectorAll("[data-language]");
+      let currentLanguage = new URLSearchParams(location.search).get("lang") || "en";
+
+      function applyLanguage(lang) {
+        currentLanguage = lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.dataset.i18n;
+          if (translations[lang]?.[key]) el.textContent = translations[lang][key];
+        });
+        languageButtons.forEach((btn) => {
+          btn.classList.toggle("is-active", btn.dataset.language === lang);
+          btn.setAttribute("aria-pressed", String(btn.dataset.language === lang));
+        });
+      }
+
+      languageButtons.forEach((btn) =>
+        btn.addEventListener("click", () => applyLanguage(btn.dataset.language))
+      );
+
+      applyLanguage(currentLanguage);
+    </script>
   </body>
 </html>

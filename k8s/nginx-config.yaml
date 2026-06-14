@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: art-app
+data:
+  default.conf: |
+    server {
+      listen 80;
+      root /usr/share/nginx/html;
+
+      location = /ArtRadar {
+        rewrite ^ /SanatRadar.html last;
+      }
+
+      location / {
+        try_files $uri $uri/ =404;
+      }
+    }

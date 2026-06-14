@@ -13,6 +13,8 @@ FILES=(
   "artist.html"
   "artists.html"
   "news.html"
+  "artRadar.html"
+  "SanatRadar.html"
   "gallery-data.js"
   "script.js"
   "artist-page.js"

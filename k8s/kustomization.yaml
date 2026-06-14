@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: art-app
 resources:
   - namespace.yaml
+  - nginx-config.yaml
   - deployment.yaml
   - service.yaml
   - certificate.yaml

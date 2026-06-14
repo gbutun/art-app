@@ -1,0 +1,8 @@
+{
+  "routes": [
+    {
+      "route": "/ArtRadar",
+      "rewrite": "/SanatRadar.html"
+    }
+  ]
+}

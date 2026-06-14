@@ -5,7 +5,8 @@ const rootDir = path.resolve(path.dirname(new URL(import.meta.url).pathname), ".
 const artifactsDir = path.join(rootDir, "artifacts");
 const outputPath = path.join(rootDir, "gallery-data.js");
 const artistsFolderName = "artists";
-const eventsFolderName = "events";
+const newsEventsFolderName = "News Events";
+const nonArtistFolders = new Set(["misc", newsEventsFolderName]);
 const rawAssetBaseUrl = process.env.ASSET_BASE_URL?.trim() ?? "";
 const assetBaseUrl = rawAssetBaseUrl.replace(/\/+$/, "");
 
@@ -173,7 +174,7 @@ function artistAssetPath(fileName) {
 }
 
 function eventPath(fileName) {
-  return joinAssetPath(eventsFolderName, fileName);
+  return joinAssetPath(artistsFolderName, newsEventsFolderName, fileName);
 }
 
 function joinAssetPath(...segments) {
@@ -309,6 +310,7 @@ async function loadArtistsAndPaintings() {
   const portraitVersions = new Map();
 
   for (const folderName of folders) {
+    if (nonArtistFolders.has(folderName)) continue;
     const metadata = artistMetadata[folderName] ?? {
       id: slugify(folderName),
       folder: folderName,
@@ -397,7 +399,7 @@ async function loadArtistsAndPaintings() {
 }
 
 async function loadNewsItems() {
-  const eventsDir = path.join(artifactsDir, eventsFolderName);
+  const eventsDir = path.join(artifactsDir, artistsFolderName, newsEventsFolderName);
 
   try {
     await fs.access(eventsDir);
@@ -489,7 +491,7 @@ function getArtistUrl(artistId, language) {
 
   await fs.writeFile(outputPath, source, "utf8");
   process.stdout.write(
-    `Generated ${path.relative(rootDir, outputPath)} from artifacts/${artistsFolderName} and artifacts/${eventsFolderName}${assetBaseUrl ? ` using ASSET_BASE_URL=${assetBaseUrl}` : ""}\\n`
+    `Generated ${path.relative(rootDir, outputPath)} from artifacts/${artistsFolderName}${assetBaseUrl ? ` using ASSET_BASE_URL=${assetBaseUrl}` : ""}\\n`
   );
 }
 

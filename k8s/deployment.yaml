@@ -21,8 +21,14 @@ spec:
             - name: site-content
               mountPath: /usr/share/nginx/html
               readOnly: true
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+              readOnly: true
       volumes:
         - name: site-content
           hostPath:
             path: /home/ronin/projects/art-app/k8s/site
             type: DirectoryOrCreate
+        - name: nginx-config
+          configMap:
+            name: nginx-config
