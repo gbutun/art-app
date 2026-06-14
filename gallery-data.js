@@ -1602,29 +1602,6 @@ const paintings = [
     "id": "mehmet-ozdemir-43",
     "artistId": "mehmet-ozdemir",
     "title": {
-      "en": "WhatsApp Image 2026-04-21 at 14.41.19",
-      "tr": "WhatsApp Image 2026-04-21 at 14.41.19"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/WhatsApp%20Image%202026-04-21%20at%2014.41.19.jpeg?v=1781438502734"
-  },
-  {
-    "id": "mehmet-ozdemir-44",
-    "artistId": "mehmet-ozdemir",
-    "title": {
       "en": "Where Fire Becomes Art",
       "tr": "Where Fire Becomes Art"
     },
@@ -1645,7 +1622,7 @@ const paintings = [
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20Fire%20Becomes%20Art.jpeg?v=1781438502754"
   },
   {
-    "id": "mehmet-ozdemir-45",
+    "id": "mehmet-ozdemir-44",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Where the Palm Still Remembers - The Last Summer of Old Hatay",
@@ -1668,7 +1645,7 @@ const paintings = [
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20the%20Palm%20Still%20Remembers%20-%20The%20Last%20Summer%20of%20Old%20Hatay.png?v=1781438502779"
   },
   {
-    "id": "mehmet-ozdemir-46",
+    "id": "mehmet-ozdemir-45",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Where the River Bends to Let Them Pass",
