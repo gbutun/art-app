@@ -33,7 +33,7 @@ Environment:
 Notes:
   - Requires az CLI and a logged-in session
   - Uses Azure AD auth mode, so no storage keys are needed
-  - Upload is additive/overwrite-only; it does not delete removed blobs
+  - Skips blobs that already exist; deletes blobs not present locally (sync)
   - Normal usage is just: ./scripts/upload-nonprod-artifacts.sh
   - If account/container are omitted, the script reads Terraform outputs from infra/terraform/nonprod
 EOF
@@ -158,12 +158,37 @@ if [[ -n "$ASSET_BASE_URL" ]]; then
   echo
 fi
 
-echo "Uploading $SOURCE_DIR to https://${ACCOUNT_NAME}.blob.core.windows.net/${CONTAINER_NAME}"
+echo "Uploading new files from $SOURCE_DIR to https://${ACCOUNT_NAME}.blob.core.windows.net/${CONTAINER_NAME}"
 az storage blob upload-batch \
   --auth-mode login \
   --account-name "$ACCOUNT_NAME" \
   --destination "$CONTAINER_NAME" \
   --source "$SOURCE_DIR" \
-  --overwrite true
+  --overwrite false
 
+echo
+echo "Checking for blobs to delete (not present locally)..."
+remote_blobs="$(az storage blob list \
+  --auth-mode login \
+  --account-name "$ACCOUNT_NAME" \
+  --container-name "$CONTAINER_NAME" \
+  --query "[].name" \
+  -o tsv)"
+
+deleted=0
+while IFS= read -r blob; do
+  [[ -z "$blob" ]] && continue
+  if [[ ! -f "$SOURCE_DIR/$blob" ]]; then
+    echo "  Deleting: $blob"
+    az storage blob delete \
+      --auth-mode login \
+      --account-name "$ACCOUNT_NAME" \
+      --container-name "$CONTAINER_NAME" \
+      --name "$blob"
+    ((deleted++)) || true
+  fi
+done <<< "$remote_blobs"
+
+echo "  $deleted blob(s) deleted."
+echo
 echo "Done."
