@@ -86,8 +86,8 @@ const translations = {
 const siteConfig = {
   "assetBaseUrl": "",
   "heroImages": {
-    "featured": "./artifacts/artists/Mehmet%20Ozdemir/resim26.png?v=1776767507741",
-    "accent": "./artifacts/artists/Mahmut%20Sahin/resim17.png?v=1776767526984"
+    "featured": "./artifacts/artists/Mehmet%20Ozdemir/Where%20the%20River%20Bends%20to%20Let%20Them%20Pass.png?v=1781432584000",
+    "accent": "./artifacts/artists/Mahmut%20Sahin/Walked%20Through%20the%20Rain.png?v=1781432557872"
   }
 };
 
@@ -166,7 +166,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/A%20Morning%20That%20Asked%20Nothing.png?v=1781431252675"
+    "image": "./artifacts/artists/Mahmut%20Sahin/A%20Morning%20That%20Asked%20Nothing.png?v=1781432555325"
   },
   {
     "id": "mahmut-sahin-02",
@@ -189,7 +189,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/A%20Storm%20She%20Chose%20to%20Wear.png?v=1781431252917"
+    "image": "./artifacts/artists/Mahmut%20Sahin/A%20Storm%20She%20Chose%20to%20Wear.png?v=1781432555498"
   },
   {
     "id": "mahmut-sahin-03",
@@ -212,7 +212,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/A%20Turkish%20Summer%20in%20Two%20Acts.png?v=1781431253202"
+    "image": "./artifacts/artists/Mahmut%20Sahin/A%20Turkish%20Summer%20in%20Two%20Acts.png?v=1781432555692"
   },
   {
     "id": "mahmut-sahin-04",
@@ -235,7 +235,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Born%20from%20Light.png?v=1781431253462"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Born%20from%20Light.png?v=1781432555866"
   },
   {
     "id": "mahmut-sahin-05",
@@ -258,7 +258,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Fractured%2C%20Not%20Broken.jpeg?v=1781431253498"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Fractured%2C%20Not%20Broken.jpeg?v=1781432555894"
   },
   {
     "id": "mahmut-sahin-06",
@@ -281,7 +281,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/No%20Reason%20to%20Leave.png?v=1781431253787"
+    "image": "./artifacts/artists/Mahmut%20Sahin/No%20Reason%20to%20Leave.png?v=1781432556066"
   },
   {
     "id": "mahmut-sahin-07",
@@ -304,378 +304,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Porcelain%20Dreams.PNG?v=1781431254183"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Porcelain%20Dreams.PNG?v=1781432556289"
   },
   {
     "id": "mahmut-sahin-08",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 1",
-      "tr": "Resim 1"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim1.png?v=1776767527083"
-  },
-  {
-    "id": "mahmut-sahin-09",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 2",
-      "tr": "Resim 2"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim2.png?v=1776767527194"
-  },
-  {
-    "id": "mahmut-sahin-10",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 3",
-      "tr": "Resim 3"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim3.png?v=1776767527296"
-  },
-  {
-    "id": "mahmut-sahin-11",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 4",
-      "tr": "Resim 4"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim4.png?v=1776767527383"
-  },
-  {
-    "id": "mahmut-sahin-12",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 5",
-      "tr": "Resim 5"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim5.png?v=1776767527485"
-  },
-  {
-    "id": "mahmut-sahin-13",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 6",
-      "tr": "Resim 6"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim6.png?v=1776767527586"
-  },
-  {
-    "id": "mahmut-sahin-14",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 7",
-      "tr": "Resim 7"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim7.png?v=1776767527695"
-  },
-  {
-    "id": "mahmut-sahin-15",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 8",
-      "tr": "Resim 8"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim8.png?v=1776767527787"
-  },
-  {
-    "id": "mahmut-sahin-16",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 9",
-      "tr": "Resim 9"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim9.png?v=1776767527889"
-  },
-  {
-    "id": "mahmut-sahin-17",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 11",
-      "tr": "Resim 11"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim11.png?v=1776767527979"
-  },
-  {
-    "id": "mahmut-sahin-18",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 12",
-      "tr": "Resim 12"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim12.png?v=1776767528106"
-  },
-  {
-    "id": "mahmut-sahin-19",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 13",
-      "tr": "Resim 13"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim13.png?v=1776767528221"
-  },
-  {
-    "id": "mahmut-sahin-20",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 14",
-      "tr": "Resim 14"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim14.png?v=1776767528317"
-  },
-  {
-    "id": "mahmut-sahin-21",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 15",
-      "tr": "Resim 15"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim15.png?v=1776767528400"
-  },
-  {
-    "id": "mahmut-sahin-22",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 16",
-      "tr": "Resim 16"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim16.PNG?v=1776767528466"
-  },
-  {
-    "id": "mahmut-sahin-23",
-    "artistId": "mahmut-sahin",
-    "title": {
-      "en": "Painting 17",
-      "tr": "Resim 17"
-    },
-    "artist": {
-      "en": "Mahmut Şahin",
-      "tr": "Mahmut Şahin"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
-      "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
-    },
-    "image": "./artifacts/artists/Mahmut%20Sahin/resim17.png?v=1776767526984"
-  },
-  {
-    "id": "mahmut-sahin-24",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "Sovereign",
@@ -695,10 +327,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Sovereign.png?v=1781431254463"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Sovereign.png?v=1781432556448"
   },
   {
-    "id": "mahmut-sahin-25",
+    "id": "mahmut-sahin-09",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "Stillness as a Form of Power",
@@ -718,10 +350,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Stillness%20as%20a%20Form%20of%20Power.png?v=1781431254757"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Stillness%20as%20a%20Form%20of%20Power.png?v=1781432556585"
   },
   {
-    "id": "mahmut-sahin-26",
+    "id": "mahmut-sahin-10",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "The Book Can Wait",
@@ -741,10 +373,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Book%20Can%20Wait.png?v=1781431255003"
+    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Book%20Can%20Wait.png?v=1781432556707"
   },
   {
-    "id": "mahmut-sahin-27",
+    "id": "mahmut-sahin-11",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "The City That Burns on Water",
@@ -764,10 +396,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/The%20City%20That%20Burns%20on%20Water.jpeg?v=1781431255046"
+    "image": "./artifacts/artists/Mahmut%20Sahin/The%20City%20That%20Burns%20on%20Water.jpeg?v=1781432556733"
   },
   {
-    "id": "mahmut-sahin-28",
+    "id": "mahmut-sahin-12",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "The Company of Simple Objects",
@@ -787,10 +419,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Company%20of%20Simple%20Objects.png?v=1781431255303"
+    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Company%20of%20Simple%20Objects.png?v=1781432556888"
   },
   {
-    "id": "mahmut-sahin-29",
+    "id": "mahmut-sahin-13",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "The Moment Before She Disappears",
@@ -810,10 +442,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Moment%20Before%20She%20Disappears.jpeg?v=1781431255347"
+    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Moment%20Before%20She%20Disappears.jpeg?v=1781432556933"
   },
   {
-    "id": "mahmut-sahin-30",
+    "id": "mahmut-sahin-14",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "The Ships and the Soul",
@@ -833,10 +465,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Ships%20and%20the%20Soul.jpeg?v=1781431255392"
+    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Ships%20and%20the%20Soul.jpeg?v=1781432556967"
   },
   {
-    "id": "mahmut-sahin-31",
+    "id": "mahmut-sahin-15",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "The Weight of Simple Things",
@@ -856,10 +488,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Weight%20of%20Simple%20Things.png?v=1781431255626"
+    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Weight%20of%20Simple%20Things.png?v=1781432557152"
   },
   {
-    "id": "mahmut-sahin-32",
+    "id": "mahmut-sahin-16",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "The Whole Summer in One Laugh",
@@ -879,10 +511,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Whole%20Summer%20in%20One%20Laugh.png?v=1781431255871"
+    "image": "./artifacts/artists/Mahmut%20Sahin/The%20Whole%20Summer%20in%20One%20Laugh.png?v=1781432557315"
   },
   {
-    "id": "mahmut-sahin-33",
+    "id": "mahmut-sahin-17",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "Toward the Burning Horizon",
@@ -902,10 +534,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Toward%20the%20Burning%20Horizon.png?v=1781431256127"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Toward%20the%20Burning%20Horizon.png?v=1781432557505"
   },
   {
-    "id": "mahmut-sahin-34",
+    "id": "mahmut-sahin-18",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "Two Wild Things That Found Each Other",
@@ -925,10 +557,10 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Two%20Wild%20Things%20That%20Found%20Each%20Other.png?v=1781431256491"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Two%20Wild%20Things%20That%20Found%20Each%20Other.png?v=1781432557683"
   },
   {
-    "id": "mahmut-sahin-35",
+    "id": "mahmut-sahin-19",
     "artistId": "mahmut-sahin",
     "title": {
       "en": "Walked Through the Rain",
@@ -948,7 +580,7 @@ const paintings = [
       "en": "From the Mahmut Şahin archive, this work highlights portrait structure, tonal depth, and the intimate stillness of domestic interiors.",
       "tr": "Mahmut Şahin arşivinden alınan bu eser, portre yapısını, tonal derinliği ve ev içi mekanların samimi sessizliğini öne çıkarır."
     },
-    "image": "./artifacts/artists/Mahmut%20Sahin/Walked%20Through%20the%20Rain.png?v=1781431256976"
+    "image": "./artifacts/artists/Mahmut%20Sahin/Walked%20Through%20the%20Rain.png?v=1781432557872"
   },
   {
     "id": "mehmet-ozdemir-01",
@@ -971,7 +603,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Alpine%20Stream.jpeg?v=1781431257817"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Alpine%20Stream.jpeg?v=1781432558194"
   },
   {
     "id": "mehmet-ozdemir-02",
@@ -994,7 +626,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Anatolian%20Summer.jpeg?v=1781431258660"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Anatolian%20Summer.jpeg?v=1781432558503"
   },
   {
     "id": "mehmet-ozdemir-03",
@@ -1017,7 +649,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Autumn%E2%80%99s%20Gift.jpeg?v=1781431259426"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Autumn%E2%80%99s%20Gift.jpeg?v=1781432558761"
   },
   {
     "id": "mehmet-ozdemir-04",
@@ -1040,7 +672,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20I.%20The%20First%20Passage.jpeg?v=1781431259887"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20I.%20The%20First%20Passage.jpeg?v=1781432559000"
   },
   {
     "id": "mehmet-ozdemir-05",
@@ -1063,7 +695,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20II.%20The%20Call%20of%20Wings.jpeg?v=1781431260465"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20II.%20The%20Call%20of%20Wings.jpeg?v=1781432559189"
   },
   {
     "id": "mehmet-ozdemir-06",
@@ -1086,7 +718,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20III.%20The%20Keeper%20of%20Winter.jpeg?v=1781431261242"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20III.%20The%20Keeper%20of%20Winter.jpeg?v=1781432559452"
   },
   {
     "id": "mehmet-ozdemir-07",
@@ -1109,7 +741,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20IV.%20Across%20the%20Frozen%20Plain.jpeg?v=1781431261672"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20IV.%20Across%20the%20Frozen%20Plain.jpeg?v=1781432559646"
   },
   {
     "id": "mehmet-ozdemir-08",
@@ -1132,7 +764,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20V.%20The%20Shepherd%E2%80%99s%20Return.jpeg?v=1781431262034"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20V.%20The%20Shepherd%E2%80%99s%20Return.jpeg?v=1781432559848"
   },
   {
     "id": "mehmet-ozdemir-09",
@@ -1155,7 +787,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20VI.%20Horse%E2%80%99s%20Winter.jpeg?v=1781431262326"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20VI.%20Horse%E2%80%99s%20Winter.jpeg?v=1781432560103"
   },
   {
     "id": "mehmet-ozdemir-10",
@@ -1178,7 +810,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Crimson%20Rhythm.jpeg?v=1781431265271"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Crimson%20Rhythm.jpeg?v=1781432561845"
   },
   {
     "id": "mehmet-ozdemir-11",
@@ -1201,7 +833,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Dance%20of%20the%20Wind.jpeg?v=1781431265710"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Dance%20of%20the%20Wind.jpeg?v=1781432562128"
   },
   {
     "id": "mehmet-ozdemir-12",
@@ -1224,7 +856,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Echoes%20Beneath%20the%20Stone%20Arch.jpeg?v=1781431268616"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Echoes%20Beneath%20the%20Stone%20Arch.jpeg?v=1781432563988"
   },
   {
     "id": "mehmet-ozdemir-13",
@@ -1247,7 +879,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Grain%20Market%20at%20the%20Foot%20of%20the%20Minaret.png?v=1781431268920"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Grain%20Market%20at%20the%20Foot%20of%20the%20Minaret.png?v=1781432564189"
   },
   {
     "id": "mehmet-ozdemir-14",
@@ -1270,7 +902,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Guardians%20of%20the%20Mountain%20Light.jpeg?v=1781431273655"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Guardians%20of%20the%20Mountain%20Light.jpeg?v=1781432567035"
   },
   {
     "id": "mehmet-ozdemir-15",
@@ -1293,7 +925,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0001.jpg?v=1781431273687"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0001.jpg?v=1781432567061"
   },
   {
     "id": "mehmet-ozdemir-16",
@@ -1316,7 +948,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0002.jpg?v=1781431273722"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0002.jpg?v=1781432567100"
   },
   {
     "id": "mehmet-ozdemir-17",
@@ -1339,7 +971,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0003.jpg?v=1781431273758"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0003.jpg?v=1781432567133"
   },
   {
     "id": "mehmet-ozdemir-18",
@@ -1362,7 +994,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0005.jpg?v=1781431273790"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0005.jpg?v=1781432567163"
   },
   {
     "id": "mehmet-ozdemir-19",
@@ -1385,7 +1017,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0006.jpg?v=1781431273821"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0006.jpg?v=1781432567200"
   },
   {
     "id": "mehmet-ozdemir-20",
@@ -1408,7 +1040,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0007.jpg?v=1781431273848"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0007.jpg?v=1781432567225"
   },
   {
     "id": "mehmet-ozdemir-21",
@@ -1431,7 +1063,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0008.jpg?v=1781431273874"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0008.jpg?v=1781432567250"
   },
   {
     "id": "mehmet-ozdemir-22",
@@ -1454,7 +1086,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0009.jpg?v=1781431273907"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0009.jpg?v=1781432567280"
   },
   {
     "id": "mehmet-ozdemir-23",
@@ -1477,7 +1109,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0010.jpg?v=1781431273936"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0010.jpg?v=1781432567307"
   },
   {
     "id": "mehmet-ozdemir-24",
@@ -1500,7 +1132,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0011.jpg?v=1781431273965"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0011.jpg?v=1781432567335"
   },
   {
     "id": "mehmet-ozdemir-25",
@@ -1523,7 +1155,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0012.jpg?v=1781431273993"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/IMG-20260421-WA0012.jpg?v=1781432567360"
   },
   {
     "id": "mehmet-ozdemir-26",
@@ -1546,7 +1178,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Keeper%20of%20Forgotten%20Cities%20Video.jpeg?v=1781431274287"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Keeper%20of%20Forgotten%20Cities%20Video.jpeg?v=1781432567569"
   },
   {
     "id": "mehmet-ozdemir-27",
@@ -1569,7 +1201,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Keeper%20of%20Forgotten%20Cities.jpeg?v=1781431274740"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Keeper%20of%20Forgotten%20Cities.jpeg?v=1781432567849"
   },
   {
     "id": "mehmet-ozdemir-28",
@@ -1592,7 +1224,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/mehmetozdemir.jpg?v=1781431274772"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/mehmetozdemir.jpg?v=1781432567870"
   },
   {
     "id": "mehmet-ozdemir-29",
@@ -1615,7 +1247,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Midnight%20Majesty.jpeg?v=1781431277283"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Midnight%20Majesty.jpeg?v=1781432569369"
   },
   {
     "id": "mehmet-ozdemir-30",
@@ -1638,7 +1270,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Morning%20Bloom.jpeg?v=1781431277648"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Morning%20Bloom.jpeg?v=1781432569642"
   },
   {
     "id": "mehmet-ozdemir-31",
@@ -1661,7 +1293,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/news1.jpeg?v=1781431277688"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/news1.jpeg?v=1781432569678"
   },
   {
     "id": "mehmet-ozdemir-32",
@@ -1684,194 +1316,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/news1.PNG?v=1781431278017"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/news1.PNG?v=1781432569869"
   },
   {
     "id": "mehmet-ozdemir-33",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 1",
-      "tr": "Resim 1"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim1.png?v=1776767505797"
-  },
-  {
-    "id": "mehmet-ozdemir-34",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 2",
-      "tr": "Resim 2"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim2.png?v=1776767505884"
-  },
-  {
-    "id": "mehmet-ozdemir-35",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 3",
-      "tr": "Resim 3"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim3.png?v=1776767505977"
-  },
-  {
-    "id": "mehmet-ozdemir-36",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 4",
-      "tr": "Resim 4"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim4.png?v=1776767506023"
-  },
-  {
-    "id": "mehmet-ozdemir-37",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 5",
-      "tr": "Resim 5"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim5.png?v=1776767506118"
-  },
-  {
-    "id": "mehmet-ozdemir-38",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 6",
-      "tr": "Resim 6"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim6.png?v=1776767506161"
-  },
-  {
-    "id": "mehmet-ozdemir-39",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 7",
-      "tr": "Resim 7"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim7.png?v=1776767506218"
-  },
-  {
-    "id": "mehmet-ozdemir-40",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 8",
-      "tr": "Resim 8"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim8.png?v=1776767506263"
-  },
-  {
-    "id": "mehmet-ozdemir-41",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Painting 9",
@@ -1891,493 +1339,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim9.PNG?v=1781431278283"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim9.PNG?v=1781432570036"
   },
   {
-    "id": "mehmet-ozdemir-42",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 10",
-      "tr": "Resim 10"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim10.png?v=1776767506405"
-  },
-  {
-    "id": "mehmet-ozdemir-43",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 11",
-      "tr": "Resim 11"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim11.png?v=1776767506515"
-  },
-  {
-    "id": "mehmet-ozdemir-44",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 12",
-      "tr": "Resim 12"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim12.png?v=1776767506608"
-  },
-  {
-    "id": "mehmet-ozdemir-45",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 13",
-      "tr": "Resim 13"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim13.png?v=1776767506650"
-  },
-  {
-    "id": "mehmet-ozdemir-46",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 14",
-      "tr": "Resim 14"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim14.png?v=1776767506755"
-  },
-  {
-    "id": "mehmet-ozdemir-47",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 15",
-      "tr": "Resim 15"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim15.png?v=1776767506846"
-  },
-  {
-    "id": "mehmet-ozdemir-48",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 16",
-      "tr": "Resim 16"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim16.png?v=1776767506933"
-  },
-  {
-    "id": "mehmet-ozdemir-49",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 17",
-      "tr": "Resim 17"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim17.png?v=1776767507069"
-  },
-  {
-    "id": "mehmet-ozdemir-50",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 18",
-      "tr": "Resim 18"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim18.png?v=1776767507106"
-  },
-  {
-    "id": "mehmet-ozdemir-51",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 19",
-      "tr": "Resim 19"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim19.png?v=1776767507230"
-  },
-  {
-    "id": "mehmet-ozdemir-52",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 20",
-      "tr": "Resim 20"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim20.png?v=1776767507279"
-  },
-  {
-    "id": "mehmet-ozdemir-53",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 21",
-      "tr": "Resim 21"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim21.png?v=1776767507359"
-  },
-  {
-    "id": "mehmet-ozdemir-54",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 22",
-      "tr": "Resim 22"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim22.png?v=1776767507472"
-  },
-  {
-    "id": "mehmet-ozdemir-55",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 23",
-      "tr": "Resim 23"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim23.png?v=1776767507564"
-  },
-  {
-    "id": "mehmet-ozdemir-56",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 24",
-      "tr": "Resim 24"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim24.png?v=1776767507643"
-  },
-  {
-    "id": "mehmet-ozdemir-57",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 25",
-      "tr": "Resim 25"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim25.png?v=1776767507687"
-  },
-  {
-    "id": "mehmet-ozdemir-58",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 26",
-      "tr": "Resim 26"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim26.png?v=1776767507741"
-  },
-  {
-    "id": "mehmet-ozdemir-59",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 27",
-      "tr": "Resim 27"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim27.png?v=1776767507789"
-  },
-  {
-    "id": "mehmet-ozdemir-60",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 28",
-      "tr": "Resim 28"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim28.PNG?v=1776767505581"
-  },
-  {
-    "id": "mehmet-ozdemir-61",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 29",
-      "tr": "Resim 29"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim29.png?v=1776767505697"
-  },
-  {
-    "id": "mehmet-ozdemir-62",
-    "artistId": "mehmet-ozdemir",
-    "title": {
-      "en": "Painting 30",
-      "tr": "Resim 30"
-    },
-    "artist": {
-      "en": "Mehmet Özdemir",
-      "tr": "Mehmet Özdemir"
-    },
-    "year": "2026",
-    "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
-    },
-    "dimensions": "Details on request",
-    "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
-      "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
-    },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/resim30.PNG?v=1776771434016"
-  },
-  {
-    "id": "mehmet-ozdemir-63",
+    "id": "mehmet-ozdemir-34",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Silent Reverie",
@@ -2397,10 +1362,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Silent%20Reverie.jpeg?v=1781431278700"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Silent%20Reverie.jpeg?v=1781432570308"
   },
   {
-    "id": "mehmet-ozdemir-64",
+    "id": "mehmet-ozdemir-35",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Sovereign Grace",
@@ -2420,10 +1385,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Sovereign%20Grace.jpeg?v=1781431279096"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Sovereign%20Grace.jpeg?v=1781432570569"
   },
   {
-    "id": "mehmet-ozdemir-65",
+    "id": "mehmet-ozdemir-36",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Ten Thousand Times",
@@ -2443,10 +1408,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Ten%20Thousand%20Times.png?v=1781431279359"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Ten%20Thousand%20Times.png?v=1781432570753"
   },
   {
-    "id": "mehmet-ozdemir-66",
+    "id": "mehmet-ozdemir-37",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Bosphorus Never Tires of Being Beautiful",
@@ -2466,10 +1431,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Bosphorus%20Never%20Tires%20of%20Being%20Beautiful.png?v=1781431279645"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Bosphorus%20Never%20Tires%20of%20Being%20Beautiful.png?v=1781432570940"
   },
   {
-    "id": "mehmet-ozdemir-67",
+    "id": "mehmet-ozdemir-38",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Faithful",
@@ -2489,10 +1454,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Faithful.jpeg?v=1781431280021"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Faithful.jpeg?v=1781432571195"
   },
   {
-    "id": "mehmet-ozdemir-68",
+    "id": "mehmet-ozdemir-39",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Gleaners – A Faithful Reproduction of a Timeless Masterpiece 2",
@@ -2512,10 +1477,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Gleaners%20%E2%80%93%20A%20Faithful%20Reproduction%20of%20a%20Timeless%20Masterpiece%202.png?v=1781431280272"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Gleaners%20%E2%80%93%20A%20Faithful%20Reproduction%20of%20a%20Timeless%20Masterpiece%202.png?v=1781432571358"
   },
   {
-    "id": "mehmet-ozdemir-69",
+    "id": "mehmet-ozdemir-40",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Gleaners – A Faithful Reproduction of a Timeless Masterpiece",
@@ -2535,10 +1500,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Gleaners%20%E2%80%93%20A%20Faithful%20Reproduction%20of%20a%20Timeless%20Masterpiece.jpeg?v=1781431280691"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Gleaners%20%E2%80%93%20A%20Faithful%20Reproduction%20of%20a%20Timeless%20Masterpiece.jpeg?v=1781432571629"
   },
   {
-    "id": "mehmet-ozdemir-70",
+    "id": "mehmet-ozdemir-41",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Many Lives of Her I. The Keeper of Memories",
@@ -2558,10 +1523,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20I.%20The%20Keeper%20of%20Memories.jpeg?v=1781431281108"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20I.%20The%20Keeper%20of%20Memories.jpeg?v=1781432571932"
   },
   {
-    "id": "mehmet-ozdemir-71",
+    "id": "mehmet-ozdemir-42",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Many Lives of Her II. Whispers of Antiquity",
@@ -2581,10 +1546,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20II.%20Whispers%20of%20Antiquity.jpeg?v=1781431281536"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20II.%20Whispers%20of%20Antiquity.jpeg?v=1781432572266"
   },
   {
-    "id": "mehmet-ozdemir-72",
+    "id": "mehmet-ozdemir-43",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Many Lives of Her III. Daughter of the Mediterranean",
@@ -2604,10 +1569,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20III.%20Daughter%20of%20the%20Mediterranean.jpeg?v=1781431281958"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20III.%20Daughter%20of%20the%20Mediterranean.jpeg?v=1781432572537"
   },
   {
-    "id": "mehmet-ozdemir-73",
+    "id": "mehmet-ozdemir-44",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Many Lives of Her IV. The Crimson Blossom",
@@ -2627,10 +1592,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20IV.%20The%20Crimson%20Blossom.jpeg?v=1781431282354"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20IV.%20The%20Crimson%20Blossom.jpeg?v=1781432572775"
   },
   {
-    "id": "mehmet-ozdemir-74",
+    "id": "mehmet-ozdemir-45",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Many Lives of Her V. Inner Garden",
@@ -2650,10 +1615,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20V.%20Inner%20Garden.jpeg?v=1781431282870"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Many%20Lives%20of%20Her%20V.%20Inner%20Garden.jpeg?v=1781432573173"
   },
   {
-    "id": "mehmet-ozdemir-75",
+    "id": "mehmet-ozdemir-46",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Market at First Light",
@@ -2673,10 +1638,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Market%20at%20First%20Light.jpeg?v=1781431283330"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Market%20at%20First%20Light.jpeg?v=1781432573459"
   },
   {
-    "id": "mehmet-ozdemir-76",
+    "id": "mehmet-ozdemir-47",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The poppies blaze",
@@ -2696,10 +1661,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20poppies%20blaze.PNG?v=1781431283573"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20poppies%20blaze.PNG?v=1781432573630"
   },
   {
-    "id": "mehmet-ozdemir-77",
+    "id": "mehmet-ozdemir-48",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Quiet Morning",
@@ -2719,10 +1684,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Quiet%20Morning.jpeg?v=1781431283973"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Quiet%20Morning.jpeg?v=1781432573866"
   },
   {
-    "id": "mehmet-ozdemir-78",
+    "id": "mehmet-ozdemir-49",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Scooter and the Century",
@@ -2742,10 +1707,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Scooter%20and%20the%20Century.png?v=1781431284259"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Scooter%20and%20the%20Century.png?v=1781432574039"
   },
   {
-    "id": "mehmet-ozdemir-79",
+    "id": "mehmet-ozdemir-50",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Stone Lane",
@@ -2765,10 +1730,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Stone%20Lane.jpeg?v=1781431284684"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Stone%20Lane.jpeg?v=1781432574350"
   },
   {
-    "id": "mehmet-ozdemir-80",
+    "id": "mehmet-ozdemir-51",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "The Tortoise Trainer – A Masterful Reproduction of an Ottoman Icon",
@@ -2788,10 +1753,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Tortoise%20Trainer%20%E2%80%93%20A%20Masterful%20Reproduction%20of%20an%20Ottoman%20Icon.jpeg?v=1781431291124"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Tortoise%20Trainer%20%E2%80%93%20A%20Masterful%20Reproduction%20of%20an%20Ottoman%20Icon.jpeg?v=1781432578066"
   },
   {
-    "id": "mehmet-ozdemir-81",
+    "id": "mehmet-ozdemir-52",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "These cobblestones",
@@ -2811,10 +1776,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/These%20cobblestones.png?v=1781431291433"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/These%20cobblestones.png?v=1781432578275"
   },
   {
-    "id": "mehmet-ozdemir-82",
+    "id": "mehmet-ozdemir-53",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Trinity of Freedom",
@@ -2834,10 +1799,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Trinity%20of%20Freedom.jpeg?v=1781431292031"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Trinity%20of%20Freedom.jpeg?v=1781432578492"
   },
   {
-    "id": "mehmet-ozdemir-83",
+    "id": "mehmet-ozdemir-54",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Under the Same Sky",
@@ -2857,10 +1822,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Under%20the%20Same%20Sky.png?v=1781431292750"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Under%20the%20Same%20Sky.png?v=1781432578684"
   },
   {
-    "id": "mehmet-ozdemir-84",
+    "id": "mehmet-ozdemir-55",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Untamed Harmony in Freedom River",
@@ -2880,10 +1845,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Untamed%20Harmony%20in%20Freedom%20River.jpeg?v=1781431297547"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Untamed%20Harmony%20in%20Freedom%20River.jpeg?v=1781432582305"
   },
   {
-    "id": "mehmet-ozdemir-85",
+    "id": "mehmet-ozdemir-56",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Vanished Street",
@@ -2903,10 +1868,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Vanished%20Street.jpeg?v=1781431297999"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Vanished%20Street.jpeg?v=1781432582704"
   },
   {
-    "id": "mehmet-ozdemir-86",
+    "id": "mehmet-ozdemir-57",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Velvet Thunder",
@@ -2926,10 +1891,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Velvet%20Thunder.jpeg?v=1781431298424"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Velvet%20Thunder.jpeg?v=1781432583113"
   },
   {
-    "id": "mehmet-ozdemir-87",
+    "id": "mehmet-ozdemir-58",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "WhatsApp Image 2026-04-21 at 14.41.19",
@@ -2949,10 +1914,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/WhatsApp%20Image%202026-04-21%20at%2014.41.19.jpeg?v=1781431298466"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/WhatsApp%20Image%202026-04-21%20at%2014.41.19.jpeg?v=1781432583152"
   },
   {
-    "id": "mehmet-ozdemir-88",
+    "id": "mehmet-ozdemir-59",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Where Fire Becomes Art",
@@ -2972,10 +1937,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20Fire%20Becomes%20Art.jpeg?v=1781431298883"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20Fire%20Becomes%20Art.jpeg?v=1781432583431"
   },
   {
-    "id": "mehmet-ozdemir-89",
+    "id": "mehmet-ozdemir-60",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Where the Palm Still Remembers - The Last Summer of Old Hatay",
@@ -2995,10 +1960,10 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20the%20Palm%20Still%20Remembers%20-%20The%20Last%20Summer%20of%20Old%20Hatay.png?v=1781431299163"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20the%20Palm%20Still%20Remembers%20-%20The%20Last%20Summer%20of%20Old%20Hatay.png?v=1781432583610"
   },
   {
-    "id": "mehmet-ozdemir-90",
+    "id": "mehmet-ozdemir-61",
     "artistId": "mehmet-ozdemir",
     "title": {
       "en": "Where the River Bends to Let Them Pass",
@@ -3018,7 +1983,7 @@ const paintings = [
       "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
-    "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20the%20River%20Bends%20to%20Let%20Them%20Pass.png?v=1781431299456"
+    "image": "./artifacts/artists/Mehmet%20Ozdemir/Where%20the%20River%20Bends%20to%20Let%20Them%20Pass.png?v=1781432584000"
   }
 ];
 

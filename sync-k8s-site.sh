@@ -82,8 +82,10 @@ for file in "${FILES[@]}"; do
 done
 
 if [[ -d "$ROOT_DIR/artifacts" ]]; then
+  [[ -d "$SITE_DIR/artifacts" ]] && chmod -R u+rwX "$SITE_DIR/artifacts"
   rm -rf "$SITE_DIR/artifacts"
   cp -R "$ROOT_DIR/artifacts" "$SITE_DIR/artifacts"
+  chmod -R u+rwX,o+rX "$SITE_DIR/artifacts"
   echo "Synced artifacts/"
 fi
 
