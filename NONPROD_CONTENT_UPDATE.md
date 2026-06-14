@@ -4,13 +4,11 @@ This runbook explains how to publish new paintings, artist images, or event imag
 
 ## Scope
 
-This procedure is for the Azure nonprod site.
-
-- Static Web App hosts the website shell
-- Azure Blob Storage hosts `artifacts/`
+- Static Web App hosts the website shell (HTML/CSS/JS)
+- Azure Blob Storage (`nweuartsa01a01`) hosts `artifacts/`
 - Local Kubernetes is separate and not part of this procedure
 
-## Start Here
+## Procedure
 
 Run everything from the repo root:
 
@@ -18,87 +16,48 @@ Run everything from the repo root:
 cd /home/ronin/projects/art-app
 ```
 
-## Example
+### 1. Add your files
 
-If you add a new painting like:
+Place new images under `artifacts/artists/<Artist Name>/` or `artifacts/events/`.
 
-```bash
-artifacts/artists/Mehmet Ozdemir/resim31.png
-```
-
-follow the steps below.
-
-## Procedure
-
-### 1. Regenerate site data with the Azure asset base URL
-
-This updates `gallery-data.js` so the website knows about the new file.
-
-```bash
-ASSET_BASE_URL="$(terraform -chdir=infra/terraform/nonprod output -raw asset_base_url)" \
-  node scripts/generate-gallery-data.mjs
-```
+Supported formats: `.png`, `.jpg`, `.jpeg`, `.webp`, `.avif` (case-insensitive).
 
 ### 2. Upload artifacts to Azure Blob Storage
 
-This uploads the actual image files to the nonprod storage account.
-
 ```bash
-./scripts/upload-nonprod-artifacts.sh
+./scripts/upload-nonprod-artifacts.sh --account-name nweuartsa01a01
 ```
 
-The script resolves its defaults from `infra/terraform/nonprod`, uploads the blobs, and also regenerates
-`gallery-data.js` with the same Azure asset base URL so the committed site data matches production.
+This uploads all files in `artifacts/` to Azure Blob Storage and regenerates `gallery-data.js` with the correct Azure URLs.
 
-### 3. Commit and push the repo changes
-
-This updates the website data and triggers the nonprod GitHub Actions deployment.
+### 3. Commit and push
 
 ```bash
-git add artifacts gallery-data.js
-git commit -m "Add new painting"
+git add artifacts/ gallery-data.js
+git commit -m "Add new paintings"
 git push origin master
 ```
 
-### 4. Let GitHub Actions deploy nonprod
+GitHub Actions will deploy the updated site to Azure automatically.
 
-The workflow updates the Static Web App shell and generated data.
-
-If needed, you can also trigger the workflow manually from GitHub Actions.
+---
 
 ## Why Both Steps Are Needed
 
-Both of these are required:
+- **Upload** — makes the image files available in Azure Blob Storage so the site can serve them.
+- **Push** — updates `gallery-data.js` so the site lists the new paintings and links to them.
 
-1. Blob upload
-   This makes the actual image file available in Azure Storage.
-2. Git push and site deploy
-   This updates the website data so the site references the new image.
+If you only push without uploading, images will be referenced but return 404.
+If you only upload without pushing, the gallery won't show the new paintings.
 
-If you only upload the blob, the site may not list the new painting.
+---
 
-If you only push Git, the site may reference an image that does not exist yet in storage.
+## Optional: Local Kubernetes Preview
 
-## Repeatable Workflow
-
-For normal nonprod content publishing, use:
-
-```bash
-cd /home/ronin/projects/art-app
-ASSET_BASE_URL="$(terraform -chdir=infra/terraform/nonprod output -raw asset_base_url)" \
-  node scripts/generate-gallery-data.mjs
-./scripts/upload-nonprod-artifacts.sh
-git add artifacts gallery-data.js
-git commit -m "Add new painting"
-git push origin master
-```
-
-## Optional Local Kubernetes Update
-
-If you also want the same change on your local Kubernetes site, run this separately:
+To also see the changes on your local microk8s site:
 
 ```bash
 ./sync-k8s-site.sh
 ```
 
-This is not required for Azure nonprod publishing.
+This is not required for the Azure nonprod deployment.
