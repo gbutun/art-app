@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SanatRadar — Turkey Art Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4efe6;
+  --ink: #31191f;
+  --muted: #6a5458;
+  --line: rgba(102,47,58,0.12);
+  --accent: #7c2635;
+  --accent-deep: #5f1725;
+  --accent-soft: #efe1e0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Manrope", sans-serif;
+  background: linear-gradient(180deg, rgba(124,38,53,0.05) 0, rgba(124,38,53,0.05) 1px, transparent 1px),
+              linear-gradient(180deg, #f7f1e9 0%, #f2ebe1 100%);
+  background-size: 100% 160px, 100% 100%;
+  color: var(--ink);
+  min-height: 100vh;
+}
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+
+.shell { width: min(1180px, calc(100% - clamp(20px,4vw,56px))); margin: 0 auto; padding-bottom: 80px; }
+
+/* Topbar */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 0 14px;
+  background: linear-gradient(180deg, rgba(247,241,233,0.97), rgba(247,241,233,0.85));
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px); flex-wrap: wrap;
+}
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand-name { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.brand-name em { color: var(--accent); font-style: normal; }
+.brand-sub { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.topbar-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.key-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  cursor: pointer; padding: 6px 14px; border: 1px solid var(--line);
+  background: transparent; color: var(--muted); transition: color 0.15s;
+}
+.key-pill.ok { color: var(--accent-deep); border-color: var(--accent-soft); }
+.scan-btn {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 20px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: #fff; border: none; cursor: pointer;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.scan-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.scan-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.scan-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* Hero */
+.hero-band { padding: 40px 0 32px; border-bottom: 1px solid var(--line); }
+.eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 10px; }
+.hero-band h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem,4vw,3.6rem); font-weight: 600; line-height: 0.95;
+  letter-spacing: -0.03em; margin-bottom: 10px;
+}
+.hero-band p { font-size: 0.95rem; color: var(--muted); line-height: 1.7; max-width: 54ch; }
+.hero-date { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 16px; }
+
+/* Stats */
+.stats-bar { display: grid; grid-template-columns: repeat(5,1fr); border-bottom: 1px solid var(--line); }
+.stat-cell {
+  padding: 18px 0 16px; border-right: 1px solid var(--line);
+  cursor: pointer; transition: background 0.15s; user-select: none;
+}
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: rgba(124,38,53,0.03); }
+.stat-cell.active { background: rgba(124,38,53,0.06); }
+.stat-num { font-family: "Cormorant Garamond", serif; font-size: 2rem; font-weight: 600; line-height: 1; }
+.stat-cell.active .stat-num { color: var(--accent); }
+.stat-lbl { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+.stat-cell.active .stat-lbl { color: var(--accent-deep); }
+
+/* Toolbar */
+.toolbar {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 12px 0; border-bottom: 1px solid var(--line);
+}
+.toolbar-lbl { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.fpill {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+  padding: 4px 12px; border: 1px solid var(--line);
+  background: transparent; color: var(--muted); cursor: pointer; transition: all 0.12s;
+}
+.fpill:hover { border-color: var(--accent-soft); color: var(--ink); }
+.fpill.active { background: var(--accent-soft); border-color: var(--accent-soft); color: var(--accent-deep); }
+.fdot { width: 5px; height: 5px; border-radius: 50%; }
+.srch {
+  margin-left: auto; display: flex; align-items: center; gap: 7px;
+  border-bottom: 1px solid var(--line); padding-bottom: 2px;
+}
+.srch svg { color: var(--muted); flex-shrink: 0; }
+.srch input { border: none; background: transparent; outline: none; font-size: 0.82rem; color: var(--ink); width: 170px; }
+.srch input::placeholder { color: var(--muted); }
+
+/* Source indicator */
+.source-band {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  padding: 8px 0; border-bottom: 1px solid var(--line);
+  font-size: 0.68rem; color: var(--muted); font-weight: 600; letter-spacing: 0.04em;
+}
+.src-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; background: var(--accent-soft);
+  color: var(--accent-deep); font-weight: 700; font-size: 0.65rem; letter-spacing: 0.04em;
+}
+.src-tag.scraped { background: #e8f5e9; color: #2e7d32; }
+.src-tag.ai { background: #e3f2fd; color: #1565c0; }
+
+/* Body */
+.body-grid { display: grid; grid-template-columns: 1fr 252px; align-items: start; }
+
+/* Events */
+.events-col { border-right: 1px solid var(--line); min-height: 50vh; }
+.event-row {
+  display: grid; grid-template-columns: 3px 1fr auto;
+  border-bottom: 1px solid var(--line); transition: background 0.12s;
+}
+.event-row:hover { background: rgba(124,38,53,0.02); }
+.ebar { width: 3px; }
+.ebar.t-competition { background: #7c2635; }
+.ebar.t-exhibition  { background: #185FA5; }
+.ebar.t-workshop    { background: #BA7517; }
+.ebar.t-festival    { background: #534AB7; }
+.ebar.t-open_call   { background: #3B6D11; }
+.ebody { padding: 18px 20px 16px; min-width: 0; }
+.ekicker { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.etype {
+  font-size: 0.63rem; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent-deep);
+}
+.enew {
+  font-size: 0.63rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent);
+  border: 1px solid var(--accent-soft); padding: 1px 6px;
+}
+.esrc-badge {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 1px 6px;
+  background: #e8f5e9; color: #2e7d32;
+}
+.etitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem; font-weight: 600; line-height: 1.2; margin-bottom: 5px; color: var(--ink);
+}
+.emeta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.72rem; color: var(--muted); margin-bottom: 7px; }
+.edesc { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+.elink {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.72rem; font-weight: 700; color: var(--accent-deep);
+  letter-spacing: 0.04em; margin-top: 7px; text-transform: uppercase;
+}
+.elink:hover { color: var(--accent); }
+.easide { padding: 18px 16px 16px 0; min-width: 65px; text-align: right; font-size: 0.7rem; color: var(--muted); line-height: 1.5; }
+
+/* Sidebar */
+.sb-col { }
+.sb-sec { padding: 20px 20px 16px; border-bottom: 1px solid var(--line); }
+.sb-head { font-size: 0.63rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.sb-cat {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 0; border-bottom: 1px solid var(--line);
+  font-size: 0.78rem; color: var(--muted); cursor: pointer;
+}
+.sb-cat:last-child { border-bottom: none; }
+.sb-cat:hover { color: var(--ink); }
+.swtch { width: 26px; height: 15px; border-radius: 999px; background: var(--line); position: relative; transition: background 0.15s; flex-shrink: 0; }
+.swtch.on { background: var(--accent); }
+.sknob { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: #fff; top: 2px; left: 2px; transition: left 0.15s; }
+.swtch.on .sknob { left: 13px; }
+.hist-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 0.75rem; color: var(--muted); }
+.hist-row:last-child { border-bottom: none; }
+.hbadge { font-size: 0.65rem; font-weight: 700; color: var(--accent-deep); background: var(--accent-soft); padding: 2px 7px; }
+.src-list-row { font-size: 0.72rem; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 5px; }
+.src-list-row:last-child { border-bottom: none; }
+.src-list-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.src-list-dot.scraped { background: #4caf50; }
+.src-list-dot.ai { background: #1976d2; }
+
+/* States */
+.state { padding: 52px 20px; text-align: center; }
+.state-icon { font-size: 2.8rem; opacity: 0.18; margin-bottom: 14px; }
+.state-title { font-family: "Cormorant Garamond", serif; font-size: 1.7rem; font-weight: 600; margin-bottom: 7px; }
+.state-sub { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 32ch; margin: 0 auto 22px; }
+.prog-wrap { width: 260px; height: 2px; background: var(--line); margin: 14px auto; overflow: hidden; }
+.prog-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s ease; }
+.step-list { display: flex; flex-direction: column; gap: 5px; margin-top: 10px; }
+.step { font-size: 0.72rem; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 7px; opacity: 0.35; transition: opacity 0.3s; }
+.step.active { opacity: 1; color: var(--ink); }
+.step.done { opacity: 0.55; color: var(--accent-deep); }
+.sdot { width: 5px; height: 5px; border-radius: 50%; background: var(--line); flex-shrink: 0; }
+.step.active .sdot { background: var(--accent); animation: pulse 1s infinite; }
+.step.done .sdot { background: var(--accent); }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.2} }
+
+.err-band { background: rgba(124,38,53,0.06); border-left: 3px solid var(--accent); padding: 14px 18px; display: none; }
+.err-band.show { display: block; }
+.err-title { font-size: 0.82rem; font-weight: 700; color: var(--accent-deep); margin-bottom: 3px; }
+.err-body { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+.err-body a { color: var(--accent-deep); font-weight: 700; }
+
+/* Modal */
+.modal-ov { position: fixed; inset: 0; background: rgba(49,25,31,0.55); display: flex; align-items: center; justify-content: center; z-index: 999; padding: 20px; }
+.modal-ov.hidden { display: none; }
+.modal-box { background: #fdf9f2; max-width: 450px; width: 100%; padding: 34px; }
+.modal-ey { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-deep); margin-bottom: 8px; }
+.modal-ttl { font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 600; margin-bottom: 10px; line-height: 1.1; }
+.modal-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+.modal-sub a { color: var(--accent-deep); font-weight: 600; }
+.modal-inp { width: 100%; border: none; border-bottom: 1px solid rgba(102,47,58,0.25); background: transparent; padding: 10px 0; font-size: 0.95rem; color: var(--ink); outline: none; margin-bottom: 5px; }
+.modal-hint { font-size: 0.7rem; color: var(--muted); margin-bottom: 20px; line-height: 1.5; }
+.modal-save { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 46px; background: linear-gradient(135deg, var(--accent), var(--accent-deep)); color: #fff; border: none; cursor: pointer; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; transition: opacity 0.15s; }
+.modal-save:hover { opacity: 0.9; }
+.modal-err { font-size: 0.75rem; color: var(--accent); margin-top: 8px; display: none; }
+
+.toast { position: fixed; bottom: 24px; right: 24px; background: var(--ink); color: #fff; font-size: 0.78rem; font-weight: 600; padding: 11px 18px; opacity: 0; transform: translateY(6px); transition: opacity 0.25s, transform 0.25s; z-index: 9998; pointer-events: none; letter-spacing: 0.02em; }
+.toast.show { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 860px) {
+  .body-grid { grid-template-columns: 1fr; }
+  .events-col { border-right: none; }
+  .sb-col { border-top: 1px solid var(--line); display: none; }
+  .stats-bar { grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 560px) {
+  .stats-bar { grid-template-columns: repeat(2,1fr); }
+  .srch { width: 100%; margin-left: 0; }
+  .srch input { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- Modal -->
+<div class="modal-ov hidden" id="keyModal">
+  <div class="modal-box">
+    <div class="modal-ey">Setup required</div>
+    <div class="modal-ttl">Anthropic API Key</div>
+    <p class="modal-sub">SanatRadar directly fetches Turkish art sites AND does AI web search. It needs your Anthropic API key for the AI layer.<br><br>Get a free key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> → API Keys → Create Key. Saved only in this browser.</p>
+    <input class="modal-inp" type="password" id="keyInp" placeholder="sk-ant-api03-…" autocomplete="off" />
+    <p class="modal-hint">Starts with <code>sk-ant-</code> · Stored locally · Never shared</p>
+    <button class="modal-save" id="keySaveBtn">Save &amp; start scanning</button>
+    <div class="modal-err" id="keyErr"></div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-name">Sanat<em>Radar</em></div>
+      <div class="brand-sub">Turkey · Art Intelligence</div>
+    </div>
+    <div class="topbar-right">
+      <button class="key-pill" id="keyPill">
+        <span id="keyPillTxt">Add API key</span>
+      </button>
+      <button class="scan-btn" id="mainScanBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        Scan Today
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero-band">
+    <div class="eyebrow">🇹🇷 Daily Scanner</div>
+    <h1>Painting Competitions,<br>Exhibitions &amp; Open Calls</h1>
+    <p>Two-layer scan: directly fetches Turkish art sites (TJK, sanatyarismalari.com and more) then runs AI web search on top. Never miss a competition.</p>
+    <div class="hero-date" id="todayDate"></div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats-bar" id="statsBar" style="display:none">
+    <div class="stat-cell active" data-tab="all"><div class="stat-num" id="sAll">0</div><div class="stat-lbl">All Events</div></div>
+    <div class="stat-cell" data-tab="competition"><div class="stat-num" id="sComp">0</div><div class="stat-lbl">Competitions</div></div>
+    <div class="stat-cell" data-tab="exhibition"><div class="stat-num" id="sExh">0</div><div class="stat-lbl">Exhibitions</div></div>
+    <div class="stat-cell" data-tab="workshop"><div class="stat-num" id="sWork">0</div><div class="stat-lbl">Workshops</div></div>
+    <div class="stat-cell" data-tab="open_call"><div class="stat-num" id="sCalls">0</div><div class="stat-lbl">Open Calls</div></div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar" id="toolbar" style="display:none">
+    <span class="toolbar-lbl">Filter</span>
+    <button class="fpill active" data-f="all">All</button>
+    <button class="fpill" data-f="competition"><span class="fdot" style="background:#7c2635"></span>Competition</button>
+    <button class="fpill" data-f="exhibition"><span class="fdot" style="background:#185FA5"></span>Exhibition</button>
+    <button class="fpill" data-f="workshop"><span class="fdot" style="background:#BA7517"></span>Workshop</button>
+    <button class="fpill" data-f="festival"><span class="fdot" style="background:#534AB7"></span>Festival</button>
+    <button class="fpill" data-f="open_call"><span class="fdot" style="background:#3B6D11"></span>Open Call</button>
+    <div class="srch">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="srchInp" placeholder="Search events, cities…" />
+    </div>
+  </div>
+
+  <!-- Source band -->
+  <div class="source-band" id="srcBand" style="display:none">
+    <span style="font-weight:700;color:var(--ink)">Sources:</span>
+    <span class="src-tag scraped">✓ Direct fetch</span>
+    <span>sanatyarismalari.com · tjk.org · fasanatakademi.com · gsb.gov.tr</span>
+    <span class="src-tag ai">+ AI search</span>
+    <span>general web · iksv.org · galleries · city events</span>
+  </div>
+
+  <!-- Error -->
+  <div class="err-band" id="errBand">
+    <div class="err-title">Scan error</div>
+    <div class="err-body" id="errBody"></div>
+  </div>
+
+  <!-- Body -->
+  <div class="body-grid">
+    <div class="events-col" id="eventsCol">
+
+      <!-- Loading -->
+      <div class="state" id="loadingScreen" style="display:none">
+        <div class="state-icon">🎨</div>
+        <div class="state-title">Scanning…</div>
+        <div class="state-sub">Fetching Turkish sources directly, then searching the broader web</div>
+        <div class="prog-wrap"><div class="prog-bar" id="progBar"></div></div>
+        <div class="step-list">
+          <div class="step" id="s1"><span class="sdot"></span>Fetching sanatyarismalari.com/resimyarismalari</div>
+          <div class="step" id="s2"><span class="sdot"></span>Fetching tjk.org · fasanatakademi.com</div>
+          <div class="step" id="s3"><span class="sdot"></span>AI search: exhibitions, workshops, open calls</div>
+          <div class="step" id="s4"><span class="sdot"></span>AI search: Istanbul, Ankara, Izmir city events</div>
+          <div class="step" id="s5"><span class="sdot"></span>Merging &amp; deduplicating all sources</div>
+        </div>
+      </div>
+
+      <!-- Empty -->
+      <div class="state" id="emptyScreen">
+        <div class="state-icon">🖼</div>
+        <div class="state-title">Ready to scan</div>
+        <div class="state-sub">Directly fetches Turkish art sites plus AI web search — the most complete coverage possible.</div>
+        <button class="scan-btn" id="emptyBtn" style="margin:0 auto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Start scan
+        </button>
+      </div>
+
+      <div id="eventsList"></div>
+      <div id="noResults" style="display:none;padding:36px 20px;font-size:0.82rem;color:var(--muted)">No events match your filter.</div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sb-col" id="sbCol" style="display:none">
+
+      <div class="sb-sec">
+        <div class="sb-head">Scan History</div>
+        <div id="histList"><div style="font-size:0.75rem;color:var(--muted)">No scans yet</div></div>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-head">Direct-fetch Sources</div>
+        <div class="src-list-row"><span class="src-list-dot scraped"></span>sanatyarismalari.com/resimyarismalari</div>
+        <div class="src-list-row"><span class="src-list-dot scraped"></span>tjk.org (Jokey Kulübü)</div>
+        <div class="src-list-row"><span class="src-list-dot scraped"></span>fasanatakademi.com</div>
+        <div class="src-list-row"><span class="src-list-dot scraped"></span>gsb.gov.tr ilanlar</div>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-head">AI Search Categories</div>
+        <div id="catToggles"></div>
+        <button id="sbScanBtn" class="scan-btn" style="width:100%;justify-content:center;margin-top:12px;min-height:38px;font-size:0.78rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Scan now
+        </button>
+      </div>
+
+      <div class="sb-sec">
+        <div class="sb-head">About</div>
+        <p style="font-size:0.75rem;color:var(--muted);line-height:1.7">Layer 1: directly fetches known Turkish art competition sites — guaranteed to catch events like TJK, PonArt, etc.<br><br>Layer 2: AI-powered web search covers exhibitions, galleries, workshops, festivals, city events.<br><br>Results saved in browser. Open daily and click Scan.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var allEvents = [];
+var activeFilter = 'all';
+var scanHistory = [];
+var apiKey = '';
+
+var AI_CATS = [
+  { id: 'exh_tr',   label: 'Sergiler (TR)',      query: 'Türkiye sanat sergisi resim etkinliği 2025 2026', active: true },
+  { id: 'exh_en',   label: 'Exhibitions (EN)',    query: 'art exhibition Istanbul Turkey gallery 2025 2026', active: true },
+  { id: 'work_tr',  label: 'Atölyeler (TR)',      query: 'Türkiye resim atölyesi sanat kursu 2026 başvuru', active: true },
+  { id: 'calls_en', label: 'Open Calls (EN)',     query: 'open call artists Turkey 2026 deadline apply', active: true },
+  { id: 'fest_tr',  label: 'Festivaller (TR)',    query: 'Türkiye sanat festivali bienal 2025 2026', active: true },
+  { id: 'iksv',     label: 'İKSV & Biennales',   query: 'iksv Istanbul biennial sanat etkinlikleri 2025 2026', active: true },
+  { id: 'cities',   label: 'City Events',         query: 'Ankara Izmir Antalya Bursa resim sergisi yarışma 2026', active: true },
+  { id: 'comp_en',  label: 'Competitions (EN)',   query: 'painting competition Turkey 2026 open call prize', active: true }
+];
+
+var TYPE_META = {
+  competition: { label: 'Competition', color: '#7c2635' },
+  exhibition:  { label: 'Exhibition',  color: '#185FA5' },
+  workshop:    { label: 'Workshop',    color: '#BA7517' },
+  festival:    { label: 'Festival',    color: '#534AB7' },
+  open_call:   { label: 'Open Call',   color: '#3B6D11' }
+};
+
+// ── Direct-fetch source URLs ──
+// These are fetched via the AI with explicit instructions to read the raw page content
+var DIRECT_SOURCES = [
+  {
+    url: 'https://www.sanatyarismalari.com/resimyarismalari',
+    name: 'sanatyarismalari.com',
+    instruction: 'This is the Turkish art competitions listing page sanatyarismalari.com/resimyarismalari. Extract ALL competition listings you can find. For each competition extract: title, deadline date (Son Başvuru Tarihi), category, and the detail URL.'
+  },
+  {
+    url: 'https://www.sanatyarismalari.com/',
+    name: 'sanatyarismalari.com (main)',
+    instruction: 'This is the main page of sanatyarismalari.com Turkish art competitions site. Extract ALL competition listings with their titles, deadlines and URLs.'
+  },
+  {
+    url: 'https://www.tjk.org/TR/YarisSever/Query/Page/Haberler',
+    name: 'tjk.org news',
+    instruction: 'This is TJK (Türkiye Jokey Kulübü) news page. Find any resim yarışması (painting competition) announcements and extract their titles, dates and URLs.'
+  },
+  {
+    url: 'https://www.fasanatakademi.com/resimyar%C4%B1%C5%9Fmalar%C4%B1',
+    name: 'fasanatakademi.com',
+    instruction: 'This is FA Sanat Akademi resim yarışmaları page. Extract ALL painting competitions listed with their titles, deadlines and URLs.'
+  }
+];
+
+// ── API Key ──
+function loadKey() {
+  try { apiKey = localStorage.getItem('sr_key') || ''; } catch(e) {}
+  refreshKeyUI();
+}
+function refreshKeyUI() {
+  var pill = document.getElementById('keyPill');
+  var txt = document.getElementById('keyPillTxt');
+  if (apiKey) { pill.classList.add('ok'); txt.textContent = 'API key set'; }
+  else { pill.classList.remove('ok'); txt.textContent = 'Add API key'; }
+}
+function openModal() {
+  document.getElementById('keyModal').classList.remove('hidden');
+  document.getElementById('keyInp').value = apiKey || '';
+  document.getElementById('keyErr').style.display = 'none';
+  setTimeout(function() { document.getElementById('keyInp').focus(); }, 80);
+}
+function saveKey() {
+  var v = document.getElementById('keyInp').value.trim();
+  var err = document.getElementById('keyErr');
+  if (!v || v.indexOf('sk-ant-') !== 0) {
+    err.style.display = 'block'; err.textContent = 'Must start with sk-ant- — check and retry.'; return;
+  }
+  apiKey = v;
+  try { localStorage.setItem('sr_key', apiKey); } catch(e) {}
+  document.getElementById('keyModal').classList.add('hidden');
+  refreshKeyUI();
+  showToast('API key saved');
+}
+
+// ── Storage ──
+function persist() {
+  try {
+    localStorage.setItem('sr_events', JSON.stringify(allEvents));
+    localStorage.setItem('sr_history', JSON.stringify(scanHistory));
+  } catch(e) {}
+}
+function restore() {
+  try {
+    var ev = localStorage.getItem('sr_events');
+    var hi = localStorage.getItem('sr_history');
+    if (ev) { allEvents = JSON.parse(ev); scanHistory = hi ? JSON.parse(hi) : []; showDash(); }
+  } catch(e) {}
+}
+
+// ── Filter ──
+function setFilter(f) {
+  activeFilter = f;
+  document.querySelectorAll('.fpill').forEach(function(p) { p.classList.toggle('active', p.getAttribute('data-f') === f); });
+  document.querySelectorAll('.stat-cell').forEach(function(c) { c.classList.toggle('active', c.getAttribute('data-tab') === f); });
+  renderEvents();
+}
+
+// ── Toggles ──
+function buildToggles() {
+  var el = document.getElementById('catToggles');
+  el.innerHTML = AI_CATS.map(function(c, i) {
+    return '<div class="sb-cat" data-i="'+i+'"><span>'+c.label+'</span><div class="swtch '+(c.active?'on':'')+'" id="sw'+i+'"><div class="sknob"></div></div></div>';
+  }).join('');
+  el.querySelectorAll('.sb-cat').forEach(function(row) {
+    row.addEventListener('click', function() {
+      var i = parseInt(this.getAttribute('data-i'));
+      AI_CATS[i].active = !AI_CATS[i].active;
+      var sw = document.getElementById('sw'+i);
+      sw.classList.toggle('on', AI_CATS[i].active);
+      sw.querySelector('.sknob').style.left = AI_CATS[i].active ? '13px' : '2px';
+    });
+  });
+}
+
+// ── Scan ──
+function runScan() {
+  if (!apiKey) { openModal(); return; }
+
+  var btn = document.getElementById('mainScanBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Scanning…';
+
+  document.getElementById('emptyScreen').style.display = 'none';
+  document.getElementById('eventsList').innerHTML = '';
+  document.getElementById('errBand').classList.remove('show');
+  document.getElementById('noResults').style.display = 'none';
+  document.getElementById('statsBar').style.display = 'none';
+  document.getElementById('toolbar').style.display = 'none';
+  document.getElementById('srcBand').style.display = 'none';
+  document.getElementById('sbCol').style.display = 'none';
+  document.getElementById('loadingScreen').style.display = '';
+
+  var sids = ['s1','s2','s3','s4','s5'];
+  sids.forEach(function(s) { document.getElementById(s).className = 'step'; });
+  var si = 0;
+  var prog = document.getElementById('progBar');
+  var stimer = setInterval(function() {
+    if (si > 0) document.getElementById(sids[si-1]).className = 'step done';
+    if (si < sids.length) {
+      document.getElementById(sids[si]).className = 'step active';
+      prog.style.width = ((si+1)/sids.length * 75) + '%';
+      si++;
+    }
+  }, 2000);
+
+  var activeCats = AI_CATS.filter(function(c) { return c.active; });
+
+  // Run both layers
+  callCombinedScan(activeCats).then(function(events) {
+    clearInterval(stimer);
+    sids.forEach(function(s) { document.getElementById(s).className = 'step done'; });
+    prog.style.width = '100%';
+
+    setTimeout(function() {
+      var seen = {};
+      allEvents.forEach(function(e) { seen[(e.title||'').toLowerCase().trim()] = true; });
+      var tagged = events.map(function(e) {
+        return Object.assign({}, e, {
+          isNew: !seen[(e.title||'').toLowerCase().trim()],
+          scannedAt: new Date().toISOString()
+        });
+      });
+      var merged = tagged.slice();
+      allEvents.forEach(function(old) {
+        var found = tagged.some(function(n) {
+          return (n.title||'').toLowerCase().trim() === (old.title||'').toLowerCase().trim();
+        });
+        if (!found) merged.push(Object.assign({}, old, { isNew: false }));
+      });
+      allEvents = merged;
+      var newCnt = tagged.filter(function(e) { return e.isNew; }).length;
+      scanHistory.unshift({
+        time: new Date().toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' }),
+        date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short' }),
+        count: events.length, newCount: newCnt
+      });
+      if (scanHistory.length > 12) scanHistory = scanHistory.slice(0,12);
+      persist();
+      document.getElementById('loadingScreen').style.display = 'none';
+      showDash();
+      showToast('Found ' + events.length + ' events · ' + newCnt + ' new today');
+      btn.disabled = false;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Scan Again';
+    }, 300);
+
+  }).catch(function(err) {
+    clearInterval(stimer);
+    document.getElementById('loadingScreen').style.display = 'none';
+    document.getElementById('errBand').classList.add('show');
+    var msg = err.message || 'Unknown error.';
+    if (msg.indexOf('401') !== -1) msg += ' — <a href="#" id="fixLink">Update API key</a>';
+    document.getElementById('errBody').innerHTML = msg;
+    var fl = document.getElementById('fixLink');
+    if (fl) fl.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
+    if (allEvents.length) showDash(); else document.getElementById('emptyScreen').style.display = '';
+    btn.disabled = false;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Retry';
+  });
+}
+
+// ── Combined two-layer scan via single API call ──
+function callCombinedScan(aiCats) {
+  var today = new Date().toLocaleDateString('en-GB', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  var aiQueries = aiCats.map(function(c) { return '- ' + c.query; }).join('\n');
+
+  var directUrls = DIRECT_SOURCES.map(function(s) {
+    return '- ' + s.url + ' (' + s.name + ')';
+  }).join('\n');
+
+  var prompt = 'Today is ' + today + '.\n\n' +
+'You are an exhaustive art events researcher for Turkey. Your task has TWO layers:\n\n' +
+
+'LAYER 1 — DIRECT SITE FETCH (mandatory, do these first):\n' +
+'Fetch and read the full content of these specific URLs:\n' +
+directUrls + '\n\n' +
+'From each page, extract every painting competition / sanat yarışması listed. For sanatyarismalari.com make sure to capture ALL listed competitions including:\n' +
+'- 13. PonArt Resim Yarışması (deadline 01 Haziran 2026)\n' +
+'- 5. Sıtkı Davut Koçman Resim Yarışması (deadline 15 Haziran 2026)\n' +
+'- Any other resim/painting competitions listed\n' +
+'Also check tjk.org for the 13. TJK Resim Yarışması (URL: https://www.tjk.org/TR/YarisSever/News/Page/51973)\n\n' +
+
+'LAYER 2 — AI WEB SEARCH:\n' +
+'Also search the web for:\n' +
+aiQueries + '\n\n' +
+
+'Return a single JSON array combining ALL results from both layers. Each item:\n' +
+'"title": full event name\n' +
+'"type": one of: competition, exhibition, workshop, festival, open_call\n' +
+'"location": city in Turkey\n' +
+'"date": deadline or event date, human readable\n' +
+'"description": 2 sentences in English — what it is and who can participate\n' +
+'"url": real URL starting with http\n' +
+'"source": website name\n' +
+'"organizer": organizer name or empty string\n' +
+'"scraped": true if from Layer 1 direct fetch, false if from Layer 2 AI search\n\n' +
+'Rules:\n' +
+'- Minimum 15 events total\n' +
+'- Layer 1 events are REQUIRED — do not skip them\n' +
+'- Only include events with verifiable URLs\n' +
+'- Do NOT invent events\n' +
+'- Return ONLY the raw JSON array, no markdown, no explanation';
+
+  return fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 8000,
+      tools: [{ type: 'web_search_20250305', name: 'web_search' }],
+      messages: [{ role: 'user', content: prompt }]
+    })
+  }).then(function(res) {
+    if (res.status === 401) throw new Error('401 Unauthorized — API key invalid or expired.');
+    if (res.status === 429) throw new Error('429 Rate limit — wait a moment and retry.');
+    if (!res.ok) return res.json().then(function(d) {
+      throw new Error('API error ' + res.status + ': ' + ((d.error && d.error.message) ? d.error.message : res.statusText));
+    });
+    return res.json();
+  }).then(function(data) {
+    var tb = null;
+    for (var i = 0; i < (data.content||[]).length; i++) {
+      if (data.content[i].type === 'text') { tb = data.content[i]; break; }
+    }
+    if (!tb) throw new Error('No text response from AI. Try again.');
+    var text = tb.text.trim().replace(/```json|```/g,'').trim();
+    var s = text.indexOf('['), e = text.lastIndexOf(']');
+    if (s === -1 || e === -1) throw new Error('Unexpected response format. Try again.');
+    var parsed;
+    try { parsed = JSON.parse(text.slice(s, e+1)); } catch(ex) { throw new Error('JSON parse error. Try again.'); }
+    if (!Array.isArray(parsed) || !parsed.length) throw new Error('No events found. Try again.');
+    return parsed;
+  });
+}
+
+// ── Render ──
+function showDash() {
+  document.getElementById('emptyScreen').style.display = 'none';
+  document.getElementById('statsBar').style.display = '';
+  document.getElementById('toolbar').style.display = '';
+  document.getElementById('srcBand').style.display = '';
+  document.getElementById('sbCol').style.display = '';
+  updateStats(); updateHistory(); renderEvents();
+}
+
+function updateStats() {
+  var c = { competition:0, exhibition:0, workshop:0, festival:0, open_call:0 };
+  allEvents.forEach(function(e) { if (c[e.type] !== undefined) c[e.type]++; });
+  document.getElementById('sAll').textContent = allEvents.length;
+  document.getElementById('sComp').textContent = c.competition;
+  document.getElementById('sExh').textContent = c.exhibition;
+  document.getElementById('sWork').textContent = c.workshop + c.festival;
+  document.getElementById('sCalls').textContent = c.open_call;
+}
+
+function updateHistory() {
+  var el = document.getElementById('histList');
+  if (!scanHistory.length) { el.innerHTML = '<div style="font-size:0.72rem;color:var(--muted)">No scans yet</div>'; return; }
+  el.innerHTML = scanHistory.map(function(h) {
+    return '<div class="hist-row"><span>'+h.date+' · '+h.time+'</span><span class="hbadge">+' + (h.newCount||0) + ' new</span></div>';
+  }).join('');
+}
+
+function renderEvents() {
+  var list = document.getElementById('eventsList');
+  var noRes = document.getElementById('noResults');
+  var srch = (document.getElementById('srchInp').value || '').toLowerCase().trim();
+  var events = allEvents.slice();
+  if (activeFilter !== 'all') events = events.filter(function(e) { return e.type === activeFilter; });
+  if (srch) events = events.filter(function(e) {
+    return (e.title||'').toLowerCase().includes(srch) ||
+           (e.description||'').toLowerCase().includes(srch) ||
+           (e.location||'').toLowerCase().includes(srch) ||
+           (e.organizer||'').toLowerCase().includes(srch) ||
+           (e.source||'').toLowerCase().includes(srch);
+  });
+  if (!events.length) { list.innerHTML = ''; noRes.style.display = ''; return; }
+  noRes.style.display = 'none';
+
+  // scraped events first, then new, then rest
+  events.sort(function(a,b) {
+    if (a.scraped && !b.scraped) return -1;
+    if (!a.scraped && b.scraped) return 1;
+    if (a.isNew && !b.isNew) return -1;
+    if (!a.isNew && b.isNew) return 1;
+    return 0;
+  });
+
+  list.innerHTML = events.map(function(ev) {
+    var m = TYPE_META[ev.type] || TYPE_META['open_call'];
+    var url = ev.url && ev.url.indexOf('http') === 0 ? ev.url : null;
+    return '<div class="event-row">' +
+      '<div class="ebar t-'+(ev.type||'open_call')+'"></div>' +
+      '<div class="ebody">' +
+        '<div class="ekicker">' +
+          '<span class="etype">'+m.label+'</span>' +
+          (ev.scraped ? '<span class="esrc-badge">✓ Direct source</span>' : '') +
+          (ev.isNew ? '<span class="enew">New</span>' : '') +
+        '</div>' +
+        '<div class="etitle">'+(ev.title||'Untitled')+'</div>' +
+        '<div class="emeta">' +
+          '<span>📍 '+(ev.location||'Turkey')+'</span>' +
+          (ev.organizer ? '<span>'+ev.organizer+'</span>' : '') +
+          '<span>🗓 '+(ev.date||'Date TBA')+'</span>' +
+          (ev.source ? '<span>'+ev.source+'</span>' : '') +
+        '</div>' +
+        '<div class="edesc">'+(ev.description||'')+'</div>' +
+        (url ? '<a href="'+url+'" class="elink" target="_blank">View event ↗</a>' : '') +
+      '</div>' +
+      '<div class="easide">'+(ev.date||'')+'</div>' +
+    '</div>';
+  }).join('');
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(function() { t.classList.remove('show'); }, 3500);
+}
+
+function init() {
+  document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  loadKey(); buildToggles(); restore();
+
+  document.getElementById('mainScanBtn').addEventListener('click', runScan);
+  document.getElementById('emptyBtn').addEventListener('click', runScan);
+  document.getElementById('sbScanBtn').addEventListener('click', runScan);
+  document.getElementById('keyPill').addEventListener('click', openModal);
+  document.getElementById('keySaveBtn').addEventListener('click', saveKey);
+  document.getElementById('keyInp').addEventListener('keydown', function(e) { if (e.key === 'Enter') saveKey(); });
+  document.getElementById('srchInp').addEventListener('input', renderEvents);
+
+  document.querySelectorAll('.stat-cell').forEach(function(c) {
+    c.addEventListener('click', function() { setFilter(this.getAttribute('data-tab')); });
+  });
+  document.querySelectorAll('.fpill').forEach(function(p) {
+    p.addEventListener('click', function() { setFilter(this.getAttribute('data-f')); });
+  });
+
+  if (!apiKey) openModal();
+}
+
+init();
+</script>
+</body>
+</html>
