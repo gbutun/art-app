@@ -2,12 +2,15 @@ const artistProfile = document.getElementById("artistProfile");
 const artistWorksGrid = document.getElementById("artistWorksGrid");
 const artistWorkTemplate = document.getElementById("artistWorkCardTemplate");
 const artistWorksEmpty = document.getElementById("artistWorksEmpty");
+const detailModal = document.getElementById("detailModal");
+const detailContent = document.getElementById("detailContent");
 const languageButtons = document.querySelectorAll("[data-language]");
 const backHomeLink = document.querySelector("[data-back-home]");
 const artistsDirectoryLink = document.querySelector("[data-nav-artists]");
 const params = new URLSearchParams(window.location.search);
 const artistId = params.get("id") || artists[0].id;
 let currentLanguage = params.get("lang") || "en";
+let activePaintingId = null;
 
 function toLocalAssetUrl(assetUrl) {
   if (!assetUrl || !assetUrl.startsWith("http")) {
@@ -49,6 +52,41 @@ function assignImageWithFallback(image, primaryUrl) {
     },
     { once: true }
   );
+}
+
+function openPainting(id) {
+  const painting = paintings.find((entry) => entry.id === id);
+  const ui = translations[currentLanguage];
+
+  if (!painting) {
+    return;
+  }
+
+  activePaintingId = id;
+
+  detailContent.innerHTML = `
+    <div class="detail-image-wrap">
+      <img src="${painting.image}" alt="${painting.title[currentLanguage]} by ${painting.artist[currentLanguage]}" />
+    </div>
+    <div class="detail-copy">
+      <p class="eyebrow">${ui.detailEyebrow}</p>
+      <h2>${painting.title[currentLanguage]}</h2>
+      <p class="artist-name">${painting.artist[currentLanguage]}</p>
+      <p>${painting.description[currentLanguage]}</p>
+      <ul class="detail-facts">
+        <li><strong>${ui.factsYear}:</strong> ${painting.year}</li>
+        <li><strong>${ui.factsMedium}:</strong> ${painting.medium[currentLanguage]}</li>
+        <li><strong>${ui.factsDimensions}:</strong> ${painting.dimensions}</li>
+      </ul>
+    </div>
+  `;
+
+  const detailImage = detailContent.querySelector("img");
+  if (detailImage) {
+    assignImageWithFallback(detailImage, painting.image);
+  }
+
+  detailModal.showModal();
 }
 
 function updateChrome() {
@@ -129,6 +167,7 @@ function renderArtistWorks() {
 
   artistWorks.forEach((painting, index) => {
     const card = artistWorkTemplate.content.firstElementChild.cloneNode(true);
+    const button = card.querySelector(".painting-card-link");
     const image = card.querySelector("img");
     const title = card.querySelector("h3");
     const artistName = card.querySelector(".artist-name");
@@ -139,6 +178,7 @@ function renderArtistWorks() {
     artistName.textContent = painting.artist[currentLanguage];
     card.style.animationDelay = `${index * 70}ms`;
 
+    button.addEventListener("click", () => openPainting(painting.id));
     artistWorksGrid.appendChild(card);
   });
 }
