@@ -92,7 +92,9 @@ function renderGallery() {
   galleryGrid.innerHTML = "";
   const ui = translations[currentLanguage];
 
-  artists.forEach((artistEntry) => {
+  const galleryArtists = artists.filter((a) => !["misc", "news-events"].includes(a.id));
+
+  galleryArtists.forEach((artistEntry) => {
     const artistPaintings = getPaintingsByArtistId(artistEntry.id).slice(-4).reverse();
 
     if (!artistPaintings.length) {

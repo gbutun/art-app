@@ -49,7 +49,7 @@ function assignImageWithFallback(image, primaryUrl) {
 function renderArtistsDirectory() {
   artistsGrid.innerHTML = "";
 
-  artists.forEach((artistEntry, index) => {
+  artists.filter((a) => !["misc", "news-events"].includes(a.id)).forEach((artistEntry, index) => {
     const card = artistTemplate.content.firstElementChild.cloneNode(true);
     const link = card.querySelector(".artist-card-link");
     const portrait = card.querySelector(".artist-portrait");
