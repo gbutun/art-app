@@ -50,7 +50,7 @@
 
     <template id="artistWorkCardTemplate">
       <article class="painting-card">
-        <div class="painting-card-link painting-card-static">
+        <button class="painting-card-link" type="button">
           <div class="painting-media">
             <img alt="" loading="lazy" />
           </div>
@@ -58,9 +58,16 @@
             <h3></h3>
             <p class="artist-name"></p>
           </div>
-        </div>
+        </button>
       </article>
     </template>
+
+    <dialog class="detail-modal" id="detailModal">
+      <form method="dialog" class="modal-close-row">
+        <button class="icon-button" aria-label="Close painting details" data-i18n="closeButton">Close</button>
+      </form>
+      <div class="detail-layout" id="detailContent"></div>
+    </dialog>
 
     <script src="./gallery-data.js"></script>
     <script src="./artist-page.js"></script>

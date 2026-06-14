@@ -453,21 +453,14 @@ async function loadNewsItems() {
 async function main() {
   const { artists, paintings } = await loadArtistsAndPaintings();
   const newsItems = await loadNewsItems();
+  const mehmetPaintings = paintings.filter((p) => p.artistId === "mehmet-ozdemir");
+  const mahmutPaintings = paintings.filter((p) => p.artistId === "mahmut-sahin");
+
   const siteConfig = {
     assetBaseUrl,
     heroImages: {
-      featured: await versionedAssetPath(
-        path.join(artifactsDir, artistsFolderName, "Mehmet Ozdemir", "resim26.png"),
-        artistsFolderName,
-        "Mehmet Ozdemir",
-        "resim26.png"
-      ),
-      accent: await versionedAssetPath(
-        path.join(artifactsDir, artistsFolderName, "Mahmut Sahin", "resim17.png"),
-        artistsFolderName,
-        "Mahmut Sahin",
-        "resim17.png"
-      ),
+      featured: mehmetPaintings.at(-1)?.image ?? null,
+      accent: mahmutPaintings.at(-1)?.image ?? null,
     },
   };
 
