@@ -13,7 +13,7 @@ FILES=(
   "artist.html"
   "artists.html"
   "news.html"
-  "artRadar.html"
+  "artRadar-data.js"
   "SanatRadar.html"
   "gallery-data.js"
   "script.js"

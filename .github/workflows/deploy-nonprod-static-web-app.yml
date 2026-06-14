@@ -39,7 +39,7 @@ jobs:
           rm -rf dist
           node scripts/generate-gallery-data.mjs
           mkdir -p dist
-          cp index.html artist.html artists.html news.html artRadar.html SanatRadar.html staticwebapp.config.json styles.css script.js artist-page.js artists-page.js news-page.js gallery-data.js dist/
+          cp index.html artist.html artists.html news.html staticwebapp.config.json styles.css script.js artist-page.js artists-page.js news-page.js gallery-data.js artRadar-data.js dist/
           if [[ -z "$ASSET_BASE_URL" ]]; then
             cp -R artifacts dist/artifacts
           fi

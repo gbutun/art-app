@@ -43,18 +43,14 @@
           <div class="news-grid" id="newsGrid" aria-live="polite"></div>
         </section>
 
-        <section class="artRadar-section">
+        <section class="artRadar-section" id="artRadarSection" hidden>
           <div class="section-heading">
             <div>
               <p class="eyebrow">Art Intelligence · Turkey</p>
               <h2>ArtRadar</h2>
             </div>
           </div>
-          <iframe
-            src="./SanatRadar.html?embed=1"
-            class="artRadar-frame"
-            title="ArtRadar — Turkey Art Events"
-          ></iframe>
+          <div id="artRadarGrid"></div>
         </section>
       </main>
     </div>
@@ -74,6 +70,7 @@
     </template>
 
     <script src="./gallery-data.js"></script>
+    <script src="./artRadar-data.js"></script>
     <script src="./news-page.js"></script>
   </body>
 </html>
