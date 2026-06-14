@@ -9,13 +9,82 @@ const accentHeroArt = document.querySelector(".hero-art-accent");
 let currentLanguage = "en";
 let activePaintingId = null;
 
+function toLocalAssetUrl(assetUrl) {
+  if (!assetUrl || !assetUrl.startsWith("http")) {
+    return assetUrl;
+  }
+
+  try {
+    const parsedUrl = new URL(assetUrl);
+    const marker = "/artifacts/";
+    const markerIndex = parsedUrl.pathname.indexOf(marker);
+
+    if (markerIndex === -1) {
+      return assetUrl;
+    }
+
+    return `.${parsedUrl.pathname.slice(markerIndex)}${parsedUrl.search}`;
+  } catch {
+    return assetUrl;
+  }
+}
+
+function assignImageWithFallback(image, primaryUrl) {
+  const fallbackUrl = toLocalAssetUrl(primaryUrl);
+  image.src = primaryUrl;
+
+  if (!fallbackUrl || fallbackUrl === primaryUrl) {
+    return;
+  }
+
+  image.addEventListener(
+    "error",
+    () => {
+      if (image.dataset.fallbackApplied === "true") {
+        return;
+      }
+
+      image.dataset.fallbackApplied = "true";
+      image.src = fallbackUrl;
+    },
+    { once: true }
+  );
+}
+
+function applyBackgroundWithFallback(element, primaryUrl, overlay) {
+  if (!element || !primaryUrl) {
+    return;
+  }
+
+  const fallbackUrl = toLocalAssetUrl(primaryUrl);
+  element.style.backgroundImage = `${overlay}, url('${primaryUrl}')`;
+
+  if (!fallbackUrl || fallbackUrl === primaryUrl) {
+    return;
+  }
+
+  const probe = new Image();
+  probe.onerror = () => {
+    element.style.backgroundImage = `${overlay}, url('${fallbackUrl}')`;
+  };
+  probe.src = primaryUrl;
+}
+
 function applyHeroImages() {
   if (featuredHeroArt && siteConfig?.heroImages?.featured) {
-    featuredHeroArt.style.backgroundImage = `linear-gradient(180deg, rgba(38, 34, 30, 0.18), rgba(38, 34, 30, 0.08)), url('${siteConfig.heroImages.featured}')`;
+    applyBackgroundWithFallback(
+      featuredHeroArt,
+      siteConfig.heroImages.featured,
+      "linear-gradient(180deg, rgba(38, 34, 30, 0.18), rgba(38, 34, 30, 0.08))"
+    );
   }
 
   if (accentHeroArt && siteConfig?.heroImages?.accent) {
-    accentHeroArt.style.backgroundImage = `linear-gradient(180deg, rgba(44, 38, 31, 0.2), rgba(44, 38, 31, 0.06)), url('${siteConfig.heroImages.accent}')`;
+    applyBackgroundWithFallback(
+      accentHeroArt,
+      siteConfig.heroImages.accent,
+      "linear-gradient(180deg, rgba(44, 38, 31, 0.2), rgba(44, 38, 31, 0.06))"
+    );
   }
 }
 
@@ -68,7 +137,7 @@ function renderGallery() {
       const cardTitle = card.querySelector("h3");
       const artist = card.querySelector(".artist-name");
 
-      image.src = painting.image;
+      assignImageWithFallback(image, painting.image);
       image.alt = `${painting.title[currentLanguage]} by ${painting.artist[currentLanguage]}`;
       cardTitle.textContent = painting.title[currentLanguage];
       artist.textContent = painting.artist[currentLanguage];
@@ -117,6 +186,11 @@ function openPainting(id) {
       </ul>
     </div>
   `;
+
+  const detailImage = detailContent.querySelector("img");
+  if (detailImage) {
+    assignImageWithFallback(detailImage, painting.image);
+  }
 
   detailModal.showModal();
 }

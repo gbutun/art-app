@@ -4,6 +4,48 @@ const languageButtons = document.querySelectorAll("[data-language]");
 const params = new URLSearchParams(window.location.search);
 let currentLanguage = params.get("lang") || "en";
 
+function toLocalAssetUrl(assetUrl) {
+  if (!assetUrl || !assetUrl.startsWith("http")) {
+    return assetUrl;
+  }
+
+  try {
+    const parsedUrl = new URL(assetUrl);
+    const marker = "/artifacts/";
+    const markerIndex = parsedUrl.pathname.indexOf(marker);
+
+    if (markerIndex === -1) {
+      return assetUrl;
+    }
+
+    return `.${parsedUrl.pathname.slice(markerIndex)}${parsedUrl.search}`;
+  } catch {
+    return assetUrl;
+  }
+}
+
+function assignImageWithFallback(image, primaryUrl) {
+  const fallbackUrl = toLocalAssetUrl(primaryUrl);
+  image.src = primaryUrl;
+
+  if (!fallbackUrl || fallbackUrl === primaryUrl) {
+    return;
+  }
+
+  image.addEventListener(
+    "error",
+    () => {
+      if (image.dataset.fallbackApplied === "true") {
+        return;
+      }
+
+      image.dataset.fallbackApplied = "true";
+      image.src = fallbackUrl;
+    },
+    { once: true }
+  );
+}
+
 function renderArtistsDirectory() {
   artistsGrid.innerHTML = "";
 
@@ -21,6 +63,10 @@ function renderArtistsDirectory() {
     if (artistEntry.portrait) {
       portrait.innerHTML = `<img class="artist-portrait-image" src="${artistEntry.portrait}" alt="${artistEntry.name[currentLanguage]}" loading="lazy" />`;
       portrait.removeAttribute("aria-hidden");
+      const portraitImage = portrait.querySelector(".artist-portrait-image");
+      if (portraitImage) {
+        assignImageWithFallback(portraitImage, artistEntry.portrait);
+      }
     }
     role.textContent = artistEntry.role[currentLanguage];
     name.textContent = artistEntry.name[currentLanguage];
