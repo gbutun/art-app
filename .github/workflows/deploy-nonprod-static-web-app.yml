@@ -9,6 +9,7 @@ on:
       - "*.css"
       - "*.js"
       - "artifacts/**"
+      - "staticwebapp.config.json"
       - "scripts/generate-gallery-data.mjs"
       - ".github/workflows/deploy-nonprod-static-web-app.yml"
   workflow_dispatch:
