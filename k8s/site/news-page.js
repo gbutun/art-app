@@ -99,8 +99,34 @@ function applyLanguage(language) {
   history.replaceState({}, "", `./news.html?lang=${encodeURIComponent(currentLanguage)}`);
 }
 
+function renderArtRadar() {
+  if (typeof artRadarEvents === "undefined" || !artRadarEvents.length) return;
+
+  document.getElementById("artRadarSection").hidden = false;
+  const grid = document.getElementById("artRadarGrid");
+
+  grid.innerHTML = artRadarEvents.map((ev) => {
+    const url = ev.url?.startsWith("http") ? ev.url : null;
+    return `<div class="ar-event">
+      <div class="ar-event-meta">
+        <span class="ar-type">${ev.type.replace("_", " ").toUpperCase()}</span>
+        ${ev.scraped ? '<span class="ar-source">✓ Direct source</span>' : ""}
+        <span class="ar-date">${ev.date}</span>
+      </div>
+      <div class="ar-title">${ev.title}</div>
+      <div class="ar-detail">
+        ${ev.location ? `<span>📍 ${ev.location}</span>` : ""}
+        ${ev.organizer ? `<span>${ev.organizer}</span>` : ""}
+      </div>
+      ${ev.description ? `<div class="ar-desc">${ev.description}</div>` : ""}
+      ${url ? `<a class="ar-link" href="${url}" target="_blank" rel="noopener">View event ↗</a>` : ""}
+    </div>`;
+  }).join("");
+}
+
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.language));
 });
 
 applyLanguage(currentLanguage);
+renderArtRadar();
