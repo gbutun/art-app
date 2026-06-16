@@ -24,5 +24,8 @@ Plain HTML/CSS/JS — **no build framework, no package.json.**
 
 ## Generated / noise (don't hand-edit, regenerated)
 - `dist/` — built by CI from the root site files.
-- `gallery-data.js` — generated from `artifacts/`.
+- `gallery-data.js` — generated from `artifacts/`; **git-ignored, never commit it.**
+  CI regenerates it with `ASSET_BASE_URL=<azure>` (absolute URLs); `sync-k8s-site.sh`
+  regenerates it without (relative paths for local use). Committing it would break one
+  or the other.
 - `infra/terraform/**/outputs/*.log` — local plan/apply transcripts.
