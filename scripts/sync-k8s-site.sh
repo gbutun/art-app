@@ -25,7 +25,8 @@ FILES=(
 
 usage() {
   cat <<'EOF'
-Usage: ./sync-k8s-site.sh [--sync-only] [--no-restart]
+Usage: ./sync-k8s-site.sh [--sync-only] [--no-restart] --account-name nweuartsa01a01
+
 
 Regenerates gallery-data.js from artifacts/, copies the root site files and
 artifacts into k8s/site, applies the k8s manifests, and restarts the art-app
