@@ -48,6 +48,9 @@ const translations = {
     factsYear: "Year",
     factsMedium: "Medium",
     factsDimensions: "Dimensions",
+    factsCategory: "Category",
+    factsAvailability: "Availability",
+    factsPrice: "Price",
     artistPageEyebrow: "Artist Profile",
     artistWorksEyebrow: "Selected Works",
     artistWorksTitle: "Paintings by this artist",
@@ -92,6 +95,9 @@ const translations = {
     factsYear: "Yıl",
     factsMedium: "Teknik",
     factsDimensions: "Ölçüler",
+    factsCategory: "Kategori",
+    factsAvailability: "Uygunluk",
+    factsPrice: "Fiyat",
     artistPageEyebrow: "Sanatçı Profili",
     artistWorksEyebrow: "Seçili Eserler",
     artistWorksTitle: "Bu sanatçıya ait tablolar",
@@ -273,6 +279,47 @@ function translateTechnique(technique) {
     );
   }
   return { en: technique, tr: tr ?? technique };
+}
+
+const categoryTranslations = {
+  Landscape: "Peyzaj",
+  Portraiture: "Portre",
+  "Contemporary Classical Portraiture": "Çağdaş Klasik Portre",
+  "Still Life": "Natürmort",
+  "Wild Life and Animal": "Yaban Hayatı ve Hayvanlar",
+  Figurative: "Figüratif",
+  Reproduction: "Reprodüksiyon",
+};
+
+function translateCategory(category) {
+  if (!category) return null;
+  const tr = categoryTranslations[category];
+  if (!tr) {
+    console.warn(
+      `No Turkish translation known for painting category "${category}" — add one to categoryTranslations.`
+    );
+  }
+  return { en: category, tr: tr ?? category };
+}
+
+function translateAvailability(availability) {
+  if (!availability) return null;
+  const normalized = availability.trim().replace(/\.$/, "");
+
+  if (/^yes$/i.test(normalized)) {
+    return { en: "Available", tr: "Mevcut" };
+  }
+  if (/^no\b/i.test(normalized)) {
+    return {
+      en: "Not currently available, but it can be made again upon request.",
+      tr: "Şu anda mevcut değil, ancak talep üzerine yeniden yapılabilir.",
+    };
+  }
+
+  console.warn(
+    `Unrecognized painting availability value "${availability}" — add a case to translateAvailability.`
+  );
+  return { en: availability, tr: availability };
 }
 
 function normalizeStem(stem) {
@@ -712,6 +759,9 @@ async function loadArtistsAndPaintings() {
             paintingDetails = {
               medium: translateTechnique(fields["Painting Technique"]),
               dimensions: normalizeDimensions(fields.Dimensions),
+              category: translateCategory(fields.Category),
+              availability: translateAvailability(fields.Availability),
+              price: fields.Price ? { en: fields.Price, tr: fields.Price } : null,
               description: {
                 en: fields.Description,
                 tr: trOverride ?? metadata.description.tr,
@@ -732,6 +782,9 @@ async function loadArtistsAndPaintings() {
         year: "2026",
         medium: paintingDetails?.medium ?? { en: "Original artwork", tr: "Özgün eser" },
         dimensions: paintingDetails?.dimensions ?? "Details on request",
+        category: paintingDetails?.category ?? null,
+        availability: paintingDetails?.availability ?? null,
+        price: paintingDetails?.price ?? null,
         description: paintingDetails?.description ?? metadata.description,
         image: artifactPath(folderName, fileName),
       });

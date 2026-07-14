@@ -54,6 +54,11 @@ function assignImageWithFallback(image, primaryUrl) {
   );
 }
 
+function paintingFactRow(label, value) {
+  if (!value) return "";
+  return `<li><strong>${label}:</strong> ${value[currentLanguage]}</li>`;
+}
+
 function openPainting(id) {
   const painting = paintings.find((entry) => entry.id === id);
   const ui = translations[currentLanguage];
@@ -77,6 +82,9 @@ function openPainting(id) {
         <li><strong>${ui.factsYear}:</strong> ${painting.year}</li>
         <li><strong>${ui.factsMedium}:</strong> ${painting.medium[currentLanguage]}</li>
         <li><strong>${ui.factsDimensions}:</strong> ${painting.dimensions}</li>
+        ${paintingFactRow(ui.factsCategory, painting.category)}
+        ${paintingFactRow(ui.factsAvailability, painting.availability)}
+        ${paintingFactRow(ui.factsPrice, painting.price)}
       </ul>
     </div>
   `;
