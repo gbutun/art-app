@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import zlib from "node:zlib";
 
 const rootDir = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const artifactsDir = path.join(rootDir, "artifacts");
@@ -150,174 +151,145 @@ const artistMetadata = {
   },
 };
 
-const oilPaintingMedium = { en: "Oil Painting", tr: "Yağlı Boya" };
+function findEndOfCentralDirectory(buffer) {
+  const eocdSignature = 0x06054b50;
+  for (let offset = buffer.length - 22; offset >= 0; offset--) {
+    if (buffer.readUInt32LE(offset) === eocdSignature) {
+      return offset;
+    }
+  }
+  throw new Error("Not a valid zip file: end of central directory not found");
+}
 
-const paintingMetadata = {
+function readZipEntry(buffer, entryName) {
+  const eocdOffset = findEndOfCentralDirectory(buffer);
+  const centralDirOffset = buffer.readUInt32LE(eocdOffset + 16);
+  const centralDirCount = buffer.readUInt16LE(eocdOffset + 10);
+
+  let offset = centralDirOffset;
+  for (let i = 0; i < centralDirCount; i++) {
+    if (buffer.readUInt32LE(offset) !== 0x02014b50) {
+      throw new Error("Not a valid zip file: bad central directory entry");
+    }
+    const compressionMethod = buffer.readUInt16LE(offset + 10);
+    const compressedSize = buffer.readUInt32LE(offset + 20);
+    const fileNameLength = buffer.readUInt16LE(offset + 28);
+    const extraFieldLength = buffer.readUInt16LE(offset + 30);
+    const commentLength = buffer.readUInt16LE(offset + 32);
+    const localHeaderOffset = buffer.readUInt32LE(offset + 42);
+    const fileName = buffer.toString("utf8", offset + 46, offset + 46 + fileNameLength);
+
+    if (fileName === entryName) {
+      return extractLocalFileData(buffer, localHeaderOffset, compressionMethod, compressedSize);
+    }
+
+    offset += 46 + fileNameLength + extraFieldLength + commentLength;
+  }
+
+  return null;
+}
+
+function extractLocalFileData(buffer, localHeaderOffset, compressionMethod, compressedSize) {
+  if (buffer.readUInt32LE(localHeaderOffset) !== 0x04034b50) {
+    throw new Error("Not a valid zip file: bad local file header");
+  }
+  const fileNameLength = buffer.readUInt16LE(localHeaderOffset + 26);
+  const extraFieldLength = buffer.readUInt16LE(localHeaderOffset + 28);
+  const dataStart = localHeaderOffset + 30 + fileNameLength + extraFieldLength;
+  const compressedData = buffer.subarray(dataStart, dataStart + compressedSize);
+
+  if (compressionMethod === 0) return compressedData;
+  if (compressionMethod === 8) return zlib.inflateRawSync(compressedData);
+  throw new Error(`Unsupported zip compression method: ${compressionMethod}`);
+}
+
+function extractDocxText(buffer) {
+  const xmlBuffer = readZipEntry(buffer, "word/document.xml");
+  if (!xmlBuffer) return "";
+
+  const xml = xmlBuffer.toString("utf8");
+  return xml
+    .replace(/<\/w:p>/g, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'");
+}
+
+const docxFieldPattern =
+  /(Artist(?:['’]s Note)?|Title|Painting Technique|Dimensions|Availability|Price|Category|Description):/;
+
+function parsePaintingDocx(buffer) {
+  const text = extractDocxText(buffer);
+  const parts = text.split(docxFieldPattern);
+  const fields = {};
+
+  for (let i = 1; i < parts.length; i += 2) {
+    const key = parts[i].trim();
+    const value = (parts[i + 1] ?? "").replace(/\n{3,}/g, "\n\n").trim();
+    fields[key] = value;
+  }
+
+  return fields;
+}
+
+function normalizeDimensions(value) {
+  const match = value?.match(/(\d+)\s*cm\s*[xX]\s*(\d+)\s*cm/);
+  return match ? `${match[1]} x ${match[2]} cm` : value?.trim() || null;
+}
+
+const techniqueTranslations = {
+  "Oil Painting": "Yağlı Boya",
+};
+
+function translateTechnique(technique) {
+  if (!technique) return null;
+  const tr = techniqueTranslations[technique];
+  if (!tr) {
+    console.warn(
+      `No Turkish translation known for painting technique "${technique}" — add one to techniqueTranslations.`
+    );
+  }
+  return { en: technique, tr: tr ?? technique };
+}
+
+function normalizeStem(stem) {
+  return stem.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+// Manual Turkish translations of painting descriptions (English text is auto-extracted
+// from matching .docx files at generation time; see parsePaintingDocx). Keyed by artist
+// folder and normalizeStem(filename-without-extension). Add an entry here whenever a new
+// painting docx is added, until the description has been translated.
+const paintingDescriptionTranslations = {
   "Mahmut Sahin": {
-    "A Morning That Asked Nothing": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "There are mornings that make no demands. They simply arrive — soft and luminous — and ask only that you be present enough to notice. This is one of them.\n\nTwo boats rest on water so still it has become a second sky, holding the ochre walls and dark cypress spires in a reflection almost too perfect to disturb. A folded cloth lies across one bow, left there by someone who will return — or perhaps won't, and has made his peace with that too. The sailboat at the dock stands quietly, mast raised toward a sky full of unhurried clouds, in no particular rush to become a voyage.\n\nBehind it all, the village glows in the warm gold of a Mediterranean morning that has been doing this for centuries and sees no reason to stop. Shuttered windows. Terracotta rooftops. A pine tree spreading its arms above the roofline as if offering shade to the whole world.\n\nThe water barely moves. The boats stay. The light falls exactly where it wants to. Some mornings give you everything by asking nothing at all.\n\nThis painting is a balanced meeting of Impressionist observation and Expressionist freedom — academic discipline never disappears, yet the brush never surrenders its liberty.",
-        tr: "Hiçbir şey talep etmeyen sabahlar vardır. Sadece gelirler — yumuşak ve parıltılı — ve tek istedikleri, fark edecek kadar orada olmanızdır. Bu da onlardan biri.\n\nİki kayık, neredeyse ikinci bir gökyüzüne dönüşmüş dupduru bir suyun üzerinde dinleniyor; okra rengi duvarları ve koyu selvi kulelerini bozulması neredeyse imkânsız bir yansımada tutuyor. Pruvalardan birinin üzerinde katlanmış bir bez duruyor — geri dönecek, ya da belki dönmeyecek ve bununla da barışmış birinin bıraktığı. İskeledeki yelkenli sessizce duruyor, direği aceleci olmayan bulutlarla dolu bir gökyüzüne uzanıyor.\n\nHer şeyin arkasında köy, yüzyıllardır bunu sürdüren ve durmak için hiçbir sebep görmeyen bir Akdeniz sabahının sıcak altınında parlıyor. Kapalı panjurlar. Kiremit çatılar. Çatı hattının üzerinde kollarını açmış, sanki bütün dünyaya gölge sunan bir çam ağacı.\n\nSu neredeyse hiç kımıldamıyor. Kayıklar yerinde duruyor. Işık tam olması gereken yere düşüyor. Bazı sabahlar hiçbir şey istemeden size her şeyi verir.\n\nBu tablo, İzlenimci gözlem ile Dışavurumcu özgürlüğün dengeli bir buluşması — akademik disiplin hiç kaybolmuyor, ama fırça da özgürlüğünden asla vazgeçmiyor.",
-      },
-    },
-    "A Storm She Chose to Wear": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "Most people run from storms. She wrapped one around her head and called it an accessory.\n\nCobalt, crimson, emerald, gold — the colors rage and swirl through her headdress like a tempest in full fury, cascading across her shoulders, dissolving into the air around her. And yet her face remains utterly, almost defiantly, calm. A still point at the center of all that beautiful chaos.\n\nThis is a woman who does not merely endure intensity — she adorns herself with it. The jeweled ornament at her brow, the peacock earring catching fire, the layers of color worn like armor and celebration at once — nothing is accidental, everything is chosen.\n\nShe glances past the viewer with the particular look of someone who has already decided, long ago, exactly who she is. The painter gives us the storm. She gives us the stillness inside it.",
-        tr: "Çoğu insan fırtınalardan kaçar. O ise bir tanesini başına doladı ve buna aksesuar dedi.\n\nKobalt, kırmızı, zümrüt, altın — renkler, başlığının içinde tam bir fırtına gibi kükrüyor ve kıvrılıyor; omuzlarına dökülüyor, çevresindeki havada eriyor. Ama yüzü tümüyle, neredeyse meydan okurcasına sakin kalıyor. Bütün o güzel kaosun tam ortasında sabit bir nokta.\n\nBu, yoğunluğa yalnızca katlanan değil, onunla süslenen bir kadın. Alnındaki mücevherli süs, ateş gibi parlayan tavus kuşu küpe, aynı anda hem zırh hem kutlama gibi taşınan renk katmanları — hiçbiri tesadüf değil, her biri bir seçim.\n\nİzleyicinin ötesine, çoktan kim olduğuna karar vermiş birinin o kendine has bakışıyla bakıyor. Ressam bize fırtınayı veriyor. O ise bize fırtınanın içindeki dinginliği veriyor.",
-      },
-    },
-    "A Turkish Summer in Two Acts": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "Tea and watermelon. If there is a more honest portrait of a Turkish summer afternoon, it has not yet been painted.\n\nThe teapot presides over the scene with quiet authority — deep cobalt blue trimmed in gold, round and self-satisfied, glowing with the particular pride of an object that knows its own importance. Around it, slices of watermelon lay scattered like offerings, their crimson flesh almost audibly cold, almost dripping with the promise of relief from the heat.\n\nThis is a still life, yes — but nothing about it feels still. There is the suggestion of a table just cleared, of hands that will return, of a conversation that has merely paused. The tea is hot. The watermelon is cold. Someone, somewhere nearby, has made very good decisions about their afternoon.\n\nSimple, luminous, and deeply familiar to anyone who has ever sat in a garden in July and understood, without needing to say so, that this is enough.",
-        tr: "Çay ve karpuz. Bir Türk yaz öğleden sonrasının bundan daha dürüst bir portresi henüz resmedilmedi.\n\nÇaydanlık sahneye sessiz bir otoriteyle hükmediyor — altın yaldızlı, koyu kobalt mavisi, yuvarlak ve kendinden memnun; kendi öneminin farkında olan bir nesnenin gururuyla parlıyor. Etrafında, karpuz dilimleri adaklar gibi saçılmış; kızıl özleri neredeyse duyulur derecede soğuk, sıcaktan kurtuluş vaadiyle neredeyse damlıyor.\n\nBu bir natürmort, evet — ama hiçbir şeyi durgun hissettirmiyor. Az önce toplanmış bir masanın, geri dönecek ellerin, sadece duraklamış bir sohbetin izleri var. Çay sıcak. Karpuz soğuk. Yakınlarda birileri, öğleden sonraları hakkında oldukça isabetli kararlar almış.\n\nBasit, parıltılı ve temmuzda bir bahçede oturup, söylemeye gerek duymadan bunun yeterli olduğunu anlamış herkese derinden tanıdık.",
-      },
-    },
-    "Born from Light": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "The sun does not rise behind this horse. It explodes — a burst of raw gold that crowns the scene like a benediction, as if the heavens have announced this arrival.\n\nThe white horse surges through the river with absolute certainty. Water erupts around its hooves in cascading foam, mane streaming like spun silk caught in a private wind. Wildflowers line the banks. The forest holds its breath. Everything in this painting exists to frame this single, glorious moment.\n\nThere is something mythic here — less animal than symbol, less horse than pure idea of freedom and grace made flesh and set running.\n\nTechnically, the horse's coat is a masterclass in tonal complexity — never simply white, but a living surface of warm creams and cool greys that give the animal genuine volume. This painting sees with the precision of a realist and feels with the abandon of a poet. Here, it simply runs.",
-        tr: "Güneş bu atın arkasında doğmuyor. Patlıyor — sahneyi bir kutsama gibi taçlandıran, göklerin bu varışı ilan ettiğini düşündüren, ham bir altın patlaması.\n\nBeyaz at, mutlak bir kararlılıkla nehirden geçiyor. Toynaklarının etrafında su, köpük köpük fışkırıyor; yelesi, kendine has bir rüzgârda yakalanmış eğrilmiş ipek gibi dalgalanıyor. Kıyı boyunca kır çiçekleri. Orman nefesini tutmuş. Bu tablodaki her şey, bu tek muhteşem anı çerçevelemek için var.\n\nBurada mitik bir şey var — hayvandan çok simge, attan çok ete kemiğe bürünüp koşmaya başlamış saf bir özgürlük ve zarafet fikri.\n\nTeknik olarak atın postu, tonal karmaşıklıkta bir ustalık dersi — asla sadece beyaz değil, hayvana gerçek bir hacim kazandıran sıcak kremler ve soğuk grilerden oluşan canlı bir yüzey. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor. Burada ise sadece koşuyor.",
-      },
-    },
-    "Fractured, Not Broken": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "The face emerges from chaos — and refuses to disappear into it. Horizontal bands slice across the canvas like interference, like the fragmented way memory sometimes returns a person to us — in pieces, out of sequence, never quite whole. And yet through all of it, those eyes hold. Vivid, ice-blue, utterly present.\n\nThis is a portrait of identity under pressure. Of a self that persists through fracture — through the noise of a world that insists on interrupting, segmenting, categorizing. The abstract intrusions do not obscure her. They become her context, her history, her weather.\n\nTechnically, this work marks a bold departure in the painter's practice — a deliberate collision between his mastery of figurative realism and the language of abstraction. This is Mahmut Şahin stepping into new territory — and arriving with full force.",
-        tr: "Yüz kaostan doğuyor — ve onun içinde kaybolmayı reddediyor. Yatay şeritler tuvali bir parazit gibi, hafızanın bir insanı bize bazen parça parça, sırasız ve hiçbir zaman tam olarak bütün geri getirdiği o dağınık biçim gibi kesiyor. Ama bütün bunların içinde, o gözler direniyor. Canlı, buz mavisi, tamamen orada.\n\nBu, baskı altındaki bir kimliğin portresi. Kesintiye uğratmakta, parçalara ayırmakta, kategorize etmekte ısrar eden bir dünyanın gürültüsü içinde direnen bir benliğin portresi. Soyut müdahaleler onu gizlemiyor. Onun bağlamı, tarihi, iklimi haline geliyor.\n\nTeknik olarak bu eser, ressamın pratiğinde cesur bir kopuşu işaret ediyor — figüratif gerçekçilikteki ustalığı ile soyutlamanın diliyle bilinçli bir çarpışma. Bu, Mahmut Şahin'in yeni bir bölgeye adım atışı — ve tüm gücüyle varışı.",
-      },
-    },
-    "No Reason to Leave": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "Above, the sky is gathering itself — great billowing clouds tumbling across a deepening violet blue, carrying the particular electricity of a summer storm that hasn't quite decided to arrive. Below, the world holds its breath in luminous green and teal, the river stretching lazily toward distant hills still bathed in light.\n\nA wooden rowboat rests half on shore, its rope trailing into the water as if the last person to use it simply forgot to finish leaving. Beside a birch tree whose white bark catches whatever light remains, a log cabin sits with the solid contentment of a thing built to last.\n\nTechnically, the painter commands the canvas with confident, layered brushwork — the clouds built up in thick, sculptural impasto that gives them genuine volume and drama, while the river surface is rendered with smooth, flowing strokes that shimmer with reflected light. This painting sees with the precision of a realist and feels with the abandon of a poet.",
-        tr: "Yukarıda gökyüzü kendini topluyor — derinleşen mor-mavi bir zeminde kabaran devasa bulutlar, henüz gelmeye tam karar vermemiş bir yaz fırtınasının o kendine has gerilimini taşıyor. Aşağıda ise dünya, ışıkla yıkanmış uzak tepelere doğru tembel tembel uzanan nehirle birlikte, parlak yeşil ve deniz mavisi tonlarında nefesini tutuyor.\n\nAhşap bir kürek kayığı yarı kıyıda duruyor, halatı suya doğru sürükleniyor; sanki onu son kullanan kişi ayrılmayı bitirmeyi unutmuş gibi. Kalan ışığı yakalayan beyaz kabuklu bir huş ağacının yanında, dayanıklı olmak için inşa edilmiş bir şeyin sağlam huzuruyla bir kütük kulübe duruyor.\n\nTeknik olarak ressam, tuvale kendinden emin, katmanlı fırça darbeleriyle hükmediyor — bulutlar, onlara gerçek bir hacim ve dram kazandıran kalın, heykelsi bir empasto ile inşa edilirken, nehir yüzeyi yansıyan ışıkla parıldayan pürüzsüz, akışkan darbelerle işleniyor. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor.",
-      },
-    },
-    "Porcelain Dreams": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "At first glance, it is simply a pitcher and some cherries. Look longer, and it becomes something else entirely.\n\nThe porcelain ewer rises from the composition with an almost architectural elegance — its slender neck adorned with sinuous Art Nouveau scrollwork, its rounded belly painted with delicate orange blossoms and green leaves. Around its base, a generous scatter of cherries glows with the deep, lacquered red of things perfectly ripe.\n\nBehind it all, the background refuses to be ignored. Teal, violet, amber and yellow collide in loose, atmospheric strokes — not a wall, not a sky, but a mood.\n\nTechnically, the painter deploys a striking contrast of approaches. The cherries are rendered with almost tactile realism, while the background is painted with bold, free impasto that pulsates with energy. This painting sees with the precision of a realist and feels with the abandon of a poet.",
-        tr: "İlk bakışta yalnızca bir sürahi ve birkaç kiraz. Daha uzun bakınca, tamamen başka bir şeye dönüşüyor.\n\nPorselen sürahi, kompozisyondan neredeyse mimari bir zarafetle yükseliyor — ince boynu kıvrımlı Art Nouveau süslemeleriyle bezeli, yuvarlak gövdesi narin turuncu çiçekler ve yeşil yapraklarla resmedilmiş. Tabanının etrafında, tam olgunlaşmış şeylerin derin, cilalı kırmızısıyla parlayan bolca kiraz saçılmış.\n\nHer şeyin arkasında, fon görmezden gelinmeyi reddediyor. Deniz mavisi, mor, kehribar ve sarı, gevşek, atmosferik fırça darbeleriyle çarpışıyor — ne bir duvar, ne bir gökyüzü, sadece bir ruh hali.\n\nTeknik olarak ressam, çarpıcı bir yaklaşım karşıtlığı sergiliyor. Kiraz'lar neredeyse dokunsal bir gerçekçilikle işlenirken, fon enerjiyle nabız gibi atan cesur, özgür bir empasto ile resmedilmiş. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor.",
-      },
-    },
-    Sovereign: {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "She does not ask to be looked at. She simply is — and looking becomes inevitable. The gaze is direct, unhurried, and completely without apology. Dark eyes beneath sculpted brows hold the viewer with the calm authority of someone who has long since settled the question of who she is.\n\nAround her, the world blooms in warm amber and rose gold, a luminous background that seems to radiate from within rather than fall from without. Against this warmth, the lavender and violet of her wrapped headdress cascades dramatically over one bare shoulder.\n\nThis is a painting about the particular beauty of a woman who has nothing left to prove, and knows it. The light source is frontal and slightly elevated, sculpting the face with precision while the background glows independently — creating a luminous halo effect that elevates the portrait beyond realism into something closer to icon.",
-        tr: "Bakılmayı istemiyor. Sadece var oluyor — ve bakmak kaçınılmaz hâle geliyor. Bakışı doğrudan, aceleci olmayan ve tümüyle özürsüz. Şekillendirilmiş kaşların altındaki koyu gözler, kim olduğu sorusunu çoktan çözmüş birinin sakin otoritesiyle izleyiciyi tutuyor.\n\nÇevresinde dünya, sıcak kehribar ve gül altını tonlarında çiçek açıyor; dışarıdan düşmek yerine içeriden ışıldıyormuş gibi görünen parıltılı bir fon. Bu sıcaklığa karşı, sarılı başlığının lavanta ve moru, çıplak bir omzunun üzerinden dramatik biçimde dökülüyor.\n\nBu, artık kanıtlayacak hiçbir şeyi kalmamış ve bunun farkında olan bir kadının o kendine has güzelliği üzerine bir tablo. Işık kaynağı önden ve hafifçe yukarıdan geliyor, yüzü kesinlikle şekillendirirken fon bağımsız biçimde parlıyor — portreyi gerçekçiliğin ötesine, ikonaya yaklaşan bir şeye taşıyan parıltılı bir hale etkisi yaratıyor.",
-      },
-    },
-    "Stillness as a Form of Power": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "She does not lean forward. She does not reach. She simply sits — and the world rearranges itself around her. Hands folded with practiced ease, gaze steady and unrevealing, she occupies her chair the way a queen occupies a throne: not by force, but by absolute certainty of place.\n\nBehind her, the rotunda stands like a declaration. The garden blazes in full bloom. And far beyond, the sea holds its breath on the horizon, patient, waiting to be noticed when she is ready.\n\nHer dress is a world of its own — a meadow of painted flowers that spills across her lap, blurring the line between woman and garden.\n\nThis is a portrait about the power that lives in composure — the kind that doesn't announce itself, doesn't explain itself, and never, ever apologizes for itself.",
-        tr: "Öne eğilmiyor. Uzanmıyor. Sadece oturuyor — ve dünya kendini onun etrafında yeniden düzenliyor. Elleri alışkanlıkla kolay bir biçimde kavuşturulmuş, bakışı sabit ve hiçbir şey ele vermeyen; koltuğunu bir kraliçenin tahtını işgal ettiği gibi işgal ediyor: güçle değil, yerinin mutlak kesinliğiyle.\n\nArkasında rotonda bir bildiri gibi duruyor. Bahçe tam çiçek açmış hâlde parlıyor. Çok ötede ise deniz ufukta nefesini tutuyor, sabırla, o hazır olduğunda fark edilmeyi bekliyor.\n\nElbisesi kendi başına bir dünya — kucağına dökülen, kadınla bahçe arasındaki sınırı bulanıklaştıran, boyanmış çiçeklerden bir çayır.\n\nBu, sakinlikte yaşayan güç üzerine bir portre — kendini ilan etmeyen, kendini açıklamayan ve kendisi için asla özür dilemeyen türden bir güç.",
-      },
-    },
-    "The Book Can Wait": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "The book lies open but forgotten. Her chin rests on her hand, her gaze drifts somewhere beyond the frame. She is not daydreaming. She is thinking. There is a difference, and the painter knows it.\n\nThe red hat blazes above her dark hair like a small fire — bold, unapologetic, the choice of a woman with opinions. Red roses crowd the left of the frame with the generous abundance of a garden that didn't know when to stop.\n\nTechnically, the painting moves with confident fluidity between precision and freedom. The face is rendered with smooth, luminous brushwork; around her, the painter loosens magnificently — the hat built from bold, mosaic-like strokes of red, orange and gold. This painting sees with the precision of a realist and feels with the abandon of a poet.",
-        tr: "Kitap açık ama unutulmuş duruyor. Çenesi eline yaslanmış, bakışı çerçevenin ötesinde bir yere sürükleniyor. Hayal kurmuyor. Düşünüyor. Aralarında bir fark var ve ressam bunu biliyor.\n\nKırmızı şapka, koyu saçlarının üzerinde küçük bir ateş gibi parlıyor — cesur, özürsüz, fikirleri olan bir kadının seçimi. Kırmızı güller, ne zaman duracağını bilmeyen bir bahçenin cömert bolluğuyla çerçevenin solunu dolduruyor.\n\nTeknik olarak tablo, kesinlik ile özgürlük arasında kendinden emin bir akıcılıkla hareket ediyor. Yüz, pürüzsüz ve parıltılı fırça darbeleriyle işlenmiş; etrafında ressam muhteşem biçimde gevşiyor — şapka, kırmızı, turuncu ve altının cesur, mozaik benzeri darbelerinden inşa edilmiş. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor.",
-      },
-    },
-    "The City That Burns on Water": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "It floats. It glows. It burns with the golden fever of a city that has been beautiful for so long it no longer notices. At the heart of the canvas, a magnificent mosque rises from the water like a vision half-remembered — domes crowned in violet, minarets reaching into a sky that has abandoned all pretense of calm.\n\nAnd everywhere else — sky, water, shadow — the painter unleashes something new. Bold, sweeping strokes of teal and deep violet consume the frame in barely contained energy.\n\nTechnically, this work continues the evolution visible in the painter's 2026 output — a fearless expansion into abstraction without surrendering the emotional anchor of the figurative. This is Mahmut Şahin at his most liberated — and his most luminous.",
-        tr: "Yüzüyor. Parlıyor. Çok uzun süredir güzel olduğu için artık bunun farkında bile olmayan bir kentin altın ateşiyle yanıyor. Tuvalin kalbinde, muhteşem bir cami sudan yarı hatırlanan bir görüntü gibi yükseliyor — kubbeler mor renkte taçlanmış, minareler her türlü sükunet iddiasından vazgeçmiş bir gökyüzüne uzanıyor.\n\nGeri kalan her yerde — gökyüzünde, suda, gölgede — ressam yeni bir şeyi serbest bırakıyor. Deniz mavisi ve koyu morun cesur, süpürücü darbeleri, zapt edilmesi güç bir enerjiyle çerçeveyi kaplıyor.\n\nTeknik olarak bu eser, ressamın 2026 üretiminde görülen evrimi sürdürüyor — figüratifin duygusal çıpasından vazgeçmeden soyutlamaya korkusuzca açılım. Bu, Mahmut Şahin'in en özgür ve en parıltılı hâli.",
-      },
-    },
-    "The Company of Simple Objects": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "Three objects. A shelf. And somehow, everything you need. A blue ceramic cup sits with the comfortable confidence of something used every morning. Behind it, a deep green vase rises with quiet elegance. To the right, a golden pear leans slightly, skin luminous with the warm amber of late afternoon sun.\n\nNothing extraordinary. And yet the painter has arranged these three humble things with such care, and lit them with such devotion, that they become impossible to look away from.\n\nTechnically, this is a study in the art of seeing. Shadows are long and purposeful, anchoring each object firmly to the shelf, giving the composition a timeless, studio quality reminiscent of the great European still life tradition.",
-        tr: "Üç nesne. Bir raf. Ve bir şekilde, ihtiyacınız olan her şey. Mavi seramik bir fincan, her sabah kullanılan bir şeyin rahat özgüveniyle duruyor. Arkasında, koyu yeşil bir vazo sessiz bir zarafetle yükseliyor. Sağda, altın rengi bir armut hafifçe eğilmiş, kabuğu öğleden sonranın sıcak kehribarıyla parlıyor.\n\nOlağanüstü hiçbir şey yok. Yine de ressam bu üç mütevazı nesneyi öyle bir özenle düzenlemiş ve öyle bir adanmışlıkla aydınlatmış ki, gözünüzü ayırmanız imkânsız hâle geliyor.\n\nTeknik olarak bu, görme sanatı üzerine bir çalışma. Gölgeler uzun ve amaçlı, her nesneyi rafa sağlamca bağlıyor ve kompozisyona büyük Avrupa natürmort geleneğini anımsatan zamansız, atölye kalitesinde bir hava kazandırıyor.",
-      },
-    },
-    "The Moment Before She Disappears": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "She is not dancing. She is becoming. The figure leaps across a cool violet-blue sky, arms flung wide, hair wild, her body caught in the precise instant where human form surrenders to pure motion. From her waist downward, she dissolves — flesh giving way to cascading fire, crimson and gold streaming behind her like a comet's tail.\n\nShe is half woman, half flame. And she is magnificent. This is a painting about the cost and the glory of giving everything.\n\nTechnically, this work represents Mahmut Şahin at his most boldly experimental. The upper body is rendered with delicate, almost classical precision, then, in a single breathtaking transition, the brush abandons form entirely.",
-        tr: "Dans etmiyor. Dönüşüyor. Figür, soğuk mor-mavi bir gökyüzünde sıçrıyor, kolları iki yana açılmış, saçları dağınık; bedeni insan formunun saf harekete teslim olduğu tam o ana yakalanmış. Belinden aşağısı eriyor — teni dökülen ateşe yerini bırakıyor, kızıl ve altın bir kuyrukluyıldızın kuyruğu gibi arkasında akıyor.\n\nO yarı kadın, yarı alev. Ve muhteşem. Bu, her şeyi vermenin bedeli ve zaferi üzerine bir tablo.\n\nTeknik olarak bu eser, Mahmut Şahin'i en cesur, en deneysel hâliyle temsil ediyor. Üst gövde narin, neredeyse klasik bir kesinlikle işlenmiş; ardından, nefes kesici tek bir geçişte fırça formdan tamamen vazgeçiyor.",
-      },
-    },
-    "The Ships and the Soul": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "He walks alone through a pool of liquid gold, the city glowing amber behind him, the tall ships resting in blue shadow to his left. He has no name. He needs none. He is every person who has ever stood at the edge of water at night and felt, simultaneously, very small and very alive.\n\nOn the left, cool blue. On the right, burning amber. The solitary figure stands precisely at the border between the two.\n\nTechnically, this work showcases the painter's mastery of the palette knife alongside the brush. The city buildings on the right are constructed in bold, cubist-inflected blocks of impasto — thick, architectural strokes that suggest windows and facades without describing them.",
-        tr: "Sıvı altından bir gölün içinde tek başına yürüyor; arkasında kent kehribar rengiyle parlıyor, solunda uzun gemiler mavi bir gölgede dinleniyor. Adı yok. İhtiyacı da yok. O, geceleyin bir suyun kıyısında durmuş ve aynı anda hem çok küçük hem çok canlı hissetmiş herkes.\n\nSolda soğuk mavi. Sağda yanan kehribar. Yalnız figür, tam olarak ikisinin arasındaki sınırda duruyor.\n\nTeknik olarak bu eser, ressamın fırçanın yanı sıra palet bıçağındaki ustalığını sergiliyor. Sağdaki şehir binaları, cesur, kübist esintili empasto bloklarından inşa edilmiş — pencereleri ve cepheleri tarif etmeden çağrıştıran kalın, mimari darbeler.",
-      },
-    },
-    "The Weight of Simple Things": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "We rush past them every day — a jug on a shelf, a bowl of grapes, an apple that has rolled slightly out of reach, a plum that chose its own corner of the table. We do not stop. We do not look.\n\nThe painter stopped. The painter looked. And in looking, found what the Dutch masters knew three centuries ago and what we keep forgetting: that the ordinary, when truly seen, carries an almost unbearable beauty.\n\nThis is a painting about attention. About the radical act of pausing long enough to notice that the things we reach for every day are, if we let them be, enough.",
-        tr: "Onların yanından her gün aceleyle geçiyoruz — raftaki bir testi, bir kâse üzüm, hafifçe elin uzağına yuvarlanmış bir elma, masanın kendi köşesini seçmiş bir erik. Durmuyoruz. Bakmıyoruz.\n\nRessam durdu. Ressam baktı. Ve bakarken, Hollandalı ustaların üç yüzyıl önce bildiği ve bizim sürekli unuttuğumuz şeyi buldu: sıradan olan, gerçekten görüldüğünde neredeyse dayanılmaz bir güzellik taşır.\n\nBu, dikkat üzerine bir tablo. Her gün elimizi uzattığımız şeylerin — meyve, kap, ahşap bir masanın sessiz köşesi — izin verirsek yeterli olduğunu fark edecek kadar durabilmenin radikal eylemi üzerine.",
-      },
-    },
-    "The Whole Summer in One Laugh": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "He throws his head back, mouth wide open, grapes dangling above him like a small private miracle. She sits above, barefoot and grinning, watching him with the delight of someone who knows exactly how funny this is.\n\nThis is childhood at its most unguarded — two children, some stolen fruit, and a happiness so complete it needs nothing else.\n\nThe painter places this scene firmly in the tradition of the Baroque masters. Deep, velvety darkness swallows the background so that the figures emerge from shadow as if lit by a single candle — Caravaggio's ghost is present here.",
-        tr: "Başını geriye atmış, ağzı ardına kadar açık, üzümler tepesinde küçük, özel bir mucize gibi sallanıyor. O ise yukarıda, yalınayak ve sırıtarak oturuyor, bunun ne kadar komik olduğunu tam olarak bilen birinin keyfiyle onu izliyor.\n\nBu, çocukluğun en savunmasız hâli — iki çocuk, biraz çalıntı meyve ve başka hiçbir şeye ihtiyaç duymayan tam bir mutluluk.\n\nRessam bu sahneyi Barok ustaların geleneğine sağlamca yerleştiriyor. Derin, kadifemsi bir karanlık fonu yutuyor; öyle ki figürler sanki tek bir mumla aydınlatılmış gibi gölgeden ortaya çıkıyor — Caravaggio'nun hayaleti burada hazır.",
-      },
-    },
-    "Toward the Burning Horizon": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "The sun does not set in this painting — it detonates. The whole sky is ablaze, orange and gold dissolving into violet at the edges, as if the world itself is being consumed by a slow and gorgeous fire.\n\nAnd through it all, the ship drives forward. Sails swollen with wind — cobalt, crimson, white — catching the last light of the day and throwing it back at the sky. The hull cuts through dark churning waves that froth white at the bow.\n\nThere is no harbor in sight. No destination named. Only the open sea, the burning sky, and a vessel that has clearly decided that forward is the only direction worth knowing.",
-        tr: "Bu tabloda güneş batmıyor — patlıyor. Bütün gökyüzü alev alev, turuncu ve altın kenarlarda mora eriyor; sanki dünyanın kendisi yavaş ve muhteşem bir ateşle tüketiliyor.\n\nBütün bunların içinden gemi ileri doğru ilerliyor. Rüzgârla şişmiş yelkenler — kobalt, kızıl, beyaz — günün son ışığını yakalayıp gökyüzüne geri fırlatıyor. Gövde, pruvada beyaz köpüren karanlık, çalkantılı dalgaların içinden kesip geçiyor.\n\nOrtada liman yok. Belirtilmiş bir varış noktası yok. Sadece açık deniz, yanan gökyüzü ve ileri gitmenin bilinmeye değer tek yön olduğuna açıkça karar vermiş bir tekne.",
-      },
-    },
-    "Two Wild Things That Found Each Other": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "They look at you together — and together, they are formidable. The woman holds the bridle with a hand that speaks not of control but of trust. Her dark eyes are level, unblinking, carrying the quiet intensity of someone who has lived close to the land and knows exactly who she is. The horse beside her is equally still, equally watchful.\n\nBlack hair cascades over crimson embroidered fabric. Behind them, pine forest and open sky — a world that belongs to them far more than to anyone else.\n\nThis is a portrait of belonging. Not to each other, but to something larger — to the land, to instinct, to the unhurried rhythms of a life lived without apology.",
-        tr: "Birlikte sana bakıyorlar — ve birlikte, etkileyicilar. Kadın, dizgini kontrolden değil güvenden söz eden bir elle tutuyor. Koyu gözleri düz, kırpılmadan; toprağa yakın yaşamış ve kim olduğunu tam olarak bilen birinin sessiz yoğunluğunu taşıyor. Yanındaki at da aynı ölçüde sakin, aynı ölçüde tetikte.\n\nSiyah saçlar kızıl işlemeli kumaşın üzerine dökülüyor. Arkalarında çam ormanı ve açık gökyüzü — herkesten çok onlara ait bir dünya.\n\nBu, aidiyet üzerine bir portre. Birbirlerine değil, daha büyük bir şeye — toprağa, içgüdüye, özür dilemeden yaşanan bir hayatın acelesiz ritmine aidiyet.",
-      },
-    },
-    "Walked Through the Rain": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "The rain came down and the street became a mirror — amber, violet, gold — each lamplight doubled in the wet cobblestones, the whole world suddenly more beautiful for being soaked.\n\nShe walks with her rose umbrella like she owns the night. Unhurried. Unbothered. Somewhere ahead, a lone figure stands in a doorway, half-swallowed by warm light, perhaps waiting, perhaps simply watching the rain fall.\n\nThe painter has built this scene from pure feeling — thick, expressive strokes that make the light almost edible, the darkness almost tender. This is not a painting about rain. It is a painting about the strange joy of walking through it.",
-        tr: "Yağmur yağdı ve sokak bir aynaya dönüştü — kehribar, mor, altın — her lamba ışığı ıslak arnavut kaldırımlarında ikiye katlanmış, ıslanmış olmaktan dolayı bütün dünya birden daha güzel.\n\nGül rengi şemsiyesiyle geceye sahipmiş gibi yürüyor. Aceleci değil. Rahatsız olmamış. İlerideki bir yerde, yalnız bir figür bir kapı eşiğinde duruyor, sıcak ışıkla yarı yarıya yutulmuş; belki bekliyor, belki sadece yağmurun yağışını izliyor.\n\nRessam bu sahneyi saf duygudan inşa etmiş — ışığı neredeyse yenilebilir, karanlığı neredeyse şefkatli kılan kalın, dışavurumcu darbeler. Bu, yağmur üzerine bir tablo değil. Yağmurun içinden yürümenin tuhaf sevinci üzerine bir tablo.",
-      },
-    },
+    "a morning that asked nothing": "Hiçbir şey talep etmeyen sabahlar vardır. Sadece gelirler — yumuşak ve parıltılı — ve tek istedikleri, fark edecek kadar orada olmanızdır. Bu da onlardan biri.\n\nİki kayık, neredeyse ikinci bir gökyüzüne dönüşmüş dupduru bir suyun üzerinde dinleniyor; okra rengi duvarları ve koyu selvi kulelerini bozulması neredeyse imkânsız bir yansımada tutuyor. Pruvalardan birinin üzerinde katlanmış bir bez duruyor — geri dönecek, ya da belki dönmeyecek ve bununla da barışmış birinin bıraktığı. İskeledeki yelkenli sessizce duruyor, direği aceleci olmayan bulutlarla dolu bir gökyüzüne uzanıyor.\n\nHer şeyin arkasında köy, yüzyıllardır bunu sürdüren ve durmak için hiçbir sebep görmeyen bir Akdeniz sabahının sıcak altınında parlıyor. Kapalı panjurlar. Kiremit çatılar. Çatı hattının üzerinde kollarını açmış, sanki bütün dünyaya gölge sunan bir çam ağacı.\n\nSu neredeyse hiç kımıldamıyor. Kayıklar yerinde duruyor. Işık tam olması gereken yere düşüyor. Bazı sabahlar hiçbir şey istemeden size her şeyi verir.\n\nBu tablo, İzlenimci gözlem ile Dışavurumcu özgürlüğün dengeli bir buluşması — akademik disiplin hiç kaybolmuyor, ama fırça da özgürlüğünden asla vazgeçmiyor.",
+    "a storm she chose to wear": "Çoğu insan fırtınalardan kaçar. O ise bir tanesini başına doladı ve buna aksesuar dedi.\n\nKobalt, kırmızı, zümrüt, altın — renkler, başlığının içinde tam bir fırtına gibi kükrüyor ve kıvrılıyor; omuzlarına dökülüyor, çevresindeki havada eriyor. Ama yüzü tümüyle, neredeyse meydan okurcasına sakin kalıyor. Bütün o güzel kaosun tam ortasında sabit bir nokta.\n\nBu, yoğunluğa yalnızca katlanan değil, onunla süslenen bir kadın. Alnındaki mücevherli süs, ateş gibi parlayan tavus kuşu küpe, aynı anda hem zırh hem kutlama gibi taşınan renk katmanları — hiçbiri tesadüf değil, her biri bir seçim.\n\nİzleyicinin ötesine, çoktan kim olduğuna karar vermiş birinin o kendine has bakışıyla bakıyor. Ressam bize fırtınayı veriyor. O ise bize fırtınanın içindeki dinginliği veriyor.",
+    "a turkish summer in two acts": "Çay ve karpuz. Bir Türk yaz öğleden sonrasının bundan daha dürüst bir portresi henüz resmedilmedi.\n\nÇaydanlık sahneye sessiz bir otoriteyle hükmediyor — altın yaldızlı, koyu kobalt mavisi, yuvarlak ve kendinden memnun; kendi öneminin farkında olan bir nesnenin gururuyla parlıyor. Etrafında, karpuz dilimleri adaklar gibi saçılmış; kızıl özleri neredeyse duyulur derecede soğuk, sıcaktan kurtuluş vaadiyle neredeyse damlıyor.\n\nBu bir natürmort, evet — ama hiçbir şeyi durgun hissettirmiyor. Az önce toplanmış bir masanın, geri dönecek ellerin, sadece duraklamış bir sohbetin izleri var. Çay sıcak. Karpuz soğuk. Yakınlarda birileri, öğleden sonraları hakkında oldukça isabetli kararlar almış.\n\nBasit, parıltılı ve temmuzda bir bahçede oturup, söylemeye gerek duymadan bunun yeterli olduğunu anlamış herkese derinden tanıdık.",
+    "born from light": "Güneş bu atın arkasında doğmuyor. Patlıyor — sahneyi bir kutsama gibi taçlandıran, göklerin bu varışı ilan ettiğini düşündüren, ham bir altın patlaması.\n\nBeyaz at, mutlak bir kararlılıkla nehirden geçiyor. Toynaklarının etrafında su, köpük köpük fışkırıyor; yelesi, kendine has bir rüzgârda yakalanmış eğrilmiş ipek gibi dalgalanıyor. Kıyı boyunca kır çiçekleri. Orman nefesini tutmuş. Bu tablodaki her şey, bu tek muhteşem anı çerçevelemek için var.\n\nBurada mitik bir şey var — hayvandan çok simge, attan çok ete kemiğe bürünüp koşmaya başlamış saf bir özgürlük ve zarafet fikri.\n\nTeknik olarak atın postu, tonal karmaşıklıkta bir ustalık dersi — asla sadece beyaz değil, hayvana gerçek bir hacim kazandıran sıcak kremler ve soğuk grilerden oluşan canlı bir yüzey. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor. Burada ise sadece koşuyor.",
+    "fractured, not broken": "Yüz kaostan doğuyor — ve onun içinde kaybolmayı reddediyor. Yatay şeritler tuvali bir parazit gibi, hafızanın bir insanı bize bazen parça parça, sırasız ve hiçbir zaman tam olarak bütün geri getirdiği o dağınık biçim gibi kesiyor. Ama bütün bunların içinde, o gözler direniyor. Canlı, buz mavisi, tamamen orada.\n\nBu, baskı altındaki bir kimliğin portresi. Kesintiye uğratmakta, parçalara ayırmakta, kategorize etmekte ısrar eden bir dünyanın gürültüsü içinde direnen bir benliğin portresi. Soyut müdahaleler onu gizlemiyor. Onun bağlamı, tarihi, iklimi haline geliyor.\n\nTeknik olarak bu eser, ressamın pratiğinde cesur bir kopuşu işaret ediyor — figüratif gerçekçilikteki ustalığı ile soyutlamanın diliyle bilinçli bir çarpışma. Bu, Mahmut Şahin'in yeni bir bölgeye adım atışı — ve tüm gücüyle varışı.",
+    "no reason to leave": "Yukarıda gökyüzü kendini topluyor — derinleşen mor-mavi bir zeminde kabaran devasa bulutlar, henüz gelmeye tam karar vermemiş bir yaz fırtınasının o kendine has gerilimini taşıyor. Aşağıda ise dünya, ışıkla yıkanmış uzak tepelere doğru tembel tembel uzanan nehirle birlikte, parlak yeşil ve deniz mavisi tonlarında nefesini tutuyor.\n\nAhşap bir kürek kayığı yarı kıyıda duruyor, halatı suya doğru sürükleniyor; sanki onu son kullanan kişi ayrılmayı bitirmeyi unutmuş gibi. Kalan ışığı yakalayan beyaz kabuklu bir huş ağacının yanında, dayanıklı olmak için inşa edilmiş bir şeyin sağlam huzuruyla bir kütük kulübe duruyor.\n\nTeknik olarak ressam, tuvale kendinden emin, katmanlı fırça darbeleriyle hükmediyor — bulutlar, onlara gerçek bir hacim ve dram kazandıran kalın, heykelsi bir empasto ile inşa edilirken, nehir yüzeyi yansıyan ışıkla parıldayan pürüzsüz, akışkan darbelerle işleniyor. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor.",
+    "porcelain dreams": "İlk bakışta yalnızca bir sürahi ve birkaç kiraz. Daha uzun bakınca, tamamen başka bir şeye dönüşüyor.\n\nPorselen sürahi, kompozisyondan neredeyse mimari bir zarafetle yükseliyor — ince boynu kıvrımlı Art Nouveau süslemeleriyle bezeli, yuvarlak gövdesi narin turuncu çiçekler ve yeşil yapraklarla resmedilmiş. Tabanının etrafında, tam olgunlaşmış şeylerin derin, cilalı kırmızısıyla parlayan bolca kiraz saçılmış.\n\nHer şeyin arkasında, fon görmezden gelinmeyi reddediyor. Deniz mavisi, mor, kehribar ve sarı, gevşek, atmosferik fırça darbeleriyle çarpışıyor — ne bir duvar, ne bir gökyüzü, sadece bir ruh hali.\n\nTeknik olarak ressam, çarpıcı bir yaklaşım karşıtlığı sergiliyor. Kiraz'lar neredeyse dokunsal bir gerçekçilikle işlenirken, fon enerjiyle nabız gibi atan cesur, özgür bir empasto ile resmedilmiş. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor.",
+    "sovereign": "Bakılmayı istemiyor. Sadece var oluyor — ve bakmak kaçınılmaz hâle geliyor. Bakışı doğrudan, aceleci olmayan ve tümüyle özürsüz. Şekillendirilmiş kaşların altındaki koyu gözler, kim olduğu sorusunu çoktan çözmüş birinin sakin otoritesiyle izleyiciyi tutuyor.\n\nÇevresinde dünya, sıcak kehribar ve gül altını tonlarında çiçek açıyor; dışarıdan düşmek yerine içeriden ışıldıyormuş gibi görünen parıltılı bir fon. Bu sıcaklığa karşı, sarılı başlığının lavanta ve moru, çıplak bir omzunun üzerinden dramatik biçimde dökülüyor.\n\nBu, artık kanıtlayacak hiçbir şeyi kalmamış ve bunun farkında olan bir kadının o kendine has güzelliği üzerine bir tablo. Işık kaynağı önden ve hafifçe yukarıdan geliyor, yüzü kesinlikle şekillendirirken fon bağımsız biçimde parlıyor — portreyi gerçekçiliğin ötesine, ikonaya yaklaşan bir şeye taşıyan parıltılı bir hale etkisi yaratıyor.",
+    "stillness as a form of power": "Öne eğilmiyor. Uzanmıyor. Sadece oturuyor — ve dünya kendini onun etrafında yeniden düzenliyor. Elleri alışkanlıkla kolay bir biçimde kavuşturulmuş, bakışı sabit ve hiçbir şey ele vermeyen; koltuğunu bir kraliçenin tahtını işgal ettiği gibi işgal ediyor: güçle değil, yerinin mutlak kesinliğiyle.\n\nArkasında rotonda bir bildiri gibi duruyor. Bahçe tam çiçek açmış hâlde parlıyor. Çok ötede ise deniz ufukta nefesini tutuyor, sabırla, o hazır olduğunda fark edilmeyi bekliyor.\n\nElbisesi kendi başına bir dünya — kucağına dökülen, kadınla bahçe arasındaki sınırı bulanıklaştıran, boyanmış çiçeklerden bir çayır.\n\nBu, sakinlikte yaşayan güç üzerine bir portre — kendini ilan etmeyen, kendini açıklamayan ve kendisi için asla özür dilemeyen türden bir güç.",
+    "the book can wait": "Kitap açık ama unutulmuş duruyor. Çenesi eline yaslanmış, bakışı çerçevenin ötesinde bir yere sürükleniyor. Hayal kurmuyor. Düşünüyor. Aralarında bir fark var ve ressam bunu biliyor.\n\nKırmızı şapka, koyu saçlarının üzerinde küçük bir ateş gibi parlıyor — cesur, özürsüz, fikirleri olan bir kadının seçimi. Kırmızı güller, ne zaman duracağını bilmeyen bir bahçenin cömert bolluğuyla çerçevenin solunu dolduruyor.\n\nTeknik olarak tablo, kesinlik ile özgürlük arasında kendinden emin bir akıcılıkla hareket ediyor. Yüz, pürüzsüz ve parıltılı fırça darbeleriyle işlenmiş; etrafında ressam muhteşem biçimde gevşiyor — şapka, kırmızı, turuncu ve altının cesur, mozaik benzeri darbelerinden inşa edilmiş. Bu tablo bir gerçekçinin kesinliğiyle görüyor, bir şairin coşkusuyla hissediyor.",
+    "the city that burns on water": "Yüzüyor. Parlıyor. Çok uzun süredir güzel olduğu için artık bunun farkında bile olmayan bir kentin altın ateşiyle yanıyor. Tuvalin kalbinde, muhteşem bir cami sudan yarı hatırlanan bir görüntü gibi yükseliyor — kubbeler mor renkte taçlanmış, minareler her türlü sükunet iddiasından vazgeçmiş bir gökyüzüne uzanıyor.\n\nGeri kalan her yerde — gökyüzünde, suda, gölgede — ressam yeni bir şeyi serbest bırakıyor. Deniz mavisi ve koyu morun cesur, süpürücü darbeleri, zapt edilmesi güç bir enerjiyle çerçeveyi kaplıyor.\n\nTeknik olarak bu eser, ressamın 2026 üretiminde görülen evrimi sürdürüyor — figüratifin duygusal çıpasından vazgeçmeden soyutlamaya korkusuzca açılım. Bu, Mahmut Şahin'in en özgür ve en parıltılı hâli.",
+    "the company of simple objects": "Üç nesne. Bir raf. Ve bir şekilde, ihtiyacınız olan her şey. Mavi seramik bir fincan, her sabah kullanılan bir şeyin rahat özgüveniyle duruyor. Arkasında, koyu yeşil bir vazo sessiz bir zarafetle yükseliyor. Sağda, altın rengi bir armut hafifçe eğilmiş, kabuğu öğleden sonranın sıcak kehribarıyla parlıyor.\n\nOlağanüstü hiçbir şey yok. Yine de ressam bu üç mütevazı nesneyi öyle bir özenle düzenlemiş ve öyle bir adanmışlıkla aydınlatmış ki, gözünüzü ayırmanız imkânsız hâle geliyor.\n\nTeknik olarak bu, görme sanatı üzerine bir çalışma. Gölgeler uzun ve amaçlı, her nesneyi rafa sağlamca bağlıyor ve kompozisyona büyük Avrupa natürmort geleneğini anımsatan zamansız, atölye kalitesinde bir hava kazandırıyor.",
+    "the moment before she disappears": "Dans etmiyor. Dönüşüyor. Figür, soğuk mor-mavi bir gökyüzünde sıçrıyor, kolları iki yana açılmış, saçları dağınık; bedeni insan formunun saf harekete teslim olduğu tam o ana yakalanmış. Belinden aşağısı eriyor — teni dökülen ateşe yerini bırakıyor, kızıl ve altın bir kuyrukluyıldızın kuyruğu gibi arkasında akıyor.\n\nO yarı kadın, yarı alev. Ve muhteşem. Bu, her şeyi vermenin bedeli ve zaferi üzerine bir tablo.\n\nTeknik olarak bu eser, Mahmut Şahin'i en cesur, en deneysel hâliyle temsil ediyor. Üst gövde narin, neredeyse klasik bir kesinlikle işlenmiş; ardından, nefes kesici tek bir geçişte fırça formdan tamamen vazgeçiyor.",
+    "the ships and the soul": "Sıvı altından bir gölün içinde tek başına yürüyor; arkasında kent kehribar rengiyle parlıyor, solunda uzun gemiler mavi bir gölgede dinleniyor. Adı yok. İhtiyacı da yok. O, geceleyin bir suyun kıyısında durmuş ve aynı anda hem çok küçük hem çok canlı hissetmiş herkes.\n\nSolda soğuk mavi. Sağda yanan kehribar. Yalnız figür, tam olarak ikisinin arasındaki sınırda duruyor.\n\nTeknik olarak bu eser, ressamın fırçanın yanı sıra palet bıçağındaki ustalığını sergiliyor. Sağdaki şehir binaları, cesur, kübist esintili empasto bloklarından inşa edilmiş — pencereleri ve cepheleri tarif etmeden çağrıştıran kalın, mimari darbeler.",
+    "the weight of simple things": "Onların yanından her gün aceleyle geçiyoruz — raftaki bir testi, bir kâse üzüm, hafifçe elin uzağına yuvarlanmış bir elma, masanın kendi köşesini seçmiş bir erik. Durmuyoruz. Bakmıyoruz.\n\nRessam durdu. Ressam baktı. Ve bakarken, Hollandalı ustaların üç yüzyıl önce bildiği ve bizim sürekli unuttuğumuz şeyi buldu: sıradan olan, gerçekten görüldüğünde neredeyse dayanılmaz bir güzellik taşır.\n\nBu, dikkat üzerine bir tablo. Her gün elimizi uzattığımız şeylerin — meyve, kap, ahşap bir masanın sessiz köşesi — izin verirsek yeterli olduğunu fark edecek kadar durabilmenin radikal eylemi üzerine.",
+    "the whole summer in one laugh": "Başını geriye atmış, ağzı ardına kadar açık, üzümler tepesinde küçük, özel bir mucize gibi sallanıyor. O ise yukarıda, yalınayak ve sırıtarak oturuyor, bunun ne kadar komik olduğunu tam olarak bilen birinin keyfiyle onu izliyor.\n\nBu, çocukluğun en savunmasız hâli — iki çocuk, biraz çalıntı meyve ve başka hiçbir şeye ihtiyaç duymayan tam bir mutluluk.\n\nRessam bu sahneyi Barok ustaların geleneğine sağlamca yerleştiriyor. Derin, kadifemsi bir karanlık fonu yutuyor; öyle ki figürler sanki tek bir mumla aydınlatılmış gibi gölgeden ortaya çıkıyor — Caravaggio'nun hayaleti burada hazır.",
+    "toward the burning horizon": "Bu tabloda güneş batmıyor — patlıyor. Bütün gökyüzü alev alev, turuncu ve altın kenarlarda mora eriyor; sanki dünyanın kendisi yavaş ve muhteşem bir ateşle tüketiliyor.\n\nBütün bunların içinden gemi ileri doğru ilerliyor. Rüzgârla şişmiş yelkenler — kobalt, kızıl, beyaz — günün son ışığını yakalayıp gökyüzüne geri fırlatıyor. Gövde, pruvada beyaz köpüren karanlık, çalkantılı dalgaların içinden kesip geçiyor.\n\nOrtada liman yok. Belirtilmiş bir varış noktası yok. Sadece açık deniz, yanan gökyüzü ve ileri gitmenin bilinmeye değer tek yön olduğuna açıkça karar vermiş bir tekne.",
+    "two wild things that found each other": "Birlikte sana bakıyorlar — ve birlikte, etkileyicilar. Kadın, dizgini kontrolden değil güvenden söz eden bir elle tutuyor. Koyu gözleri düz, kırpılmadan; toprağa yakın yaşamış ve kim olduğunu tam olarak bilen birinin sessiz yoğunluğunu taşıyor. Yanındaki at da aynı ölçüde sakin, aynı ölçüde tetikte.\n\nSiyah saçlar kızıl işlemeli kumaşın üzerine dökülüyor. Arkalarında çam ormanı ve açık gökyüzü — herkesten çok onlara ait bir dünya.\n\nBu, aidiyet üzerine bir portre. Birbirlerine değil, daha büyük bir şeye — toprağa, içgüdüye, özür dilemeden yaşanan bir hayatın acelesiz ritmine aidiyet.",
+    "walked through the rain": "Yağmur yağdı ve sokak bir aynaya dönüştü — kehribar, mor, altın — her lamba ışığı ıslak arnavut kaldırımlarında ikiye katlanmış, ıslanmış olmaktan dolayı bütün dünya birden daha güzel.\n\nGül rengi şemsiyesiyle geceye sahipmiş gibi yürüyor. Aceleci değil. Rahatsız olmamış. İlerideki bir yerde, yalnız bir figür bir kapı eşiğinde duruyor, sıcak ışıkla yarı yarıya yutulmuş; belki bekliyor, belki sadece yağmurun yağışını izliyor.\n\nRessam bu sahneyi saf duygudan inşa etmiş — ışığı neredeyse yenilebilir, karanlığı neredeyse şefkatli kılan kalın, dışavurumcu darbeler. Bu, yağmur üzerine bir tablo değil. Yağmurun içinden yürümenin tuhaf sevinci üzerine bir tablo."
   },
   "Mehmet Ozdemir": {
-    "Echoes Beneath the Stone Arch": {
-      medium: oilPaintingMedium,
-      dimensions: "40 x 60 cm",
-      description: {
-        en: "Echoes Beneath the Stone Arch is a tribute to the timeless streets of Hatay, capturing the warmth, character, and cultural richness that once defined its historic neighborhoods. Framed by an ancient stone archway, the scene invites the viewer into a quiet alley bathed in golden sunlight. The vibrant orange façades, weathered stone walls, and traditional architecture reflect the unique identity that made Hatay one of Türkiye's most cherished cultural treasures.\n\nPainted in remembrance of the streets that were devastated by the 2023 Hatay earthquake, the work transforms an ordinary passageway into a symbol of memory and resilience. The empty lane, illuminated by soft light, evokes a sense of presence in absence — an echo of the lives, conversations, and traditions that once filled these spaces.\n\nMore than a depiction of architecture, this painting serves as a visual memorial to a city's heritage. It honors the enduring spirit of Hatay and preserves, through art, the beauty of streets that may no longer stand but continue to live on in collective memory.",
-        tr: "Taş Kemerin Altındaki Yankılar, Hatay'ın tarihi mahallelerini bir zamanlar tanımlayan sıcaklığı, karakteri ve kültürel zenginliği yakalayan, kentin zamansız sokaklarına bir saygı duruşudur. Kadim bir taş kemerle çerçevelenen sahne, izleyiciyi altın güneş ışığıyla yıkanmış sessiz bir sokağa davet eder. Canlı turuncu cepheler, aşınmış taş duvarlar ve geleneksel mimari, Hatay'ı Türkiye'nin en değerli kültürel hazinelerinden biri yapan eşsiz kimliği yansıtır.\n\n2023 Hatay depreminde yıkıma uğrayan sokakların anısına resmedilen eser, sıradan bir geçidi hafıza ve dirençlilik simgesine dönüştürür. Yumuşak ışıkla aydınlanan boş sokak, bir yokluk içinde varlık hissi uyandırır — bir zamanlar bu mekânları dolduran yaşamların, sohbetlerin ve geleneklerin bir yankısı.\n\nBir mimari tasvirin ötesinde, bu tablo bir kentin mirasına görsel bir anıt niteliği taşır. Hatay'ın yılmaz ruhunu onurlandırır ve artık ayakta olmayabilecek ama kolektif hafızada yaşamaya devam eden sokakların güzelliğini sanat yoluyla korur.",
-      },
-    },
-  },
+    "echoes beneath the stone arch": "Taş Kemerin Altındaki Yankılar, Hatay'ın tarihi mahallelerini bir zamanlar tanımlayan sıcaklığı, karakteri ve kültürel zenginliği yakalayan, kentin zamansız sokaklarına bir saygı duruşudur. Kadim bir taş kemerle çerçevelenen sahne, izleyiciyi altın güneş ışığıyla yıkanmış sessiz bir sokağa davet eder. Canlı turuncu cepheler, aşınmış taş duvarlar ve geleneksel mimari, Hatay'ı Türkiye'nin en değerli kültürel hazinelerinden biri yapan eşsiz kimliği yansıtır.\n\n2023 Hatay depreminde yıkıma uğrayan sokakların anısına resmedilen eser, sıradan bir geçidi hafıza ve dirençlilik simgesine dönüştürür. Yumuşak ışıkla aydınlanan boş sokak, bir yokluk içinde varlık hissi uyandırır — bir zamanlar bu mekânları dolduran yaşamların, sohbetlerin ve geleneklerin bir yankısı.\n\nBir mimari tasvirin ötesinde, bu tablo bir kentin mirasına görsel bir anıt niteliği taşır. Hatay'ın yılmaz ruhunu onurlandırır ve artık ayakta olmayabilecek ama kolektif hafızada yaşamaya devam eden sokakların güzelliğini sanat yoluyla korur."
+  }
 };
+
 
 const imageExtensions = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 const turkishMonthNames = [
@@ -533,13 +505,55 @@ async function loadArtistsAndPaintings() {
         .filter((name) => imageExtensions.has(path.extname(name).toLowerCase()))
     );
 
+    const docxByNormalizedStem = new Map();
+    for (const entry of fileEntries) {
+      if (!entry.isFile() || path.extname(entry.name).toLowerCase() !== ".docx") continue;
+      const stem = entry.name.replace(/\.[^.]+$/, "");
+      const key = normalizeStem(stem);
+      if (docxByNormalizedStem.has(key)) {
+        console.warn(
+          `Multiple .docx files match "${stem}" in "${folderName}" — using "${docxByNormalizedStem.get(key)}", ignoring "${entry.name}".`
+        );
+        continue;
+      }
+      docxByNormalizedStem.set(key, entry.name);
+    }
+
     for (const [index, fileName] of files.entries()) {
       const fileStats = await fs.stat(path.join(artistsDir, folderName, fileName));
       const paintingId = `${metadata.id}-${String(index + 1).padStart(2, "0")}`;
       paintingVersions.set(paintingId, assetVersionTag(fileStats));
 
       const fileStem = fileName.replace(/\.[^.]+$/, "");
-      const paintingDetails = paintingMetadata[folderName]?.[fileStem];
+      const matchingDocxName = docxByNormalizedStem.get(normalizeStem(fileStem));
+
+      let paintingDetails = null;
+      if (matchingDocxName) {
+        const docxPath = path.join(artistsDir, folderName, matchingDocxName);
+        const docxStats = await fs.stat(docxPath);
+        if (docxStats.size === 0) {
+          console.warn(`"${matchingDocxName}" in "${folderName}" is empty — skipping.`);
+        } else {
+          const fields = parsePaintingDocx(await fs.readFile(docxPath));
+          if (fields.Description) {
+            const trOverride =
+              paintingDescriptionTranslations[folderName]?.[normalizeStem(fileStem)];
+            if (!trOverride) {
+              console.warn(
+                `No Turkish translation available for "${fileStem}" (${folderName}) — add one to paintingDescriptionTranslations. Falling back to the artist's default Turkish description for now.`
+              );
+            }
+            paintingDetails = {
+              medium: translateTechnique(fields["Painting Technique"]),
+              dimensions: normalizeDimensions(fields.Dimensions),
+              description: {
+                en: fields.Description,
+                tr: trOverride ?? metadata.description.tr,
+              },
+            };
+          }
+        }
+      }
 
       paintings.push({
         id: paintingId,
