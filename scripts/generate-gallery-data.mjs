@@ -130,9 +130,10 @@ const artistMetadata = {
     folder: "Mahmut Sahin",
     name: { en: "Mahmut Şahin", tr: "Mahmut Şahin" },
     role: { en: "Portrait and Interior Artist", tr: "Portre ve İç Mekan Sanatçısı" },
+    portrait: artistAssetPath("mahmutsahin.jpg"),
     biography: {
-      en: "Mahmut Şahin creates intimate scenes shaped by human presence, interior stillness, and rich tonal structure. His paintings often explore memory, character, and the emotional life of domestic spaces.",
-      tr: "Mahmut Şahin, insan varlığı, iç mekan sessizliği ve zengin tonal yapı etrafında şekillenen samimi sahneler üretir. Resimleri çoğu zaman hafızayı, karakteri ve ev içi mekanların duygusal yaşamını araştırır.",
+      en: "Mahmut Şahin was born on August 1, 1962, in the Mucur district of Kırşehir. After completing his primary, middle, and high school education in Mucur, he entered the Turkish Military Academy in 1979 and graduated as an infantry lieutenant in 1983. He served in various posts within the Land Forces before retiring by his own request in 2003.\n\nFollowing his retirement, he founded his own companies in the construction and insurance sectors and remained actively involved in business life until the pandemic. With the onset of the pandemic, he stepped away from business life and devoted himself to painting, an interest that had begun as a hobby, making significant progress in the field. He continues to paint actively today.\n\nMahmut Şahin is married and the father of two children, a daughter and a son.",
+      tr: "Mahmut Şahin, 01.08.1962 tarihinde Kırşehir'in Mucur ilçesinde dünyaya gelmiştir. İlk, orta ve lise öğrenimini Mucur'da tamamladıktan sonra 1979 yılında Kara Harp Okulu'na girmiş ve 1983 yılında Piyade Teğmen olarak mezun olmuştur. Kara Kuvvetleri bünyesinde çeşitli görevlerde bulunmuş, 2003 yılında ise kendi isteğiyle emekliye ayrılmıştır.\n\nEmekliliğinin ardından inşaat ve sigorta alanlarında faaliyet göstermek üzere kendi şirketlerini kurmuş ve pandemi dönemine kadar aktif olarak iş hayatının içinde yer almıştır. Pandemiyle birlikte iş yaşamını sonlandırarak başlangıçta hobi olarak başladığı resim çalışmalarına ağırlık vermiş, bu alanda önemli ilerleme kaydetmiştir. Hâlen aktif olarak resim yapmaya devam etmektedir.\n\nEvli olan Mahmut Şahin, bir kız ve bir erkek olmak üzere iki çocuk babasıdır.",
     },
     focus: {
       en: "Portraiture, tonal realism, domestic interiors",
