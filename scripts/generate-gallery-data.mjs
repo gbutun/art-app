@@ -259,6 +259,10 @@ function normalizeStem(stem) {
   return stem.trim().toLowerCase().replace(/\s+/g, " ");
 }
 
+function alnumOnly(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 // Manual Turkish translations of painting descriptions (English text is auto-extracted
 // from matching .docx files at generation time; see parsePaintingDocx). Keyed by artist
 // folder and normalizeStem(filename-without-extension). Add an entry here whenever a new
@@ -288,6 +292,90 @@ const paintingDescriptionTranslations = {
   "Mehmet Ozdemir": {
     "echoes beneath the stone arch": "Taş Kemerin Altındaki Yankılar, Hatay'ın tarihi mahallelerini bir zamanlar tanımlayan sıcaklığı, karakteri ve kültürel zenginliği yakalayan, kentin zamansız sokaklarına bir saygı duruşudur. Kadim bir taş kemerle çerçevelenen sahne, izleyiciyi altın güneş ışığıyla yıkanmış sessiz bir sokağa davet eder. Canlı turuncu cepheler, aşınmış taş duvarlar ve geleneksel mimari, Hatay'ı Türkiye'nin en değerli kültürel hazinelerinden biri yapan eşsiz kimliği yansıtır.\n\n2023 Hatay depreminde yıkıma uğrayan sokakların anısına resmedilen eser, sıradan bir geçidi hafıza ve dirençlilik simgesine dönüştürür. Yumuşak ışıkla aydınlanan boş sokak, bir yokluk içinde varlık hissi uyandırır — bir zamanlar bu mekânları dolduran yaşamların, sohbetlerin ve geleneklerin bir yankısı.\n\nBir mimari tasvirin ötesinde, bu tablo bir kentin mirasına görsel bir anıt niteliği taşır. Hatay'ın yılmaz ruhunu onurlandırır ve artık ayakta olmayabilecek ama kolektif hafızada yaşamaya devam eden sokakların güzelliğini sanat yoluyla korur."
   }
+};
+
+// Manual Turkish translations of painting titles, keyed by artist folder and
+// normalizeStem(filename-without-extension). Titles come from image filenames, which are
+// always in English, so there's no source text to auto-derive a Turkish title from — add an
+// entry here whenever a new painting image is added, or the English filename is used as-is.
+const titleTranslations = {
+  "Mahmut Sahin": {
+    "a morning that asked nothing": "Hiçbir Şey İstemeyen Bir Sabah",
+    "a storm she chose to wear": "Giymeyi Seçtiği Bir Fırtına",
+    "a turkish summer in two acts": "İki Perdede Bir Türk Yazı",
+    "born from light": "Işıktan Doğan",
+    "fractured, not broken": "Kırılmış, Ama Kırık Değil",
+    "no reason to leave": "Ayrılmak İçin Hiçbir Sebep Yok",
+    "porcelain dreams": "Porselen Düşler",
+    sovereign: "Hükümdar",
+    "stillness as a form of power": "Güç Biçimi Olarak Durgunluk",
+    "the book can wait": "Kitap Bekleyebilir",
+    "the city that burns on water": "Suyun Üzerinde Yanan Şehir",
+    "the company of simple objects": "Sade Nesnelerin Eşliği",
+    "the moment before she disappears": "Kaybolmadan Önceki An",
+    "the ships and the soul": "Gemiler ve Ruh",
+    "the weight of simple things": "Sade Şeylerin Ağırlığı",
+    "the whole summer in one laugh": "Bir Kahkahada Bütün Bir Yaz",
+    "toward the burning horizon": "Yanan Ufka Doğru",
+    "two wild things that found each other": "Birbirini Bulan İki Vahşi Şey",
+    "walked through the rain": "Yağmurun İçinden Yürüdü",
+  },
+  "Mehmet Ozdemir": {
+    "alpine stream": "Alp Deresi",
+    "anatolian summer": "Anadolu Yazı",
+    "autumn’s gift": "Sonbaharın Armağanı",
+    "autumn's gift": "Sonbaharın Armağanı",
+    "beyond the white horizon i. the first passage": "Beyaz Ufkun Ötesinde I. İlk Geçiş",
+    "beyond the white horizon ii. the call of wings": "Beyaz Ufkun Ötesinde II. Kanatların Çağrısı",
+    "beyond the white horizon iii. the keeper of winter": "Beyaz Ufkun Ötesinde III. Kışın Bekçisi",
+    "beyond the white horizon iv. across the frozen plain": "Beyaz Ufkun Ötesinde IV. Donmuş Ovanın Öte Yakası",
+    "beyond the white horizon v. the shepherd’s return": "Beyaz Ufkun Ötesinde V. Çobanın Dönüşü",
+    "beyond the white horizon v. the shepherd's return": "Beyaz Ufkun Ötesinde V. Çobanın Dönüşü",
+    "beyond the white horizon vi. horse’s winter": "Beyaz Ufkun Ötesinde VI. Atın Kışı",
+    "beyond the white horizon vi. horse's winter": "Beyaz Ufkun Ötesinde VI. Atın Kışı",
+    "crimson rhythm": "Kızıl Ritim",
+    "dance of the wind": "Rüzgârın Dansı",
+    "daughter of the vine": "Asmanın Kızı",
+    "echoes beneath the stone arch": "Taş Kemerin Altındaki Yankılar",
+    "grain market at the foot of the minaret": "Minarenin Dibindeki Tahıl Pazarı",
+    "guardians of the mountain light": "Dağ Işığının Bekçileri",
+    "keeper of forgotten cities": "Unutulmuş Şehirlerin Bekçisi",
+    "keeper of forgotten cities photo 2": "Unutulmuş Şehirlerin Bekçisi - Fotoğraf 2",
+    "keeper of forgotten cities video": "Unutulmuş Şehirlerin Bekçisi - Video",
+    "midnight majesty": "Gece Yarısı Haşmeti",
+    "morning bloom": "Sabah Çiçeği",
+    "silent reverie": "Sessiz Hayal",
+    "sovereign grace": "Hükümdar Zarafeti",
+    "ten thousand times": "On Bin Kez",
+    "the bosphorus never tires of being beautiful": "Boğaz Güzel Olmaktan Hiç Yorulmaz",
+    "the faithful": "Sadık Olan",
+    "the gleaners – a faithful reproduction of a timeless masterpiece": "Başak Toplayıcılar – Zamansız Bir Başyapıtın Sadık Bir Yeniden Üretimi",
+    "the gleaners - a faithful reproduction of a timeless masterpiece": "Başak Toplayıcılar – Zamansız Bir Başyapıtın Sadık Bir Yeniden Üretimi",
+    "the gleaners – a faithful reproduction of a timeless masterpiece 2": "Başak Toplayıcılar – Zamansız Bir Başyapıtın Sadık Bir Yeniden Üretimi 2",
+    "the gleaners - a faithful reproduction of a timeless masterpiece 2": "Başak Toplayıcılar – Zamansız Bir Başyapıtın Sadık Bir Yeniden Üretimi 2",
+    "the many lives of her i. the keeper of memories": "Onun Pek Çok Hayatı I. Anıların Bekçisi",
+    "the many lives of her ii. whispers of antiquity": "Onun Pek Çok Hayatı II. Antik Çağın Fısıltıları",
+    "the many lives of her iii. daughter of the mediterranean": "Onun Pek Çok Hayatı III. Akdeniz'in Kızı",
+    "the many lives of her iv. the crimson blossom": "Onun Pek Çok Hayatı IV. Kızıl Çiçek",
+    "the many lives of her v. inner garden": "Onun Pek Çok Hayatı V. İç Bahçe",
+    "the market at first light": "İlk Işıkta Pazar",
+    "the poppies blaze": "Gelincikler Alev Alev",
+    "the quiet morning": "Sessiz Sabah",
+    "the scooter and the century": "Skuter ve Yüzyıl",
+    "these cobblestones": "Bu Arnavut Kaldırımları",
+    "the stone lane": "Taş Sokak",
+    "the tortoise trainer – a masterful reproduction of an ottoman icon": "Kaplumbağa Terbiyecisi – Bir Osmanlı İkonunun Ustaca Yeniden Üretimi",
+    "the tortoise trainer - a masterful reproduction of an ottoman icon": "Kaplumbağa Terbiyecisi – Bir Osmanlı İkonunun Ustaca Yeniden Üretimi",
+    "trinity of freedom": "Özgürlüğün Üçlemesi",
+    "under the same sky": "Aynı Gökyüzü Altında",
+    "untamed harmony in freedom river": "Özgürlük Nehri'nde Evcilleşmemiş Uyum",
+    "vanished street": "Kaybolan Sokak",
+    "velvet thunder": "Kadife Gürleme",
+    "where fire becomes art": "Ateşin Sanata Dönüştüğü Yer",
+    "where the palm still remembers - the last summer of old hatay": "Palmiyenin Hâlâ Hatırladığı Yer - Eski Hatay'ın Son Yazı",
+    "where the river bends to let them pass": "Nehrin Onları Geçirmek İçin Kıvrıldığı Yer",
+    "woman of the golden threshold": "Altın Eşiğin Kadını",
+  },
 };
 
 
@@ -361,12 +449,20 @@ function slugify(value) {
     .replace(/^-+|-+$/g, "");
 }
 
-function titleFromFileName(fileName, language) {
+function titleFromFileName(fileName, language, folderName) {
   const stem = fileName.replace(/\.[^.]+$/, "");
   const match = stem.match(/^resim(\d+)$/i);
 
   if (match) {
     return language === "tr" ? `Resim ${match[1]}` : `Painting ${match[1]}`;
+  }
+
+  if (language === "tr") {
+    const trTitle = titleTranslations[folderName]?.[normalizeStem(stem)];
+    if (trTitle) return trTitle;
+    console.warn(
+      `No Turkish translation available for painting title "${stem}" (${folderName}) — add one to titleTranslations. Using the English title for now.`
+    );
   }
 
   return stem;
@@ -503,6 +599,14 @@ async function loadArtistsAndPaintings() {
         .filter((entry) => entry.isFile())
         .map((entry) => entry.name)
         .filter((name) => imageExtensions.has(path.extname(name).toLowerCase()))
+        .filter((name) => {
+          const stem = name.replace(/\.[^.]+$/, "");
+          const isPortraitFile = alnumOnly(stem) === alnumOnly(folderName);
+          if (isPortraitFile) {
+            console.warn(`Excluding "${name}" from paintings in "${folderName}" — matches the artist portrait filename.`);
+          }
+          return !isPortraitFile;
+        })
     );
 
     const docxByNormalizedStem = new Map();
@@ -559,8 +663,8 @@ async function loadArtistsAndPaintings() {
         id: paintingId,
         artistId: metadata.id,
         title: {
-          en: titleFromFileName(fileName, "en"),
-          tr: titleFromFileName(fileName, "tr"),
+          en: titleFromFileName(fileName, "en", folderName),
+          tr: titleFromFileName(fileName, "tr", folderName),
         },
         artist: metadata.name,
         year: "2026",
