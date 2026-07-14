@@ -687,12 +687,12 @@ const paintings = [
     },
     "year": "2026",
     "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
+      "en": "Oil Painting",
+      "tr": "Yağlı Boya"
     },
-    "dimensions": "Details on request",
+    "dimensions": "40 x 60 cm",
     "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
+      "en": "In the second chapter, solitude gives way to curiosity. A young figure runs through the snow toward a flock of geese, drawn by movement and life in an otherwise quiet landscape. The painting captures a moment of innocence and wonder, reminding us that even in the coldest seasons, the world offers companionship and discovery.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20II.%20The%20Call%20of%20Wings.jpeg?v=1784029118800"
@@ -710,12 +710,12 @@ const paintings = [
     },
     "year": "2026",
     "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
+      "en": "Oil Painting",
+      "tr": "Yağlı Boya"
     },
-    "dimensions": "Details on request",
+    "dimensions": "40 x 60 cm",
     "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
+      "en": "In the second chapter, solitude gives way to curiosity. A young figure runs through the snow toward a flock of geese, drawn by movement and life in an otherwise quiet landscape. The painting captures a moment of innocence and wonder, reminding us that even in the coldest seasons, the world offers companionship and discovery.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Beyond%20the%20White%20Horizon%20III.%20The%20Keeper%20of%20Winter.jpeg?v=1784029119187"
@@ -848,12 +848,12 @@ const paintings = [
     },
     "year": "2026",
     "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
+      "en": "Oil Painting",
+      "tr": "Yağlı Boya"
     },
-    "dimensions": "Details on request",
+    "dimensions": "45 x 60 cm",
     "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
+      "en": "In this intimate portrait, Mehmet Özdemir weaves two worlds into one canvas: the careful realism of a young woman’s gaze and the exuberant language of Ottoman floral ornament. Red blossoms and scrolling vines do not merely frame her — they grow from her, curling at her shoulders, rising at her feet, as if the earth itself is reaching toward something it recognizes.\nShe wears a simple beret, a gold necklace, a quiet smile. Nothing extraordinary. And yet the painting insists she is surrounded by the extraordinary — because Özdemir understands that ordinary women carry entire seasons inside them.\nThe green of her vest echoes the deep foliage behind her. The warm ochre of her blouse belongs to the same palette as the flowers. She is not placed in nature. She is composed of it.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Daughter%20of%20the%20Vine.jpeg?v=1784029122543"
@@ -917,12 +917,12 @@ const paintings = [
     },
     "year": "2026",
     "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
+      "en": "Oil Painting",
+      "tr": "Yağlı Boya"
     },
-    "dimensions": "Details on request",
+    "dimensions": "40 x 60 cm",
     "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
+      "en": "Guardians of the Mountain Light is a hyperrealistic interpretation of a historic Anatolian landscape, where architecture and nature exist in quiet harmony. Dominated by warm terracotta rooftops, lush vegetation, and a distinctive watchtower rising above the settlement, the composition unfolds against the dramatic backdrop of a sunlit mountain range.\n\nThrough meticulous detail and atmospheric depth, the painting captures a fleeting moment of clarity and stillness. The interplay of light across the rooftops, the textures of the surrounding greenery, and the rugged contours of the mountains create a vivid sense of place that transcends simple representation. The hyperrealistic approach invites viewers to experience the scene not merely as an image, but as a memory preserved with extraordinary precision.\n\nThe tower, standing prominently within the composition, serves as a visual anchor and a symbol of continuity. Surrounded by the rhythms of daily life and the permanence of the landscape, it reflects the enduring relationship between human settlement and the natural world.\n\nBalancing documentary accuracy with artistic sensitivity, Guardians of the Mountain Light celebrates cultural heritage, architectural identity, and the timeless beauty of place. It is a work that encourages contemplation of the landscapes that shape collective memory and define a community’s sense of belonging.\n\nCuratorial Note\n\nExecuted in a hyperrealistic style, this painting explores the dialogue between history, architecture, and nature. By combining precise observation with emotional resonance, the work transforms a familiar landscape into a lasting visual record—one that honors both the physical environment and the stories embedded within it.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Guardians%20of%20the%20Mountain%20Light.jpeg?v=1784029127565"
@@ -1377,12 +1377,12 @@ const paintings = [
     },
     "year": "2026",
     "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
+      "en": "Oil Painting",
+      "tr": "Yağlı Boya"
     },
-    "dimensions": "Details on request",
+    "dimensions": "40 x 60 cm",
     "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
+      "en": "The Quiet Morning captures the timeless atmosphere of Hatay’s historic streets before the devastating earthquakes of February 2023. The painting portrays a narrow lane lined with traditional stone houses, warm-colored facades, and distinctive Ottoman-era architecture. At its heart rises a graceful historic tower, standing as a symbol of the city’s rich cultural heritage and centuries-old urban identity.\n\nBathed in soft morning light, the street appears calm and familiar. A solitary figure walks through the alley, transforming the scene from a simple cityscape into a memory of everyday life—of neighbors, merchants, families, and generations who once animated these streets. The gentle curve of the road invites the viewer deeper into the composition, as if walking through the living history of Hatay itself.\n\nCreated as a tribute to the city before the 2023 earthquake, the painting preserves more than architecture; it preserves atmosphere, memory, and belonging. Many of the streets, buildings, and landmarks that defined Hatay’s historic center were damaged or lost, making such scenes part of a collective remembrance.\n\nThrough its warm palette and quiet elegance, The Last Quiet Morning stands as both a celebration and a memorial—a reflection on the beauty of a city whose spirit endures beyond physical destruction.\n\nCuratorial Note\n\nThis work is part of an ongoing series dedicated to the memory of pre-earthquake Hatay. By documenting the city’s historic streets through painting, the artist seeks to preserve fragments of a cultural landscape that shaped countless lives and continues to survive through memory, art, and collective remembrance.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
     "image": "./artifacts/artists/Mehmet%20Ozdemir/The%20Quiet%20Morning.jpeg?v=1784029134392"
@@ -1538,12 +1538,12 @@ const paintings = [
     },
     "year": "2026",
     "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
+      "en": "Oil Painting",
+      "tr": "Yağlı Boya"
     },
-    "dimensions": "Details on request",
+    "dimensions": "70 x 90 cm",
     "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
+      "en": "This expressive painting portrays five majestic horses racing through a reflective stream beneath a canopy of autumn colors. The contrast between the luminous whites and rich chestnut tones of the horses, combined with the energetic texture of the brushwork, conveys strength, vitality, and freedom. The artwork celebrates the beauty of movement and the enduring bond between nature and the wild spirit of the horse. This artwork symbolizes unity, strength, and the unstoppable force of nature. The galloping horses represent courage, determination, and the pursuit of freedom, while the interplay of light and water creates a sense of harmony between power and beauty",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Untamed%20Harmony%20in%20Freedom%20River.jpeg?v=1784029142960"
@@ -1561,12 +1561,12 @@ const paintings = [
     },
     "year": "2026",
     "medium": {
-      "en": "Original artwork",
-      "tr": "Özgün eser"
+      "en": "Oil Painting",
+      "tr": "Yağlı Boya"
     },
-    "dimensions": "Details on request",
+    "dimensions": "40 x 60 cm",
     "description": {
-      "en": "From the Mehmet Özdemir archive, this work reflects the painter's calm realism, careful light handling, and patient surface observation.",
+      "en": "Vanished Street is a tribute to the historic heart of Hatay, capturing a street that once pulsed with daily life, cultural diversity, and centuries of shared history. Warm sunlight bathes the stone-paved alley, illuminating traditional houses, a historic mosque, and the distinctive architectural landmarks that defined the city’s unique character.\n\nAt the center of the composition, a solitary figure walks through the narrow lane, transforming the scene into a meditation on memory and time. The vibrant facades, weathered stones, and soft golden light evoke a sense of familiarity and belonging—a glimpse into the ordinary moments that gave life to these remarkable streets.\n\nPainted in remembrance of the devastation caused by the February 2023 Hatay earthquakes, the work preserves a fragment of a cityscape that has been profoundly altered. Many of the historic buildings and streets that once stood as witnesses to generations of human stories were damaged or lost. In this context, the painting becomes more than a representation of place; it becomes an act of cultural preservation.\n\nThrough its luminous colors and nostalgic atmosphere, Vanished Street honors the resilience of Hatay and its people. It invites viewers to reflect on the fragility of heritage, the power of memory, and the enduring spirit of a city whose identity continues to live beyond the physical structures that once defined it.\n\nCuratorial Statement\n\nThis painting forms part of a commemorative series dedicated to pre-earthquake Hatay. By reimagining and preserving the city’s historic streets through art, the series serves as a visual archive of collective memory, ensuring that the beauty, history, and spirit of Hatay remain alive for future generations.",
       "tr": "Mehmet Özdemir arşivinden alınan bu eser, sanatçının dingin gerçekçiliğini, dikkatli ışık kullanımını ve sabırlı yüzey gözlemini yansıtır."
     },
     "image": "./artifacts/artists/Mehmet%20Ozdemir/Vanished%20Street.jpeg?v=1784029143264"

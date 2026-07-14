@@ -232,6 +232,26 @@ function parsePaintingDocx(buffer) {
     fields[key] = value;
   }
 
+  // The "Description" label is inconsistently formatted across source documents: some use
+  // "Description:" (handled above by docxFieldPattern), others use a bare "Description" line
+  // with no colon, and some omit the label entirely — the description text just follows
+  // directly after the Category field. Detect the latter two cases by pulling any content
+  // after Category's own (short, single-line) value and treating it as the description.
+  if (!fields.Description && fields.Category) {
+    const lines = fields.Category.split("\n");
+    const category = lines[0].trim();
+    const rest = lines
+      .slice(1)
+      .join("\n")
+      .replace(/^\s*Description\s*\n+/i, "")
+      .trim();
+
+    fields.Category = category;
+    if (rest) {
+      fields.Description = rest;
+    }
+  }
+
   return fields;
 }
 
