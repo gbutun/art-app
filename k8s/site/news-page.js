@@ -99,6 +99,10 @@ function applyLanguage(language) {
   history.replaceState({}, "", `./news.html?lang=${encodeURIComponent(currentLanguage)}`);
 }
 
+function esc(str) {
+  return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 function renderArtRadar() {
   if (typeof artRadarEvents === "undefined" || !artRadarEvents.length) return;
 
@@ -109,17 +113,17 @@ function renderArtRadar() {
     const url = ev.url?.startsWith("http") ? ev.url : null;
     return `<div class="ar-event">
       <div class="ar-event-meta">
-        <span class="ar-type">${ev.type.replace("_", " ").toUpperCase()}</span>
+        <span class="ar-type">${esc(ev.type).replace("_", " ").toUpperCase()}</span>
         ${ev.scraped ? '<span class="ar-source">✓ Direct source</span>' : ""}
-        <span class="ar-date">${ev.date}</span>
+        <span class="ar-date">${esc(ev.date)}</span>
       </div>
-      <div class="ar-title">${ev.title}</div>
+      <div class="ar-title">${esc(ev.title)}</div>
       <div class="ar-detail">
-        ${ev.location ? `<span>📍 ${ev.location}</span>` : ""}
-        ${ev.organizer ? `<span>${ev.organizer}</span>` : ""}
+        ${ev.location ? `<span>📍 ${esc(ev.location)}</span>` : ""}
+        ${ev.organizer ? `<span>${esc(ev.organizer)}</span>` : ""}
       </div>
-      ${ev.description ? `<div class="ar-desc">${ev.description}</div>` : ""}
-      ${url ? `<a class="ar-link" href="${url}" target="_blank" rel="noopener">View event ↗</a>` : ""}
+      ${ev.description ? `<div class="ar-desc">${esc(ev.description)}</div>` : ""}
+      ${url ? `<a class="ar-link" href="${esc(url)}" target="_blank" rel="noopener">View event ↗</a>` : ""}
     </div>`;
   }).join("");
 }
